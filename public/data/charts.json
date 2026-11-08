@@ -14231,5 +14231,82 @@
         "change_percent": 6.83
       }
     ]
+  },
+  {
+    "id": "budget-plan-inflation",
+    "name": "Инфлация по проектобюджета (ХИПЦ)",
+    "sources": [
+      {
+        "name": {
+          "bg": "Проект на бюджетен план на Република България за 2027 г. (Министерство на финансите, октомври 2026 г.), т. 3.1 и 3.2, стр. 11 и 14: годишно изменение на ХИПЦ към декември",
+          "en": "Draft Budgetary Plan of the Republic of Bulgaria for 2027 (Ministry of Finance, October 2026), sections 3.1 and 3.2, pp. 11 and 14: HICP annual rate in December"
+        },
+        "dataset_id": "DBP-2027",
+        "url": [
+          "https://www.minfin.bg/upload/65334/Draft+Budgetary+Plan+of+the+Republic+of+Bulgaria+for+2027.pdf#page=11",
+          "https://www.minfin.bg/upload/65334/Draft+Budgetary+Plan+of+the+Republic+of+Bulgaria+for+2027.pdf#page=14"
+        ]
+      }
+    ],
+    "unit": "percent",
+    "meta": {
+      "style": {
+        "lineStyle": {
+          "type": "dashed",
+          "width": 2
+        }
+      },
+      "planOf": "inflation-annual-rate"
+    },
+    "data": [
+      {
+        "date": "2026-12-31",
+        "value": 6.1,
+        "change": 0,
+        "change_percent": 0
+      },
+      {
+        "date": "2027-12-31",
+        "value": 2.6,
+        "change": -3.5,
+        "change_percent": -80.46
+      }
+    ]
+  },
+  {
+    "id": "budget-plan-max-insurance-income-eur",
+    "name": "Максимален осигурителен доход по проектобюджета",
+    "sources": [
+      {
+        "name": {
+          "bg": "Проект на бюджетен план на Република България за 2027 г. (Министерство на финансите, октомври 2026 г.), т. 4.2, стр. 22",
+          "en": "Draft Budgetary Plan of the Republic of Bulgaria for 2027 (Ministry of Finance, October 2026), section 4.2, p. 22"
+        },
+        "dataset_id": "DBP-2027",
+        "url": [
+          "https://www.minfin.bg/upload/65334/Draft+Budgetary+Plan+of+the+Republic+of+Bulgaria+for+2027.pdf#page=22"
+        ]
+      }
+    ],
+    "unit": "EUR",
+    "meta": {
+      "axis": "monthly",
+      "style": {
+        "step": "end",
+        "lineStyle": {
+          "type": "dashed",
+          "width": 2
+        }
+      },
+      "planOf": "max-insurance-income-eur"
+    },
+    "data": [
+      {
+        "date": "2027-01-01",
+        "value": 2400,
+        "change": 0,
+        "change_percent": 0
+      }
+    ]
   }
 ]
