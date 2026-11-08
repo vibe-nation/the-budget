@@ -13,7 +13,7 @@ import {
   valueAxisPatches,
   valueAxisRanges,
 } from './timeline-value-axes';
-import { ChartPick, LegendSelection, LineShape, ValueAxisName, buildLegend, buildLineSeries, lineColor, valueAxisOf } from './timeline-lines';
+import { ChartPick, LegendSelection, LineShape, ValueAxisName, buildLegend, buildLineSeries, lineColor, valueAxisOf, withPlans } from './timeline-lines';
 import { DEFAULT_MONEY, MoneyView, formatNumber, moneyAxisName, widestMoneyLabel } from './timeline-money';
 import { buildCurrentDateLine, buildGanttSeries } from './timeline-series';
 import { ChartSeries, GanttGroup, TimelineEvent } from './timeline.model';
@@ -32,7 +32,7 @@ const GRID_TOP_PX = 4;
    is HTML laid over this column, as wide as its longest name on one line plus
    its chrome: the panel's and the row's padding, the mark and the gap after it,
    as `lines-legend.css` sets them. */
-const LEGEND_FONT = `500 14px "${FONT}"`;
+const LEGEND_FONT = `400 14px "${FONT}"`;
 const LEGEND_CHROME_PX = 66;
 const LEGEND_MIN_PX = 160;
 /* Air between the grid's right edge and the legend beside it. */
@@ -359,7 +359,9 @@ export function buildTimelineOption(
       buildCurrentDateLine(0),
       buildCurrentDateLine(1),
       ...buildEventSeriesList(events),
-      ...charts.map((chart, index) => buildLineSeries(chart, money, view.labels, lineColor(index), view.pick?.chart === chart ? view.pick.point : null, view.lineShape)),
+      ...charts.flatMap((chart, index) =>
+        withPlans([chart]).map((line) => buildLineSeries(line, money, view.labels, lineColor(index), view.pick?.chart === line ? view.pick.point : null, view.lineShape))
+      ),
       buildGanttSeries(groups),
     ],
     textStyle: { fontFamily: FONT, fontSize: 14 },

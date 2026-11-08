@@ -1,5 +1,5 @@
 import { INITIAL_VIEW_FROM, TimelineZoom } from './timeline-view';
-import { DEFAULT_LINE_SHAPE, LegendSelection, LineShape, ValueAxisName, displayValue, drawnPoints, isStepped, valueAxisOf } from './timeline-lines';
+import { DEFAULT_LINE_SHAPE, LegendSelection, LineShape, ValueAxisName, displayValue, drawnPoints, isStepped, valueAxisOf, withPlans } from './timeline-lines';
 import { MoneyView } from './timeline-money';
 import { ChartSeries } from './timeline.model';
 
@@ -117,7 +117,7 @@ export function valueAxisRanges(
   window: TimeWindow,
   shape: LineShape = DEFAULT_LINE_SHAPE
 ): ValueAxisRanges {
-  const shown = charts.filter((chart) => legend?.[chart.id] !== false);
+  const shown = withPlans(charts.filter((chart) => legend?.[chart.id] !== false));
   const stepsFor = (axis: ValueAxisName) => {
     const extent = visibleExtent(shown.filter((chart) => valueAxisOf(chart) === axis), money, window, shape);
     return extent && stepsOf(extent);

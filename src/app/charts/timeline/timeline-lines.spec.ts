@@ -11,9 +11,13 @@ import {
   MONTHLY_AXIS,
   PERCENT_AXIS,
   attachChartExtras,
+  attachPlans,
   buildLegend,
   buildLineSeries,
   chartCard,
+  chartColor,
+  chartOfLine,
+  drawnLegend,
   legendForAll,
   legendWith,
   nearestPoint,
@@ -36,7 +40,13 @@ const series = (id: string, unit: ChartSeries['unit'], value = 1): ChartSeries =
 });
 
 describe('the lines on offer', () => {
-  const all = charts as unknown as ChartSeries[];
+  const all = attachPlans(charts as unknown as ChartSeries[]);
+
+  it('draw every plan with the series it names', () => {
+    const plans = (charts as unknown as ChartSeries[]).filter(({ meta }) => meta?.planOf);
+    expect(plans.length).toBeGreaterThan(0);
+    for (const plan of plans) expect(all.find(({ id }) => id === plan.meta!.planOf)?.plan).toBe(plan);
+  });
 
   it('never share a colour', () => {
     expect(LINE_COLORS.length).toBeGreaterThanOrEqual(all.length);
@@ -648,6 +658,28 @@ describe('a switch on the legend', () => {
   });
 });
 
+describe('the legend the chart draws', () => {
+  const all = [series('a', 'percent'), series('b', 'percent'), series('c', 'percent')];
+  const selection = { a: true, c: false };
+
+  it('is the reader\'s own with nothing picked in the search, naming every series', () => {
+    expect(drawnLegend(selection, all, new Set())).toEqual({ a: true, b: true, c: false });
+  });
+
+  it('draws the series the search leaves out off', () => {
+    expect(drawnLegend(selection, all, new Set(['a']))).toEqual({ a: true, b: false, c: false });
+  });
+
+  it('leaves a picked series as the reader switched it', () => {
+    expect(drawnLegend(selection, all, new Set(['c']))).toEqual({ a: false, b: false, c: false });
+  });
+
+  it('keeps the reader\'s switches apart', () => {
+    drawnLegend(selection, all, new Set(['a']));
+    expect(selection).toEqual({ a: true, c: false });
+  });
+});
+
 describe('the two grids', () => {
   const row: GanttGroup = { name: 'Ред', items: [{ name: 'а', value: ['2000-01-01', '2001-01-01'] }] };
   const option = buildTimelineOption([row], [row], [series('a', 'percent')]);
@@ -732,5 +764,49 @@ describe('the two grids', () => {
 
     expect(colors(3)).toEqual(colors(0));
     expect(new Set(colors(0)).size).toBe(2);
+  });
+});
+
+describe('plans', () => {
+  const actual = series('actual', 'percent');
+  const plan: ChartSeries = { ...series('plan', 'percent', 5), meta: { planOf: 'actual' } };
+
+  it('hang on the series they name and leave the list', () => {
+    const [only, ...rest] = attachPlans([actual, plan, series('other', 'percent')]);
+
+    expect(only).toMatchObject({ id: 'actual', plan });
+    expect(rest.map(({ id }) => id)).toEqual(['other']);
+  });
+
+  it('stay series of their own when what they name is missing', () => {
+    expect(attachPlans([plan]).map(({ id }) => id)).toEqual(['plan']);
+  });
+
+  it('go by their series name, which the legend switches, and keep their own id', () => {
+    expect(buildLineSeries(plan)).toMatchObject({ id: 'plan', name: 'actual' });
+    expect(buildLineSeries(actual)).toMatchObject({ id: 'actual', name: 'actual' });
+  });
+
+  it('are found by their line id when clicked', () => {
+    const charts = attachPlans([actual, plan]);
+
+    expect(chartOfLine(charts, 'actual', 'plan')).toBe(plan);
+    expect(chartOfLine(charts, 'actual', 'actual')?.id).toBe('actual');
+    expect(chartOfLine(charts, 'missing', 'missing')).toBeUndefined();
+  });
+
+  it('take their series colour', () => {
+    const charts = attachPlans([series('first', 'percent'), actual, plan]);
+
+    expect(chartColor(charts, plan)).toBe(LINE_COLORS[1]);
+  });
+
+  it('are drawn after their series, in its colour', () => {
+    const row: GanttGroup = { name: 'Ред', items: [{ name: 'а', value: ['2000-01-01', '2001-01-01'] }] };
+    const option = buildTimelineOption([row], [row], attachPlans([actual, plan])) as any;
+    const drawn = option.series.filter((entry: any) => entry.name === 'actual');
+
+    expect(drawn.map((entry: any) => entry.id)).toEqual(['actual', 'plan']);
+    expect(drawn[1].lineStyle.color).toBe(drawn[0].lineStyle.color);
   });
 });

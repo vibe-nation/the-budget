@@ -18,6 +18,19 @@ const billions = (...values: number[]) => values.map((value) => value * 1_000_00
 const zeroShare = ({ min, max }: { min: number; max: number }) => -min / (max - min);
 
 describe('valueAxisRanges', () => {
+  describe('with a plan hung on a series', () => {
+    const plan = { ...series('plan', 'percent', points(100)), meta: { planOf: 'actual' } };
+    const actual = { ...series('actual', 'percent', points(10)), plan };
+
+    it('counts the plan while its series is on', () => {
+      expect(valueAxisRanges([actual], DEFAULT_MONEY, undefined, allYears).percent?.max).toBe(100);
+    });
+
+    it('drops the plan with its series', () => {
+      expect(valueAxisRanges([actual], DEFAULT_MONEY, { actual: false }, allYears).percent).toBeNull();
+    });
+  });
+
   describe('with a line held across each year', () => {
     const held = (...values: number[]): ChartSeries => ({ ...series('held', 'percent', points(...values)), meta: { wholeYear: true } });
     /* 2011 closes the second point, so a view ending midway stands on it without reaching it. */

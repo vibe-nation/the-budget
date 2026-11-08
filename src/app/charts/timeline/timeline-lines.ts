@@ -46,6 +46,30 @@ export const LINE_COLORS = [
 /** The colour of the series at `index` of the chart list, on the chart and in the legend alike. */
 export const lineColor = (index: number): string => LINE_COLORS[index % LINE_COLORS.length];
 
+/** Each series with the plan that names it in `meta.planOf`. A plan leaves the list, so it takes no
+ *  legend entry and no colour of its own; one whose series is missing stays a series of its own. */
+export function attachPlans(charts: readonly ChartSeries[]): ChartSeries[] {
+  const ids = new Set(charts.map(({ id }) => id));
+  const isPlan = (chart: ChartSeries) => !!chart.meta?.planOf && ids.has(chart.meta.planOf);
+  const plans = new Map(charts.filter(isPlan).map((plan) => [plan.meta!.planOf!, plan]));
+  return charts.filter((chart) => !isPlan(chart)).map((chart) => (plans.has(chart.id) ? { ...chart, plan: plans.get(chart.id) } : chart));
+}
+
+/** The series and their plans: everything the line grid draws. */
+export const withPlans = (charts: readonly ChartSeries[]): ChartSeries[] => charts.flatMap((chart) => (chart.plan ? [chart, chart.plan] : [chart]));
+
+/** The series a line on the chart draws. A plan's line carries its series' name, which the legend
+ *  switches by, so its own id tells the two apart. */
+export function chartOfLine(charts: readonly ChartSeries[], seriesName: unknown, seriesId: unknown): ChartSeries | undefined {
+  const chart = charts.find(({ id }) => id === seriesName);
+  return chart?.plan && chart.plan.id === seriesId ? chart.plan : chart;
+}
+
+/** The colour a series is drawn in: a plan takes its series'. */
+export function chartColor(charts: readonly ChartSeries[], chart: ChartSeries): string {
+  return lineColor(charts.findIndex((entry) => entry === chart || entry.plan === chart));
+}
+
 /** Which series the legend has on, by series id. */
 export type LegendSelection = Readonly<Record<string, boolean>>;
 
@@ -71,6 +95,14 @@ export const legendWith = (selection: LegendSelection, charts: readonly ChartSer
   ...selection,
   ...legendForAll(charts, shown),
 });
+
+/** The legend the chart draws: the reader's, with every series the search leaves out
+ *  off. It names every series, since ECharts merges a legend update into the last
+ *  one and would keep a series off that the picks no longer leave out. The
+ *  reader's own switches stay apart, so they are all back once the picks are
+ *  cleared. */
+export const drawnLegend = (selection: LegendSelection, charts: readonly ChartSeries[], picked: ReadonlySet<string>): LegendSelection =>
+  Object.fromEntries(charts.map(({ id }) => [id, selection[id] !== false && (!picked.size || picked.has(id))]));
 
 const LABELS_STORAGE_KEY = 'the-budget.lineLabels';
 export const readStoredLabels = (): boolean => readFlag(LABELS_STORAGE_KEY);
@@ -334,7 +366,9 @@ export function buildLineSeries(
   const suffix = unitSuffix(chart, money);
 
   return {
-    name: chart.id,
+    /* A plan goes by its series' name, so that the legend switches the two together. */
+    id: chart.id,
+    name: chart.meta?.planOf ?? chart.id,
     type: 'line',
     xAxisIndex: 1,
     yAxisIndex: AXIS_INDEX[valueAxisOf(chart)],

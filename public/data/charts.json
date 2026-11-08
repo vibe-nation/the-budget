@@ -14108,5 +14108,128 @@
         ]
       }
     ]
+  },
+  {
+    "id": "budget-plan-deficit-percent",
+    "name": "Дефицит по проектобюджета, % от БВП",
+    "sources": [
+      {
+        "name": {
+          "bg": "Проект на бюджетен план на Република България за 2027 г. (Министерство на финансите, октомври 2026 г.), табл. 4, ред 31 „Нето предоставени/получени заеми“, стр. 26; т. 4.2, стр. 19",
+          "en": "Draft Budgetary Plan of the Republic of Bulgaria for 2027 (Ministry of Finance, October 2026), Table 4, row 31, p. 26; section 4.2, p. 19"
+        },
+        "dataset_id": "DBP-2027",
+        "url": [
+          "https://www.minfin.bg/upload/65334/Draft+Budgetary+Plan+of+the+Republic+of+Bulgaria+for+2027.pdf#page=26",
+          "https://www.minfin.bg/upload/65334/Draft+Budgetary+Plan+of+the+Republic+of+Bulgaria+for+2027.pdf#page=19"
+        ]
+      }
+    ],
+    "unit": "percent",
+    "meta": {
+      "wholeYear": true,
+      "style": {
+        "lineStyle": {
+          "type": "dashed",
+          "width": 2
+        }
+      },
+      "planOf": "government-deficit-and-surplus-percent"
+    },
+    "data": [
+      {
+        "date": "2026-12-31",
+        "value": -5,
+        "change": 0,
+        "change_percent": 0
+      },
+      {
+        "date": "2027-12-31",
+        "value": -4.3,
+        "change": 0.7,
+        "change_percent": 15.05
+      }
+    ]
+  },
+  {
+    "id": "budget-plan-debt-eur",
+    "name": "Дълг по проектобюджета",
+    "sources": [
+      {
+        "name": {
+          "bg": "Проект на бюджетен план на Република България за 2027 г. (Министерство на финансите, октомври 2026 г.), т. 4.3 „Равнище на дълга и развития“, стр. 28",
+          "en": "Draft Budgetary Plan of the Republic of Bulgaria for 2027 (Ministry of Finance, October 2026), section 4.3, p. 28"
+        },
+        "dataset_id": "DBP-2027",
+        "url": [
+          "https://www.minfin.bg/upload/65334/Draft+Budgetary+Plan+of+the+Republic+of+Bulgaria+for+2027.pdf#page=28"
+        ]
+      }
+    ],
+    "unit": "EUR",
+    "meta": {
+      "style": {
+        "lineStyle": {
+          "type": "dashed",
+          "width": 2
+        }
+      },
+      "planOf": "government-debt-eur"
+    },
+    "data": [
+      {
+        "date": "2026-12-31",
+        "value": 40600000000,
+        "change": 0,
+        "change_percent": 0
+      },
+      {
+        "date": "2027-12-31",
+        "value": 47100000000,
+        "change": 6500000000,
+        "change_percent": 14.82
+      }
+    ]
+  },
+  {
+    "id": "budget-plan-debt-percent",
+    "name": "Дълг по проектобюджета, % от БВП",
+    "sources": [
+      {
+        "name": {
+          "bg": "Проект на бюджетен план на Република България за 2027 г. (Министерство на финансите, октомври 2026 г.), табл. 4, ред 35 „Брутен дълг“, стр. 26; т. 4.3, стр. 28",
+          "en": "Draft Budgetary Plan of the Republic of Bulgaria for 2027 (Ministry of Finance, October 2026), Table 4, row 35, p. 26; section 4.3, p. 28"
+        },
+        "dataset_id": "DBP-2027",
+        "url": [
+          "https://www.minfin.bg/upload/65334/Draft+Budgetary+Plan+of+the+Republic+of+Bulgaria+for+2027.pdf#page=26",
+          "https://www.minfin.bg/upload/65334/Draft+Budgetary+Plan+of+the+Republic+of+Bulgaria+for+2027.pdf#page=28"
+        ]
+      }
+    ],
+    "unit": "percent",
+    "meta": {
+      "style": {
+        "lineStyle": {
+          "type": "dashed",
+          "width": 2
+        }
+      },
+      "planOf": "government-debt-percent"
+    },
+    "data": [
+      {
+        "date": "2026-12-31",
+        "value": 31.1,
+        "change": 0,
+        "change_percent": 0
+      },
+      {
+        "date": "2027-12-31",
+        "value": 33.3,
+        "change": 2.2,
+        "change_percent": 6.83
+      }
+    ]
   }
 ]

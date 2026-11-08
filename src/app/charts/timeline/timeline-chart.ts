@@ -44,9 +44,12 @@ import {
   LegendSelection,
   LineShape,
   attachChartExtras,
+  attachPlans,
   chartCard,
+  chartColor,
+  chartOfLine,
+  drawnLegend,
   legendWith,
-  lineColor,
   pointAtTime,
   pointMark,
   readStoredLabels,
@@ -80,14 +83,17 @@ const DEFAULT_ROW_ORDER: RoleOrder = [
   'Вицепрезидент',
   'Народно събрание',
   'Министър-председател',
-  'Министър на финансите',
-  'Председател на Народното събрание',
-  'Председател на комисия по бюджет и финанси',
   BUDGET_PERIOD_ROW,
+  'Министър на финансите',
+  'Председател на комисия по бюджет и финанси',
+  'Председател на Народното събрание',
   'Председател на Сметната палата',
   'Председател на КФН',
   'Директор на Българска Банка за Развитие',
 ];
+
+/* The rows a first visit shows. The rest are in the panel, switched off. */
+const DEFAULT_SELECTED_ROWS: readonly string[] = DEFAULT_ROW_ORDER.slice(0, 7);
 
 @Component({
   selector: 'app-timeline-chart',
@@ -106,8 +112,9 @@ export class TimelineChart {
 
   private readonly groups = signal<readonly GanttGroup[] | null>(null);
   protected readonly charts = signal<readonly ChartSeries[]>([]);
-  /* Which series the chart has on, as its legend component last reported. The
-     HTML legend reads it; the component itself is never drawn. */
+  /* Which series the reader has on. The HTML legend reads it; the chart draws it
+     narrowed to the search's picks (`drawnLegend`), and its legend component is
+     never drawn. */
   protected readonly legendSelection = signal<LegendSelection>({});
   protected readonly legendColumnPx = computed(() => legendColumnWidth(this.charts()));
   /* Measured text, so worked out once per set of series and units, not on every zoom. */
@@ -204,7 +211,7 @@ export class TimelineChart {
            be nudged by the resolver. */
         adjustImpreciseOverlaps(roles);
         attachElections(roles, elections);
-        this.charts.set(attachChartExtras(charts, chartExtras));
+        this.charts.set(attachPlans(attachChartExtras(charts, chartExtras)));
         this.events.set(events);
         this.initRows([toBudgetPeriodGroup(periods), ...roles]);
       },
@@ -232,11 +239,13 @@ export class TimelineChart {
     lineShape: LineShape
   ): void {
     const view = this.currentView();
+    const legend = view.legend ?? {};
     this.zoomShown = view.zoom;
-    this.legendShown = view.legend;
-    this.legendSelection.set(view.legend ?? {});
+    this.legendSelection.set(legend);
+    this.legendShown = this.drawn(legend);
     const option = buildTimelineOption(visible, all, this.charts(), this.events(), {
       ...view,
+      legend: this.legendShown,
       narrow,
       money,
       labels,
@@ -298,11 +307,19 @@ export class TimelineChart {
     this.applyLegend(legendWith(this.legendSelection(), this.legendListed(), false));
   }
 
-  /* A row can leave the list from under the pointer, and takes its `mouseleave`
-     with it: its series would stay lit. */
+  /* A pick narrows the chart as well as the legend: the series it leaves out are
+     drawn off until the picks are cleared, their switches untouched. A series
+     just picked is switched on, since picking it is asking to see it. A row can
+     leave the list from under the pointer, and takes its `mouseleave` with it;
+     `applyLegend` clears the highlight it would leave behind. */
   protected pickLegend(picks: ReadonlySet<string>): void {
+    const added = this.charts().filter(({ id }) => picks.has(id) && !this.legendPicks().has(id));
     this.legendPicks.set(picks);
-    this.hoverSeries(null);
+    this.applyLegend(legendWith(this.legendSelection(), added, true));
+  }
+
+  private drawn(selection: LegendSelection): LegendSelection {
+    return drawnLegend(selection, this.charts(), this.legendPicks());
   }
 
   /* The HTML legend owns which series are on, and sets the chart's legend
@@ -313,10 +330,10 @@ export class TimelineChart {
        switched off while lit would leave the others faded for it, and come back
        lit when switched on again. */
     this.chart?.dispatchAction({ type: 'downplay' });
-    this.legendShown = next;
     this.legendSelection.set(next);
+    this.legendShown = this.drawn(next);
     const yAxis = this.valueAxisUpdate();
-    this.chart?.setOption({ legend: { selected: next }, ...(yAxis ? { yAxis } : {}) });
+    this.chart?.setOption({ legend: { selected: this.legendShown }, ...(yAxis ? { yAxis } : {}) });
   }
 
   /* A row under the pointer lights its line as hovering the line itself would:
@@ -346,7 +363,7 @@ export class TimelineChart {
   private initRows(groups: readonly GanttGroup[]): void {
     const ordered = applyOrder(groups, reconcileOrder(groups.map((group) => group.name), DEFAULT_ROW_ORDER));
     const names = ordered.map((group) => group.name);
-    const selected = restoreSelection(names, readStoredSelection());
+    const selected = restoreSelection(names, readStoredSelection(), DEFAULT_SELECTED_ROWS);
 
     this.order.set(reconcileOrder(names, readStoredOrder()));
     this.selected.set(selected);
@@ -357,11 +374,13 @@ export class TimelineChart {
   }
 
   /* A rebuild replaces the whole option, so what the reader set on the chart
-     itself has to be read back and carried over: the zoom, and the legend. */
+     itself has to be read back and carried over: the zoom. The legend is the
+     reader's own as this component holds it, since the chart's is narrowed to
+     the search's picks. */
   private currentView(): TimelineView {
-    const option = this.chart?.getOption() as { dataZoom?: TimelineZoom[]; legend?: { selected: LegendSelection }[] } | undefined;
+    const option = this.chart?.getOption() as { dataZoom?: TimelineZoom[] } | undefined;
     const zoom = option?.dataZoom?.[0];
-    return { zoom: zoom ? { start: zoom.start, end: zoom.end } : undefined, legend: option?.legend?.[0]?.selected ?? startingLegend(this.charts()) };
+    return { zoom: zoom ? { start: zoom.start, end: zoom.end } : undefined, legend: this.chart ? this.legendSelection() : startingLegend(this.charts()) };
   }
 
   protected onChartInit(chart: echarts.EChartsType): void {
@@ -426,7 +445,7 @@ export class TimelineChart {
     }
 
     /* A line, one of its points, or a level it draws across the grid. */
-    const chart = this.charts().find(({ id }) => id === event.seriesName);
+    const chart = chartOfLine(this.charts(), event.seriesName, event.seriesId);
     if (chart) {
       this.togglePick({ chart, point: this.clickedPoint(chart, event) });
       return;
@@ -470,7 +489,7 @@ export class TimelineChart {
     if (event.componentType !== 'series') return null;
     if (event.dataIndex !== undefined) return chart.data.find(({ date }) => date === event.data.content.date) ?? null;
     const pixel = [event.event.offsetX, event.event.offsetY];
-    const [time] = this.chart?.convertFromPixel({ seriesName: chart.id }, pixel) as unknown as [number, number];
+    const [time] = this.chart?.convertFromPixel({ seriesId: chart.id }, pixel) as unknown as [number, number];
     return pointAtTime(chart, time, this.lineShape());
   }
 
@@ -552,9 +571,10 @@ export class TimelineChart {
     const point = pick?.point;
     const marked = point ? pick.chart : null;
     const series: object[] = [{ id: GANTT_SERIES_ID, data: this.bars }];
-    if (this.markedChart && this.markedChart !== marked) series.push({ name: this.markedChart.id, markPoint: { data: [] } });
+    /* By id: a plan's line shares its series' name. */
+    if (this.markedChart && this.markedChart !== marked) series.push({ id: this.markedChart.id, markPoint: { data: [] } });
     if (marked && point) {
-      series.push({ name: marked.id, markPoint: pointMark(marked, point, this.money(), lineColor(this.charts().indexOf(marked))) });
+      series.push({ id: marked.id, markPoint: pointMark(marked, point, this.money(), chartColor(this.charts(), marked)) });
     }
     this.markedChart = marked;
     this.chart?.setOption({ series });

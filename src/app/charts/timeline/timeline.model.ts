@@ -212,16 +212,22 @@ export interface ChartSeries {
    * `startsOff` keeps a part of a larger total out of the opening view, which would otherwise crowd it.
    * `wholeYear` marks a figure that stands for a calendar year and is dated on its last day, such as a
    * budget or a year's deficit: its line holds flat across the year, as nothing lies between two years.
+   * `planOf` makes the series the planned figures of the series with that id, such as a draft budget's
+   * deficit beside Eurostat's: it is drawn in that series' colour and switched with it, and has no
+   * legend entry of its own.
    */
   readonly meta?: {
     readonly style?: Readonly<Record<string, unknown>>;
     readonly axis?: 'inflation' | 'monthly';
     readonly startsOff?: boolean;
     readonly wholeYear?: boolean;
+    readonly planOf?: string;
   };
   readonly data: readonly ChartPoint[];
   /** From `chart-extras.json`, which is kept apart so that regenerating the series leaves it alone. */
   readonly horizontalLines?: readonly HorizontalLine[];
+  /** The series whose `meta.planOf` names this one, hung on it at load. */
+  readonly plan?: ChartSeries;
 }
 
 /* `public/data/budget-periods.json` — when each budget law was actually in
