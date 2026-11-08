@@ -1,0 +1,95 @@
+:host {
+  display: block;
+  color: var(--ink);
+}
+
+.stage {
+  position: relative;
+  z-index: 10;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+/* In the header's row, after the brand: a child of .site-header-inner. The basis
+   is the width of .toolbar-end on one line, so the toolbar drops under the brand
+   before the buttons would break up beside it. */
+.chart-toolbar {
+  flex: 1 1 38rem;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+}
+
+.toolbar-end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-inline-start: auto;
+}
+
+.segmented {
+  display: inline-flex;
+  height: 1.9rem;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.segmented-option {
+  appearance: none;
+  padding: 0 0.6rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-3);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition:
+    color 140ms ease,
+    background-color 140ms ease;
+}
+
+.segmented-option:hover {
+  color: var(--ink);
+}
+
+.segmented-option.is-active {
+  background: var(--ink);
+  color: #ffffff;
+}
+
+.segmented-option:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+
+/* Positioned for the legend, which stands over the canvas's right column. */
+.stage-canvas-wrap {
+  position: relative;
+  margin: 0.5rem 0 1.5rem;
+}
+
+/* The floor keeps a short window from squeezing the rows past legibility: the
+   page scrolls instead. */
+.stage-canvas {
+  width: 100%;
+  height: 80dvh;
+  min-height: 640px;
+}
+
+.stage-status {
+  margin: 0;
+  padding: 48px 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--ink-4);
+}
+
+.stage-status--error {
+  color: #dc2626; /* red-600 */
+}

@@ -1,0 +1,33 @@
+<div class="legend-head">
+  <span class="legend-title">Показатели</span>
+  <div class="legend-head-actions">
+    <button type="button" class="legend-action" [disabled]="!hiddenCount()" title="Покажи линиите от списъка" (click)="shownAll.emit()">Всички</button>
+    <button type="button" class="legend-action" [disabled]="!shownCount()" title="Скрий линиите от списъка" (click)="hiddenAll.emit()">Никоя</button>
+  </div>
+</div>
+
+<ul class="legend-list" role="list">
+  @for (row of rows(); track row.id) {
+    <li class="legend-item">
+      <button
+        type="button"
+        class="legend-row"
+        [class.is-off]="!row.shown"
+        [style.--mark]="row.color"
+        [attr.aria-pressed]="row.shown"
+        [title]="row.shown ? 'Скрий от графиката' : 'Покажи на графиката'"
+        (click)="toggled.emit(row.id)"
+        (mouseenter)="hovered.emit(row.id)"
+        (mouseleave)="hovered.emit(null)"
+        (focus)="hovered.emit(row.id)"
+        (blur)="hovered.emit(null)">
+        <!-- The series' own mark: its line through one of its hollow points. -->
+        <svg class="legend-mark" viewBox="0 0 22 12" width="22" height="12" aria-hidden="true">
+          <line x1="1" y1="6" x2="21" y2="6" />
+          <circle cx="11" cy="6" r="2.8" />
+        </svg>
+        <span class="legend-name">{{ row.name }}</span>
+      </button>
+    </li>
+  }
+</ul>

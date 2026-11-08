@@ -1,0 +1,37 @@
+.metric-description {
+  display: block;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--dcb-ink-2);
+}
+
+.metric-description > :first-child {
+  margin-top: 0;
+}
+
+.metric-description > :last-child {
+  margin-bottom: 0;
+}
+
+.metric-description p,
+.metric-description ul,
+.metric-description ol {
+  margin: 0.6rem 0;
+}
+
+.metric-description ul,
+.metric-description ol {
+  padding-left: 1.2rem;
+}
+
+.metric-description ul {
+  list-style: disc;
+}
+
+.metric-description ol {
+  list-style: decimal;
+}
+
+.metric-description strong {
+  font-weight: 650;
+}

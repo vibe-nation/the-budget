@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "angular-cli": {
+      "command": "npx",
+      "args": ["@angular/cli", "mcp"]
+    },
+    "eurostat": {
+      "command": "npx",
+      "args": ["-y", "@cyanheads/eurostat-mcp-server@0.11.2"],
+      "env": {
+        "MCP_TRANSPORT_TYPE": "stdio"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+<aside
+  class="roles-panel"
+  [class.open]="open()"
+  [inert]="!open()"
+  role="group"
+  aria-label="Филтър по институция">
+  <div class="side-panel-bar">
+    <span class="side-panel-title">Институции</span>
+    <div class="roles-panel-bar-actions">
+      <button type="button" class="roles-panel-action" [disabled]="allSelected()" (click)="selectedAll.emit()">Всички</button>
+      <button type="button" class="roles-panel-action" [disabled]="noneSelected()" (click)="clearedAll.emit()">Никоя</button>
+      <!-- Enabled only once the reader has dragged something out of the default order. -->
+      <button
+        type="button"
+        class="roles-panel-tool"
+        [disabled]="defaultOrder()"
+        title="Върни подредбата по подразбиране"
+        aria-label="Върни подредбата по подразбиране"
+        (click)="orderReset.emit()">
+        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+          <path d="M3.2 8a4.8 4.8 0 1 0 1.4-3.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M3 2.6v2.9h2.9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+    <!-- With nothing selected the row labels are gone, so the panel has to stay open. -->
+    @if (!noneSelected()) {
+      <button type="button" class="side-panel-close" aria-label="Затвори" (click)="closed.emit()">✕</button>
+    }
+  </div>
+
+  <ul
+    #list
+    class="roles-panel-list"
+    role="listbox"
+    aria-label="Избор на институции"
+    cdkDropList
+    cdkDropListLockAxis="y"
+    (cdkDropListDropped)="onDrop($event)">
+    @for (row of rows(); track row.name) {
+      <li class="role-dropdown-row" role="presentation" cdkDrag [attr.data-role]="row.name" [class.is-focused]="focused() === row.name">
+        <button type="button" class="role-drag-grip" cdkDragHandle tabindex="-1" aria-hidden="true" title="Плъзни, за да преместиш">
+          <svg viewBox="0 0 10 16" width="10" height="16" aria-hidden="true">
+            <circle cx="3" cy="4" r="1.1" /><circle cx="7" cy="4" r="1.1" />
+            <circle cx="3" cy="8" r="1.1" /><circle cx="7" cy="8" r="1.1" />
+            <circle cx="3" cy="12" r="1.1" /><circle cx="7" cy="12" r="1.1" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="role-dropdown-item"
+          role="option"
+          [class.is-active]="selected().has(row.name)"
+          [attr.aria-selected]="selected().has(row.name)"
+          [title]="row.description"
+          (click)="toggled.emit(row.name)">
+          <span class="role-dropdown-check" aria-hidden="true">
+            <svg viewBox="0 0 12 12" width="10" height="10">
+              <path d="M2.5 6 L5 8.5 L9.5 3.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="role-dropdown-name">{{ row.name }}</span>
+        </button>
+      </li>
+    }
+  </ul>
+
+  @if (noneSelected()) {
+    <p class="roles-panel-hint">Изберете поне една институция, за да се появят редове в графиката.</p>
+  }
+</aside>

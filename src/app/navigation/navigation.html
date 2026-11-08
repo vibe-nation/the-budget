@@ -1,0 +1,24 @@
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-brand" routerLink="/" aria-label="Бюджетът — начало">
+      <span class="site-brand-mark" aria-hidden="true">
+        <svg width="44" height="44" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="7" fill="currentColor" />
+          <rect x="4" y="4" width="12" height="3" rx="1" fill="#fff" />
+          <rect x="18" y="4" width="10" height="3" rx="1" fill="#9ca3af" />
+          <rect x="4" y="9" width="6" height="3" rx="1" fill="#9ca3af" />
+          <rect x="12" y="9" width="16" height="3" rx="1" fill="#fff" />
+          <path
+            d="M6 26 12 18 19 23 26 15"
+            fill="none"
+            stroke="#ff2a2a"
+            stroke-width="3.5"
+            stroke-linejoin="round"
+            stroke-linecap="round" />
+        </svg>
+      </span>
+      <span class="site-brand-name">Бюджетът</span>
+    </a>
+    <ng-container [ngTemplateOutlet]="slot.content()" />
+  </div>
+</header>

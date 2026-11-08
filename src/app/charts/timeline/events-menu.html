@@ -1,0 +1,23 @@
+<button
+  type="button"
+  class="events-trigger"
+  aria-controls="events-menu-panel"
+  [attr.aria-expanded]="open()"
+  (click)="open.set(!open())">
+  Събития
+  <span class="events-count">{{ shownCount() }}/{{ toggles().length }}</span>
+  <svg class="events-chevron" [class.is-open]="open()" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true">
+    <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</button>
+@if (open()) {
+  <div id="events-menu-panel" class="events-panel" role="group" aria-label="Събития">
+    @for (toggle of toggles(); track toggle.id) {
+      <label class="events-item">
+        <input type="checkbox" [checked]="toggle.shown" (change)="toggled.emit(toggle.id)" />
+        <span class="events-swatch" [style.background]="toggle.color" aria-hidden="true"></span>
+        <span>{{ toggle.label }}</span>
+      </label>
+    }
+  </div>
+}
