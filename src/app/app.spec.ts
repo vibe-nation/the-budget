@@ -55,6 +55,19 @@ describe('App', () => {
     expect(compiled.querySelector('.site-header .chart-toolbar')).toBeNull();
   });
 
+  it('should link the current year from the header', async () => {
+    const compiled = await renderAt('/documentation');
+    const link = compiled.querySelector<HTMLAnchorElement>('.site-header a[href$="/today"]');
+    expect(link?.textContent).toContain('Днес');
+  });
+
+  it('should show the current year in place of the chart and its toolbar', async () => {
+    const compiled = await renderAt('/today');
+    expect(compiled.querySelector('.today')).not.toBeNull();
+    expect(compiled.querySelector('.stage')).toBeNull();
+    expect(compiled.querySelector('.site-header .chart-toolbar')).toBeNull();
+  });
+
   it('should fall back to the chart on an unknown address', async () => {
     const compiled = await renderAt('/no-such-page');
     expect(compiled.querySelector('.site-header .chart-toolbar')).not.toBeNull();

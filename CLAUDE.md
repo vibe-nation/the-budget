@@ -37,6 +37,7 @@ The "HTMLCanvasElement's getContext() not implemented" lines in test output are 
 | `events.json` | Bands and lines across both grids (`timeline-events.ts`) |
 | `charts.json` | Line series (`ChartSeries`): Eurostat data and budget-law figures |
 | `chart-extras.json` | Merged into series by `chartId`: horizontal reference lines, and `eurostatLinks`, Eurostat saved views with the series' options set, by dataset code. It is kept separate so regenerating `charts.json` leaves it alone |
+| `today.json` | Not read by the chart. The `/today` page's table for one year: an institution either names a `charts.json` series or carries its own `value` and `LawCitation`s, for those that have no line |
 | `metrics/<name>.md` | The explanation shown when a line is clicked. `<name>` is the series `id` without a `-eur`/`-bgn`/`-percent` suffix. The app derives the URL from that name, so nothing else needs registering |
 
 All types for these files live in `timeline.model.ts`. Read it before touching any data file.
@@ -47,7 +48,7 @@ Several value axes coexist: percent, money, coefficient, inflation and monthly. 
 
 **Chart instance handling:** the `[options]` binding only creates the chart. After that the component updates the ECharts instance directly, because re-binding options would reset the reader's zoom. Selection repaints the cached `bars` without a rebuild. Reader preferences such as row order, hidden events, money view and labels persist in `localStorage` under `the-budget.*` keys. The lines switched on, currency, scale, shown events and the Настройки options also live in the address (`#/?lines=…&currency=…&scale=…&events=…&shape=…`, `timeline-url.ts`), which wins over `localStorage` on load, so a link reproduces the view.
 
-**Shell:** `App` holds a navigation header. A page puts its toolbar into the header through the `NavSlot` service, a signal holding a `TemplateRef`. Routes use hash location (`withHashLocation`) because GitHub Pages returns 404 for unknown paths. `/` is the chart and `/documentation` is lazy-loaded. The app is zoneless with OnPush components and signals throughout.
+**Shell:** `App` holds a navigation header. A page puts its toolbar into the header through the `NavSlot` service, a signal holding a `TemplateRef`. Routes use hash location (`withHashLocation`) because GitHub Pages returns 404 for unknown paths. `/` is the chart, and `/today` (one year's budgets per institution) and `/documentation` are lazy-loaded. The app is zoneless with OnPush components and signals throughout.
 
 ## Conventions and constraints
 

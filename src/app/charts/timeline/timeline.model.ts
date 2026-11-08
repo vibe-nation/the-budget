@@ -183,6 +183,28 @@ export interface LawCitation {
   readonly filePage: number;
 }
 
+/** Where an institution's figure on the /today page comes from: a chart line, or its own citation. */
+type TodayFigure =
+  | { readonly series: string }
+  /** `value` is in euro. */
+  | { readonly value: number; readonly sources: readonly LawCitation[] };
+
+/** An institution on the /today page. */
+export type TodayEntry = TodayFigure & {
+  readonly name: string;
+  readonly abbr?: string;
+  /** Short name of the law, set when it is not the state budget act the page's note names. */
+  readonly lawShort?: string;
+  /** The bodies inside it. Together with any reserve row they add up to its total. */
+  readonly parts?: readonly TodayEntry[];
+};
+
+/** `public/data/today.json`. */
+export interface TodayData {
+  readonly year: number;
+  readonly entries: readonly TodayEntry[];
+}
+
 /** One reading of a statistical series. */
 export interface ChartPoint {
   readonly date: string;

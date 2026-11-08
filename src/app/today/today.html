@@ -1,0 +1,128 @@
+<!-- Rendered in the site header, through NavSlot. -->
+<ng-template #toolbar>
+  <div class="today-toolbar">
+    <div class="segmented" role="group" aria-label="Мерна единица">
+      @for (option of magnitudes; track option.value) {
+        <button
+          type="button"
+          class="segmented-option"
+          [class.is-active]="money().magnitude === option.value"
+          [attr.aria-pressed]="money().magnitude === option.value"
+          (click)="setMagnitude(option.value)"
+        >
+          {{ option.label }}
+        </button>
+      }
+    </div>
+    <div class="segmented" role="group" aria-label="Валута">
+      @for (option of currencies; track option.value) {
+        <button
+          type="button"
+          class="segmented-option"
+          [class.is-active]="money().currency === option.value"
+          [attr.aria-pressed]="money().currency === option.value"
+          (click)="setCurrency(option.value)"
+        >
+          {{ option.label }}
+        </button>
+      }
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #row let-cell>
+  <th scope="row" class="today-name">
+    {{ cell.name }}
+    @if (cell.abbr) {
+      <span class="today-abbr">{{ cell.abbr }}</span>
+    }
+  </th>
+  <td class="today-num">{{ cell.daily }}</td>
+  <td class="today-num">{{ cell.total }}</td>
+  <td class="today-source">
+    <a [href]="cell.sourceHref" [title]="cell.sourceTitle" target="_blank" rel="noopener"
+      >{{ cell.sourceLabel }}
+      <svg class="today-external" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M15 3h6v6" />
+        <path d="M10 14 21 3" />
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+      </svg>
+    </a>
+  </td>
+</ng-template>
+
+<div class="today">
+  @if (error(); as message) {
+    <p class="today-error" role="alert">{{ message }}</p>
+  } @else if (year(); as year) {
+    <h1>Бюджетът през {{ year }} г.</h1>
+    <p class="today-lead">
+      Колко получава всяка институция по приетия закон за {{ year }} г., за годината и средно на
+      ден.
+    </p>
+
+    <div
+      class="today-scroll"
+      tabindex="0"
+      role="region"
+      aria-label="Таблица с бюджетите на институциите"
+    >
+      <table class="today-table">
+        <thead>
+          <tr>
+            <th scope="col">Институция</th>
+            <th scope="col" class="today-num">На ден</th>
+            <th scope="col" class="today-num">За {{ year }} г.</th>
+            <th scope="col">Източник</th>
+          </tr>
+        </thead>
+        @for (cell of cells(); track cell.name) {
+          <tbody>
+            <tr>
+              <ng-container
+                [ngTemplateOutlet]="row"
+                [ngTemplateOutletContext]="{ $implicit: cell }"
+              />
+            </tr>
+            @for (part of cell.parts; track part.name) {
+              <tr class="today-part">
+                <ng-container
+                  [ngTemplateOutlet]="row"
+                  [ngTemplateOutletContext]="{ $implicit: part }"
+                />
+              </tr>
+            }
+          </tbody>
+        }
+        @if (total(); as total) {
+          <tfoot>
+            <tr>
+              <th scope="row" class="today-name">Общо за показаните институции</th>
+              <td class="today-num">{{ total.daily }}</td>
+              <td class="today-num">{{ total.total }}</td>
+              <td></td>
+            </tr>
+          </tfoot>
+        }
+      </table>
+    </div>
+
+    <p class="today-note">
+      @if (law(); as law) {
+        Източник, освен където е посочено друго:
+        @if (law.gazette.actUrl; as actUrl) {
+          <a [href]="actUrl" target="_blank" rel="noopener"
+            >{{ law.title }}, {{ law.gazette.citation }}</a
+          >
+        } @else {
+          {{ law.title }}, {{ law.gazette.citation }}
+        }
+        Страниците са от броя на „Държавен вестник“.
+      }
+      „Общо“ е сборът на институциите в таблицата, а не целият държавен бюджет. Допълнителните
+      средства, отпуснати през годината с постановления на Министерския съвет, не са включени. „На
+      ден“ е годишната сума, разделена на {{ days() }} дни. Левовете са по фиксирания курс 1 евро =
+      1,95583 лв.
+    </p>
+  }
+</div>

@@ -20,6 +20,30 @@
   gap: 0.75rem 1.25rem;
 }
 
+/* The auto margin keeps it beside the brand, with the page's toolbar at the far end. */
+.site-link {
+  margin-inline-end: auto;
+  color: var(--ink-3);
+  font-size: 15px;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+
+.site-link:hover {
+  color: var(--ink);
+}
+
+.site-link.is-active {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.site-link:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
 .site-brand {
   display: inline-flex;
   align-items: center;

@@ -30,7 +30,7 @@ export const MAGNITUDES: readonly { readonly value: Magnitude; readonly label: s
 const CURRENCY_ON_AXIS: Readonly<Record<Currency, string>> = { EUR: 'евро', BGN: 'лв.' };
 
 /* „единици“ names the button, not the amount: a plain figure takes no prefix. */
-const magnitudePrefix = (magnitude: Magnitude) => (magnitude === 1 ? '' : `${MAGNITUDES.find(({ value }) => value === magnitude)?.label}. `);
+export const magnitudePrefix = (magnitude: Magnitude) => (magnitude === 1 ? '' : `${MAGNITUDES.find(({ value }) => value === magnitude)?.label}. `);
 
 const currencyName = (currency: Currency) => CURRENCIES.find(({ value }) => value === currency)?.label;
 

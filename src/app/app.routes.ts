@@ -14,5 +14,10 @@ export const routes: Routes = [
     loadComponent: () => import('./documentation/documentation').then((m) => m.Documentation),
     title: 'Документация — Бюджетът',
   },
+  {
+    path: 'today',
+    loadComponent: () => import('./today/today').then((m) => m.Today),
+    title: 'Днес — Бюджетът',
+  },
   { path: '**', redirectTo: '' },
 ];

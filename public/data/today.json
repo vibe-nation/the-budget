@@ -1,0 +1,361 @@
+{
+  "year": 2026,
+  "entries": [
+    {
+      "name": "Национална здравноосигурителна каса",
+      "abbr": "НЗОК",
+      "series": "nzok-budget-eur",
+      "lawShort": "ЗБНЗОК"
+    },
+    {
+      "name": "Министерство на вътрешните работи",
+      "abbr": "МВР",
+      "series": "mvr-budget-eur"
+    },
+    {
+      "name": "Съдебна власт",
+      "series": "judiciary-budget-eur",
+      "parts": [
+        {
+          "name": "Съдилища",
+          "series": "courts-budget-eur"
+        },
+        {
+          "name": "Прокуратура",
+          "series": "prosecution-budget-eur"
+        },
+        {
+          "name": "Висш съдебен съвет",
+          "series": "vss-budget-eur"
+        },
+        {
+          "name": "Върховен административен съд",
+          "series": "vas-budget-eur"
+        },
+        {
+          "name": "Върховен касационен съд",
+          "series": "vks-budget-eur"
+        },
+        {
+          "name": "Инспекторат към Висшия съдебен съвет",
+          "series": "inspectorate-budget-eur"
+        },
+        {
+          "name": "Национален институт на правосъдието",
+          "series": "nij-budget-eur"
+        },
+        {
+          "name": "Резерв за непредвидени и/или неотложни разходи",
+          "value": 460000,
+          "sources": [
+            {
+              "title": "Закон за държавния бюджет на Република България за 2026 г.",
+              "amount": 460,
+              "amountUnit": "хил. евро",
+              "article": 2,
+              "paragraph": 3,
+              "row": "Резерв за непредвидени и/или неотложни разходи",
+              "column": "Сума",
+              "gazette": {
+                "citation": "ДВ, бр. 69 от 31.07.2026 г.",
+                "issue": 69,
+                "extraordinary": false,
+                "date": "2026-07-31",
+                "page": 4,
+                "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=245041",
+                "issueUrl": null
+              },
+              "file": "ZDBRB-2026.pdf",
+              "fileUrl": "https://www.minfin.bg/upload/64609/ZDB-2026.pdf",
+              "filePage": 4,
+              "checks": {
+                "file": true,
+                "gazetteAct": true,
+                "gazetteIssue": false,
+                "arithmetic": "сбор по органи = Всичко = II. РАЗХОДИ (ал. 1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Министерство на правосъдието",
+      "value": 360030300,
+      "sources": [
+        {
+          "title": "Закон за държавния бюджет на Република България за 2026 г.",
+          "amount": 360030.3,
+          "amountUnit": "хил. евро",
+          "article": 13,
+          "paragraph": 1,
+          "row": "II. РАЗХОДИ",
+          "column": "Сума",
+          "gazette": {
+            "citation": "ДВ, бр. 69 от 31.07.2026 г.",
+            "issue": 69,
+            "extraordinary": false,
+            "date": "2026-07-31",
+            "page": 15,
+            "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=245041",
+            "issueUrl": null
+          },
+          "file": "ZDBRB-2026.pdf",
+          "fileUrl": "https://www.minfin.bg/upload/64609/ZDB-2026.pdf",
+          "filePage": 15,
+          "checks": {
+            "file": true,
+            "gazetteAct": true,
+            "gazetteIssue": false,
+            "arithmetic": "I − II + III = IV; IV + V = 0; текущи + капиталови = II"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Държавна агенция „Национална сигурност“",
+      "abbr": "ДАНС",
+      "series": "dans-budget-eur"
+    },
+    {
+      "name": "Държавна агенция „Технически операции“",
+      "abbr": "ДАТО",
+      "value": 76316000,
+      "sources": [
+        {
+          "title": "Закон за държавния бюджет на Република България за 2026 г.",
+          "amount": 76316,
+          "amountUnit": "хил. евро",
+          "article": 47,
+          "paragraph": 1,
+          "row": "II. РАЗХОДИ",
+          "column": "Сума",
+          "gazette": {
+            "citation": "ДВ, бр. 69 от 31.07.2026 г.",
+            "issue": 69,
+            "extraordinary": false,
+            "date": "2026-07-31",
+            "page": 45,
+            "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=245041",
+            "issueUrl": null
+          },
+          "file": "ZDBRB-2026.pdf",
+          "fileUrl": "https://www.minfin.bg/upload/64609/ZDB-2026.pdf",
+          "filePage": 45,
+          "checks": {
+            "file": true,
+            "gazetteAct": true,
+            "gazetteIssue": false,
+            "arithmetic": "I − II + III = IV; IV + V = 0; текущи + капиталови = II"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Народно събрание",
+      "value": 63167000,
+      "sources": [
+        {
+          "title": "Закон за държавния бюджет на Република България за 2026 г.",
+          "amount": 63167,
+          "amountUnit": "хил. евро",
+          "article": 3,
+          "paragraph": 1,
+          "row": "II. РАЗХОДИ",
+          "column": "Сума",
+          "gazette": {
+            "citation": "ДВ, бр. 69 от 31.07.2026 г.",
+            "issue": 69,
+            "extraordinary": false,
+            "date": "2026-07-31",
+            "page": 5,
+            "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=245041",
+            "issueUrl": null
+          },
+          "file": "ZDBRB-2026.pdf",
+          "fileUrl": "https://www.minfin.bg/upload/64609/ZDB-2026.pdf",
+          "filePage": 5,
+          "checks": {
+            "file": true,
+            "gazetteAct": true,
+            "gazetteIssue": false,
+            "arithmetic": "I − II + III = IV; IV + V = 0; текущи + капиталови + резерв = II"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Национална служба за охрана",
+      "abbr": "НСО",
+      "series": "nso-budget-eur"
+    },
+    {
+      "name": "Държавна агенция „Разузнаване“",
+      "abbr": "ДАР",
+      "value": 35889500,
+      "sources": [
+        {
+          "title": "Закон за държавния бюджет на Република България за 2026 г.",
+          "amount": 35889.5,
+          "amountUnit": "хил. евро",
+          "article": 33,
+          "paragraph": 1,
+          "row": "II. РАЗХОДИ",
+          "column": "Сума",
+          "gazette": {
+            "citation": "ДВ, бр. 69 от 31.07.2026 г.",
+            "issue": 69,
+            "extraordinary": false,
+            "date": "2026-07-31",
+            "page": 35,
+            "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=245041",
+            "issueUrl": null
+          },
+          "file": "ZDBRB-2026.pdf",
+          "fileUrl": "https://www.minfin.bg/upload/64609/ZDB-2026.pdf",
+          "filePage": 35,
+          "checks": {
+            "file": true,
+            "gazetteAct": true,
+            "gazetteIssue": false,
+            "arithmetic": "I − II + III = IV; IV + V = 0; текущи + капиталови = II"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Сметна палата",
+      "value": 23180500,
+      "sources": [
+        {
+          "title": "Закон за държавния бюджет на Република България за 2026 г.",
+          "amount": 23180.5,
+          "amountUnit": "хил. евро",
+          "article": 4,
+          "paragraph": 1,
+          "row": "II. РАЗХОДИ",
+          "column": "Сума",
+          "gazette": {
+            "citation": "ДВ, бр. 69 от 31.07.2026 г.",
+            "issue": 69,
+            "extraordinary": false,
+            "date": "2026-07-31",
+            "page": 6,
+            "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=245041",
+            "issueUrl": null
+          },
+          "file": "ZDBRB-2026.pdf",
+          "fileUrl": "https://www.minfin.bg/upload/64609/ZDB-2026.pdf",
+          "filePage": 6,
+          "checks": {
+            "file": true,
+            "gazetteAct": true,
+            "gazetteIssue": false,
+            "arithmetic": "I − II + III = IV; IV + V = 0; текущи + капиталови = II"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Комисия за финансов надзор",
+      "abbr": "КФН",
+      "value": 17926000,
+      "sources": [
+        {
+          "title": "Закон за държавния бюджет на Република България за 2026 г.",
+          "amount": 17926,
+          "amountUnit": "хил. евро",
+          "article": 42,
+          "paragraph": 1,
+          "row": "II. РАЗХОДИ",
+          "column": "Сума",
+          "gazette": {
+            "citation": "ДВ, бр. 69 от 31.07.2026 г.",
+            "issue": 69,
+            "extraordinary": false,
+            "date": "2026-07-31",
+            "page": 41,
+            "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=245041",
+            "issueUrl": null
+          },
+          "file": "ZDBRB-2026.pdf",
+          "fileUrl": "https://www.minfin.bg/upload/64609/ZDB-2026.pdf",
+          "filePage": 41,
+          "checks": {
+            "file": true,
+            "gazetteAct": true,
+            "gazetteIssue": false,
+            "arithmetic": "I − II + III = IV; IV + V = 0; текущи + капиталови = II"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Конституционен съд",
+      "value": 5122500,
+      "sources": [
+        {
+          "title": "Закон за държавния бюджет на Република България за 2026 г.",
+          "amount": 5122.5,
+          "amountUnit": "хил. евро",
+          "article": 7,
+          "paragraph": 1,
+          "row": "II. РАЗХОДИ",
+          "column": "Сума",
+          "gazette": {
+            "citation": "ДВ, бр. 69 от 31.07.2026 г.",
+            "issue": 69,
+            "extraordinary": false,
+            "date": "2026-07-31",
+            "page": 9,
+            "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=245041",
+            "issueUrl": null
+          },
+          "file": "ZDBRB-2026.pdf",
+          "fileUrl": "https://www.minfin.bg/upload/64609/ZDB-2026.pdf",
+          "filePage": 9,
+          "checks": {
+            "file": true,
+            "gazetteAct": true,
+            "gazetteIssue": false,
+            "arithmetic": "I − II + III = IV; IV + V = 0; текущи + капиталови = II"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Национално бюро за контрол на специалните разузнавателни средства",
+      "abbr": "НБКСРС",
+      "value": 1050900,
+      "sources": [
+        {
+          "title": "Закон за държавния бюджет на Република България за 2026 г.",
+          "amount": 1050.9,
+          "amountUnit": "хил. евро",
+          "article": 46,
+          "paragraph": 1,
+          "row": "II. РАЗХОДИ",
+          "column": "Сума",
+          "gazette": {
+            "citation": "ДВ, бр. 69 от 31.07.2026 г.",
+            "issue": 69,
+            "extraordinary": false,
+            "date": "2026-07-31",
+            "page": 44,
+            "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=245041",
+            "issueUrl": null
+          },
+          "file": "ZDBRB-2026.pdf",
+          "fileUrl": "https://www.minfin.bg/upload/64609/ZDB-2026.pdf",
+          "filePage": 44,
+          "checks": {
+            "file": true,
+            "gazetteAct": true,
+            "gazetteIssue": false,
+            "arithmetic": "I − II + III = IV; IV + V = 0; текущи = II"
+          }
+        }
+      ]
+    }
+  ]
+}

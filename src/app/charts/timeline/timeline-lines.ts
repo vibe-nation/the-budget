@@ -259,16 +259,19 @@ const lawPlainAmount = new Intl.NumberFormat('bg-BG', { maximumFractionDigits: 2
 const isThousands = (unit: string) => /^(хил|млн)\./.test(unit);
 
 /* Article, then whichever of paragraph, point and letter the law uses. */
-function lawPlace({ article, paragraph, point, letter }: LawCitation): string {
+export function lawPlace({ article, paragraph, point, letter }: LawCitation): string {
   return [`чл. ${article}`, paragraph && `ал. ${paragraph}`, point && `т. ${point}`, letter && `б. „${letter}“`].filter(Boolean).join(', ');
 }
 
-const lawPage = ({ page, actPage }: LawCitation['gazette']) => (page ? `стр. ${page}` : `актът започва на стр. ${actPage}`);
+export const lawPage = ({ page, actPage }: LawCitation['gazette']) => (page ? `стр. ${page}` : `актът започва на стр. ${actPage}`);
+
+/** The figure as the law prints it, without its unit. */
+export const lawFigure = ({ amount, amountUnit }: LawCitation) => (isThousands(amountUnit) ? lawAmount : lawPlainAmount).format(amount);
 
 /** A law citation in the card's terms: the row and amount as a quote, its place in the law as the locator. */
 function lawSource(citation: LawCitation): Source {
-  const { title, amount, amountUnit, annex, row, gazette, fileUrl, filePage } = citation;
-  const figure = (isThousands(amountUnit) ? lawAmount : lawPlainAmount).format(amount);
+  const { title, amountUnit, annex, row, gazette, fileUrl, filePage } = citation;
+  const figure = lawFigure(citation);
   return {
     name: title,
     /* `#page` opens the ministry's PDF on the figure, which neither gazette link can do. */

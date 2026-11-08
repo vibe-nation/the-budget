@@ -1,0 +1,196 @@
+.today {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: 0.75rem var(--page-inset) 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.today-lead {
+  margin: 0.15rem 0 0.4rem;
+  font-size: 17px;
+}
+
+.today-error {
+  margin: 2rem 0;
+  color: var(--ink-2);
+}
+
+.today-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-inline-start: auto;
+}
+
+/* The table keeps its columns on a phone and scrolls inside this box, not the page. */
+.today-scroll {
+  overflow-x: auto;
+}
+
+.today-scroll:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.today-table {
+  width: 100%;
+  min-width: 44rem;
+  border-collapse: collapse;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.today-table thead th {
+  padding: 0.15rem 0.5rem;
+  border-bottom: 2px solid var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.today-table td,
+.today-table tbody th {
+  padding: 0.1rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: baseline;
+}
+
+/* One line per row on a laptop, so the whole table fits its screen. Only a name may wrap
+   when the width runs out, which keeps the table from scrolling sideways. */
+@media (min-width: 80rem) {
+  .today-table td {
+    white-space: nowrap;
+  }
+}
+
+.today-table thead th:first-child,
+.today-table tbody th {
+  padding-inline-start: 0;
+}
+
+.today-table thead th.today-num,
+.today-num {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.today-table td.today-num {
+  font-weight: 600;
+}
+
+.today-table tfoot th,
+.today-table tfoot td {
+  padding-block: 0.2rem;
+  border-top: 2px solid var(--ink);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.today-table tfoot th {
+  padding-inline-start: 0;
+}
+
+.today-name {
+  color: var(--ink);
+  font-weight: 600;
+  text-align: left;
+}
+
+.today-abbr {
+  margin-inline-start: 0.35rem;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.today-source {
+  font-size: 16px;
+}
+
+.today-external {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-inline-start: 0.15em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.today-source a,
+.today-note a {
+  color: inherit;
+  text-underline-offset: 2px;
+}
+
+.today-source a:hover,
+.today-note a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.today-table .today-part .today-name {
+  padding-inline-start: 1.25rem;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.today-table .today-part td.today-num {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.today-note {
+  max-width: 60rem;
+  margin: 3rem auto 0;
+  color: var(--ink-3);
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.segmented {
+  display: inline-flex;
+  height: 1.9rem;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.segmented-option {
+  appearance: none;
+  padding: 0 0.6rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-3);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition:
+    color 140ms ease,
+    background-color 140ms ease;
+}
+
+.segmented-option:hover {
+  color: var(--ink);
+}
+
+.segmented-option.is-active {
+  background: var(--ink);
+  color: #ffffff;
+}
+
+.segmented-option:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
