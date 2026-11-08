@@ -10,6 +10,8 @@
   max-width: var(--page-max);
   margin-inline: auto;
   padding-inline: var(--page-inset);
+  /* Room for the corner, which would otherwise cover the toolbar's last button. */
+  padding-right: calc(var(--page-inset) + var(--corner-clearance, 2.5rem));
   padding-block: 0.9rem;
   display: flex;
   align-items: center;
@@ -40,4 +42,68 @@
   letter-spacing: -0.01em;
   white-space: nowrap;
   color: var(--ink);
+}
+
+/* The corner is a triangle, so what it covers grows with the depth: the header's
+   clearance is sized for a button halfway down it. On a phone the header wraps and
+   every pixel of width counts, so the corner goes and the footer's link remains. */
+.github-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 4.5rem;
+  height: 4.5rem;
+  color: var(--surface);
+  line-height: 0;
+}
+
+.github-corner svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--ink);
+}
+
+.github-corner:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -2px;
+}
+
+.github-corner .octo-arm {
+  transform-origin: 130px 106px;
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .github-corner:hover .octo-arm {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .github-corner {
+    display: none;
+  }
+
+  .site-header-inner {
+    --corner-clearance: 0rem;
+  }
 }

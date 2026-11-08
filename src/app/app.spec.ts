@@ -25,6 +25,16 @@ describe('App', () => {
     expect(compiled.querySelector('.site-brand-name')?.textContent).toContain('Бюджетът');
   });
 
+  it('should link the repository from the header corner, named in Bulgarian', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const corner = (fixture.nativeElement as HTMLElement).querySelector<HTMLAnchorElement>(
+      '.site-header a.github-corner',
+    );
+    expect(corner?.href).toBe('https://github.com/vibe-nation/the-budget');
+    expect(corner?.getAttribute('aria-label')).toContain('GitHub');
+  });
+
   async function renderAt(url: string): Promise<HTMLElement> {
     const fixture = TestBed.createComponent(App);
     await TestBed.inject(Router).navigateByUrl(url);

@@ -58,6 +58,7 @@ import {
 } from './timeline-lines';
 import { CURRENCIES, Currency, MAGNITUDES, Magnitude, MoneyView, readStoredMoney, storeMoney } from './timeline-money';
 import { GANTT_SERIES_ID, RelatedTenureRow, centeredZoom, paintSelection, relatedTenures } from './timeline-selection';
+import { SNAP_RADIUS_PX, SnapSeries, nearestPoint, snapCandidates } from './timeline-snap';
 import { BudgetPeriods, CardContent, ChartExtras, ChartPoint, ChartSeries, Election, GanttBar, GanttGroup, TimelineEvent } from './timeline.model';
 
 // `LineChart` hosts the today line and the events: marks on empty series.
@@ -178,6 +179,8 @@ export class TimelineChart {
   private zoomShown: TimelineZoom | undefined;
   private legendShown: LegendSelection | undefined;
   private rangesDrawn = '';
+  /* The points the pointer can take, with each series' index in the option. */
+  private snapSeries: readonly SnapSeries[] = [];
   private axesTimer: ReturnType<typeof setTimeout> | null = null;
   /* The series carrying the point mark, which the next pick has to clear. */
   private markedChart: ChartSeries | null = null;
@@ -252,6 +255,7 @@ export class TimelineChart {
     this.bars = gantt.data;
     this.axis = { min: +new Date(option.xAxis[0].min), max: +new Date(option.xAxis[0].max) };
     this.rangesDrawn = JSON.stringify(this.valueRanges());
+    this.snapSeries = snapCandidates(option.series, this.charts().map((chart) => chart.id));
     if (kept) this.showBar(id);
 
     if (!this.chart) {
@@ -371,6 +375,12 @@ export class TimelineChart {
       if (isRowLabel(params)) this.clearLabelHover();
     });
     chart.getZr().on('globalout', () => this.clearLabelHover());
+    /* ECharts adds its own move handler on its first render, after this one, and
+       it would put the pointer back under the cursor; a microtask runs once every
+       handler of the move is done, so the re-aim at a point within reach stands. */
+    chart.getZr().on('mousemove', ({ offsetX, offsetY }: { offsetX: number; offsetY: number }) =>
+      queueMicrotask(() => this.snapPointer(offsetX, offsetY))
+    );
     /* A click on nothing at all is how a reader lets go of the selection. */
     chart.getZr().on('click', (event: any) => {
       if (!event.target && this.card()) this.clearSelection();
@@ -428,6 +438,29 @@ export class TimelineChart {
        it brings the card back. */
     if (this.selectedBar()?.content.id === id && this.cardOpen()) this.clearSelection();
     else this.selectBar(id);
+  }
+
+  /* Over the lines only: the bars keep a free pointer, and follow through the link. */
+  private snapPointer(x: number, y: number): void {
+    const chart = this.chart;
+    if (!chart || !chart.containPixel({ gridIndex: 1 }, [x, y])) return;
+    const timeAt = (px: number) => chart.convertFromPixel({ xAxisIndex: 1 }, px) as unknown as number;
+    const found = nearestPoint(
+      this.snapSeries,
+      (id) => this.legendShown?.[id] !== false,
+      [x, y],
+      [timeAt(x - SNAP_RADIUS_PX), timeAt(x + SNAP_RADIUS_PX)],
+      (seriesIndex, value) => chart.convertToPixel({ seriesIndex }, value as [string, number]) as unknown as [number, number]
+    );
+    if (!found) return;
+    /* A pointer update ends by hiding the tooltip, as this axis raises none of its
+       own. ECharts' own move handler lets the tooltip of the point under the cursor
+       cancel that hide through this very hook; here it comes after that point's
+       tooltip has shown, so the hide is dropped instead. */
+    const dispatchAction = (payload: { type: string }) => {
+      if (payload.type !== 'hideTip') chart.dispatchAction(payload);
+    };
+    chart.dispatchAction({ type: 'updateAxisPointer', seriesIndex: found.seriesIndex, dataIndex: found.dataIndex, dispatchAction });
   }
 
   /* A point reports its item, whose date finds it: an index would count a line's

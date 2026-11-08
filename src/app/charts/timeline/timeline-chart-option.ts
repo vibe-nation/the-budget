@@ -206,7 +206,8 @@ export function buildTimelineOption(
       },
     },
     /* A reading aid only: the tooltip stays with the bar under the cursor, and
-       the line must neither light bars nor snap to their starts. */
+       the line must neither light bars nor snap to their starts. Near a point it
+       is re-aimed by the component (`timeline-snap.ts`), not by ECharts. */
     axisPointer: {
       show: true,
       type: 'line',
@@ -291,7 +292,8 @@ export function buildTimelineOption(
     ],
     xAxis: [
       { ...xAxisCommon, gridIndex: 0 },
-      { ...xAxisCommon, gridIndex: 1 },
+      /* Under the lines (`z: 2`), which the pointer would otherwise cut through. */
+      { ...xAxisCommon, gridIndex: 1, axisPointer: { ...xAxisCommon.axisPointer, z: 1 } },
     ],
     yAxis: [
       {

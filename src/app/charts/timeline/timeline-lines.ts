@@ -1,5 +1,5 @@
 import { readFlag, storeFlag } from './role-order';
-import { humanDate } from './timeline-format';
+import { humanDate, shortDate } from './timeline-format';
 import { DEFAULT_MONEY, MoneyView, convertMoney, formatNumber, isMoney, moneySuffix } from './timeline-money';
 import { CardContent, CardReading, ChartExtras, ChartPoint, ChartSeries, HorizontalLine, LawCitation, Source, TimelineEvent } from './timeline.model';
 
@@ -109,7 +109,45 @@ export const isStepped = (chart: ChartSeries, shape: LineShape = DEFAULT_LINE_SH
 const labelNumber = new Intl.NumberFormat('bg-BG', { maximumFractionDigits: 1 });
 const formatLabel = (value: number) => labelNumber.format(Math.round(value * 10) / 10 + 0);
 
-const signed = (value: number) => `${value > 0 ? '+' : ''}${formatNumber(value)}`;
+/* A true minus: the hyphen `Intl` prints is a dash's width short of the plus. */
+const tooltipNumber = (value: number) => formatNumber(value).replace('-', '−');
+const signed = (value: number) => `${value > 0 ? '+' : ''}${tooltipNumber(value)}`;
+
+/* Direction only, on every series: up is ochre and down is blue, since whether
+   a rise is good differs by metric, and green or red would say that it is. */
+const CHANGE_COLORS = {
+  up: { text: '#b45309', band: '#fff4e5' },
+  down: { text: '#1d4ed8', band: '#e8efff' },
+} as const;
+
+/* A percentage's change is in points, which the relative percent beside it is not. */
+const changeSuffix = (chart: ChartSeries, suffix: string) => (chart.unit === 'percent' ? ' пр.п.' : suffix);
+
+const TOOLTIP_FONT = "font-family:'Sofia Sans',sans-serif;";
+
+function pointTooltip(chart: ChartSeries, suffix: string, marker: string, content: ChartPoint): string {
+  const { date, value, change = 0, change_percent: changePercent = 0 } = content;
+  /* A currency stands off the amount; a percent sign hugs its number. */
+  const unit = suffix.trim()
+    ? `<span style="font-size:14px;font-weight:600;color:#475569;margin-left:${suffix.startsWith(' ') ? 4 : 1}px;">${suffix.trim()}</span>`
+    : '';
+  const direction = change > 0 ? 'up' : change < 0 ? 'down' : null;
+  const band = direction
+    ? `<div data-change="${direction}" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:11px;padding:8px 14px 10px;background:${CHANGE_COLORS[direction].band};color:${CHANGE_COLORS[direction].text};font-variant-numeric:tabular-nums;">
+          <div style="font-weight:700;"><span style="font-size:12px;">${direction === 'up' ? '▲' : '▼'}</span> ${signed(change)}${changeSuffix(chart, suffix)}</div>
+          <div style="font-weight:600;white-space:nowrap;">${signed(changePercent)}%</div>
+        </div>`
+    : '';
+
+  return `<div style="${TOOLTIP_FONT}max-width:420px;min-width:220px;padding:12px 0 ${direction ? 0 : 13}px;white-space:normal;word-wrap:break-word;line-height:1.3;">
+      <div style="font-size:14px;font-weight:700;color:#0f1115;padding:0 14px;">${marker}${chart.name}</div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:8px;padding:0 14px;">
+        <div style="font-size:22px;font-weight:800;color:#0f1115;letter-spacing:-0.01em;font-variant-numeric:tabular-nums;">${tooltipNumber(value)}${unit}</div>
+        <div style="font-size:13px;color:#64748b;white-space:nowrap;">${shortDate(date)}</div>
+      </div>
+      ${band}
+    </div>`;
+}
 
 /* An amount per person a month is read whole: „млрд.“ would turn it into a string of zeros. */
 const seriesMoney = (chart: ChartSeries, money: MoneyView): MoneyView => (chart.meta?.axis === 'monthly' ? { ...money, magnitude: 1 } : money);
@@ -303,8 +341,9 @@ export function buildLineSeries(
     symbolSize: 5,
     /* A click anywhere along the line counts, not only on its points. */
     triggerEvent: 'line',
-    /* The point under the cursor shows its number even with the labels off. */
-    emphasis: { focus: 'series', label: { show: true } },
+    /* The point under the cursor shows its number even with the labels off, and
+       grows to 11px: ECharts' own 1.1 is too little to tell it from its neighbours. */
+    emphasis: { focus: 'series', scale: 2.2, label: { show: true } },
     label: {
       show: showLabels,
       position: 'top',
@@ -324,28 +363,14 @@ export function buildLineSeries(
     ...(stepped ? { step: 'start' } : {}),
     ...chart.meta?.style,
     tooltip: {
-      formatter: (params: any) => {
-        const { date, value, change, changePercent } = params.data.content;
-        const changeLine = change
-          ? `<div style="font-size:13px;color:#4b5563;margin-top:6px;">промяна <strong>${signed(change)}${suffix}</strong> · ${signed(changePercent)}%</div>`
-          : '';
-
-        return `<div style="font-family:'Sofia Sans',sans-serif;max-width:420px;min-width:220px;padding:12px 14px;white-space:normal;word-wrap:break-word;">
-          <div style="font-size:14px;font-weight:700;color:#0f1115;line-height:1.3;">${params.marker}${chart.name}</div>
-          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:8px;">
-            <div style="font-size:16px;font-weight:700;color:#0f1115;">${formatNumber(value)}${suffix}</div>
-            <div style="font-size:13px;color:#4b5563;white-space:nowrap;">${humanDate(date)}</div>
-          </div>
-          ${changeLine}
-        </div>`;
-      },
+      formatter: (params: any) => pointTooltip(chart, suffix, params.marker, params.data.content),
     },
     data: drawnPoints(chart, shape).map((point, index) => ({
       content: {
         date: point.date,
         value: convert(point.value),
         change: point.change ? convert(point.change) : 0,
-        changePercent: point.change_percent ?? 0,
+        change_percent: point.change_percent ?? 0,
       },
       value: [point.date, convert(point.value)],
       ...(stepped && index === 0 ? { symbol: 'none', label: { show: false } } : {}),

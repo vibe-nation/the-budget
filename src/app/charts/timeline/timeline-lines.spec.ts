@@ -514,6 +514,54 @@ describe('buildLineSeries', () => {
   it('leaves a percentage alone', () => {
     expect(buildLineSeries(series('a', 'percent', -2.9)).data[0].value[1]).toBe(-2.9);
   });
+
+  describe('the point tooltip', () => {
+    beforeAll(() => moment.locale('bg'));
+    afterAll(() => moment.locale('en'));
+
+    const tooltip = (chart: ChartSeries) => {
+      const line = buildLineSeries(chart) as any;
+      return line.tooltip.formatter({ data: line.data[0], marker: '' }) as string;
+    };
+
+    it('marks a rise as up, with the arrow, the signed amount and the percent', () => {
+      const html = tooltip(series('a', 'EUR', 2_000_000_000));
+
+      expect(html).toContain('data-change="up"');
+      expect(html).toContain('▲');
+      expect(html).toContain('+1 млрд. евро');
+      expect(html).toContain('+10%');
+    });
+
+    it('marks a fall as down', () => {
+      const chart = series('a', 'EUR', 2_000_000_000);
+      const html = tooltip({ ...chart, data: [{ ...chart.data[0], change: -500_000_000, change_percent: -20 }] });
+
+      expect(html).toContain('data-change="down"');
+      expect(html).toContain('▼');
+      expect(html).toContain('−0,5 млрд. евро');
+      expect(html).toContain('−20%');
+    });
+
+    it('shows no change on a first point', () => {
+      const chart = series('a', 'EUR');
+      const html = tooltip({ ...chart, data: [{ date: '2023-12-31', value: 1 }] });
+
+      expect(html).not.toContain('data-change');
+      expect(html).not.toContain('▲');
+    });
+
+    it('gives a percentage change in points, apart from the relative percent', () => {
+      const html = tooltip(series('a', 'percent', -4));
+
+      expect(html).toContain('−2 пр.п.');
+      expect(html).toContain('+10%');
+    });
+
+    it('dates the point briefly', () => {
+      expect(tooltip(series('a', 'EUR'))).toContain('31 дек 2023');
+    });
+  });
 });
 
 describe('the number labels', () => {
@@ -524,6 +572,10 @@ describe('the number labels', () => {
 
     expect(line.label.show).toBe(false);
     expect(line.emphasis.label.show).toBe(true);
+  });
+
+  it('grow the hovered point to more than twice its size', () => {
+    expect(buildLineSeries(series('a', 'percent')).emphasis.scale).toBeGreaterThanOrEqual(2);
   });
 
   it('show when asked for, to one decimal of what the line plots', () => {
@@ -608,6 +660,16 @@ describe('the two grids', () => {
 
   it('keep the points outside the view, for a line to run in from them', () => {
     expect(option.dataZoom[0].filterMode).toBe('none');
+  });
+
+  it('let the pointer run free: snapping near a point is the component\'s, by pixel', () => {
+    expect(option.xAxis[0].axisPointer.snap).toBe(false);
+    expect(option.xAxis[1].axisPointer.snap).toBe(false);
+  });
+
+  it('draw the pointer under the lines', () => {
+    const lineZ = 2; // ECharts' default for a line series
+    expect((option.xAxis[1].axisPointer as { z?: number }).z).toBeLessThan(lineZ);
   });
 
   it('keep their bars and their lines lined up', () => {

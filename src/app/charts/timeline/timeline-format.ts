@@ -4,6 +4,11 @@ export function humanDate(date?: string | number): string {
   return moment(date).format('D MMMM YYYY г.');
 }
 
+/** The date as the tooltip fits it beside a figure: „31 дек 2025“. */
+export function shortDate(date: string | number): string {
+  return moment(date).format('D MMM YYYY');
+}
+
 /* An ongoing tenure is `null` on disk but reaches "now" once the chart resolves
    it, and printing today's date there would read as a real end date. */
 export function humanRangeEnd(date: string | number): string {
