@@ -43,7 +43,7 @@ describe('LinesLegend', () => {
 
   it('judges the two switches by the rows on show', async () => {
     await pick('mvr');
-    expect(action('Всички').disabled).toBe(true);
-    expect(action('Никоя').disabled).toBe(false);
+    expect(action('всички').disabled).toBe(true);
+    expect(action('никоя').disabled).toBe(false);
   });
 });
