@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { buildGanttSeries } from './timeline-series';
+import { buildCurrentDateLine, buildGanttSeries } from './timeline-series';
 import { SEL_NONE, SEL_SELECTED, V_SEL } from './timeline-selection';
 import { GanttGroup } from './timeline.model';
 
@@ -31,5 +31,13 @@ describe('a gantt bar', () => {
 
   it('still rises when clicked in a tall row', () => {
     expect(barHeight(120, SEL_SELECTED)).toBeGreaterThan(28);
+  });
+});
+
+/* ECharts draws a line series at z 3; the bars are drawn at z 10. */
+describe('buildCurrentDateLine', () => {
+  it('stands over the bars and under the data lines', () => {
+    expect((buildCurrentDateLine(0) as any).markLine.z).toBeGreaterThan(10);
+    expect((buildCurrentDateLine(1) as any).markLine.z).toBeLessThan(3);
   });
 });

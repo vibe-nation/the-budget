@@ -33,6 +33,12 @@ describe('buildEventSeriesList', () => {
     expect(gantt.markLine.z).toBeGreaterThan(10);
   });
 
+  /* ECharts draws a line series at z 3, the reference lines at z 1. */
+  it('lays a single day under the data lines and over the reference lines', () => {
+    expect(lines.markLine.z).toBeLessThan(3);
+    expect(lines.markLine.z).toBeGreaterThan(1);
+  });
+
   it('spans the same civil days as a bar with those dates', () => {
     const [start, end] = lines.markArea.data[0];
 

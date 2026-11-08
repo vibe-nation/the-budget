@@ -290,7 +290,13 @@ function renderBar(params: any, api: any) {
   );
 }
 
+/* Over the bars, but among the data lines (ECharts draws a line series at z 3)
+   under them, level with the events' single days. */
+const CURRENT_DATE_OVER_BARS_Z = 20;
+const CURRENT_DATE_UNDER_LINES_Z = 2;
+
 export function buildCurrentDateLine(axisIndex: number) {
+  const z = axisIndex === 0 ? CURRENT_DATE_OVER_BARS_Z : CURRENT_DATE_UNDER_LINES_Z;
   /* The current moment, not today's midnight: ongoing bars end at `now` and split
      past/future there too, so a midnight line would leave them running up to a
      day past it, visible as soon as the chart is zoomed in. */
@@ -302,7 +308,7 @@ export function buildCurrentDateLine(axisIndex: number) {
     type: 'line',
     data: [],
     markLine: {
-      z: 20,
+      z,
       /* A markLine has no stroke of its own, so the 1px outline is a wider, darker
          copy drawn first, with the green line painted down its middle. */
       data: [
@@ -330,7 +336,7 @@ export function buildCurrentDateLine(axisIndex: number) {
     },
     xAxisIndex: axisIndex,
     yAxisIndex: axisIndex,
-    z: 20,
+    z,
   };
 }
 

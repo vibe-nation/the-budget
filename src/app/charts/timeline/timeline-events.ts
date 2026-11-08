@@ -13,9 +13,11 @@ const GANTT_GRID = 0;
 const LINE_GRID = 1;
 /* A band lies under the bars, which keep their colours and show it in the gaps
    between them. A single-day line is thin, so it stays over the bars, under the
-   today line. */
+   today line. Among the data lines (ECharts draws a line series at z 3) it lies
+   under them, over the reference lines (z 1). */
 const UNDER_BARS_Z = 5;
 const OVER_BARS_Z = 15;
+const UNDER_LINES_Z = 2;
 const DAY_LINE_WIDTH = 2;
 const DAY_LINE_HOVER_WIDTH = 4;
 
@@ -95,11 +97,11 @@ function buildEventSeries(event: TimelineEvent, grid: number) {
     markLine: {
       /* The same split as the band: over the bars it is only seen. */
       silent: overBars,
-      ...(overBars ? { z: OVER_BARS_Z } : {}),
+      z: overBars ? OVER_BARS_Z : UNDER_LINES_Z,
       animation: false,
       symbol: 'none',
       emphasis: { lineStyle: { width: DAY_LINE_HOVER_WIDTH } },
-      /* The plate keeps the name legible where a data line runs behind it. */
+      /* The plate keeps the name legible against the band or gridlines behind it. */
       label: {
         show: labelled,
         position: 'insideEndTop',
