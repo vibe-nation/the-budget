@@ -519,6 +519,52 @@
   margin-bottom: 0.6rem;
 }
 
+/* Directions for Eurostat's page: each option under the name that page gives it. */
+.dcb-eurostat {
+  margin-top: 1.35rem;
+}
+
+.dcb-eurostat .dcb-section-title {
+  margin-bottom: 0.6rem;
+}
+
+.dcb-eurostat-intro {
+  margin: 0 0 0.6rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--dcb-ink-2);
+}
+
+.dcb-eurostat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.dcb-eurostat-list dt {
+  font-size: 0.75rem;
+  color: var(--dcb-ink-3);
+}
+
+.dcb-eurostat-list dd {
+  margin: 0;
+  color: var(--dcb-ink);
+}
+
+.dcb-eurostat-list code {
+  margin-left: 0.3rem;
+  font-size: 0.72rem;
+  color: var(--dcb-ink-3);
+}
+
+.dcb-eurostat-meaning {
+  display: block;
+  color: var(--dcb-ink-3);
+}
+
 .dcb-metric {
   margin-top: 1.35rem;
 }

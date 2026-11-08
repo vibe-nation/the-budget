@@ -1,6 +1,7 @@
 import { readFlag, storeFlag } from './role-order';
 import { humanDate, shortDate } from './timeline-format';
 import { DEFAULT_MONEY, MoneyView, convertMoney, formatNumber, isMoney, moneySuffix } from './timeline-money';
+import { eurostatGuide } from './timeline-eurostat';
 import { CardContent, CardReading, ChartExtras, ChartPoint, ChartSeries, HorizontalLine, LawCitation, Source, TimelineEvent } from './timeline.model';
 
 /** The value axes of the line grid, in `yAxis` order after the gantt's own. */
@@ -27,7 +28,7 @@ export const LINE_COLORS = [
   '#ffd10a',
   '#fb628b',
   '#785db0',
-  '#9e9d24',
+  '#1e6fe0',
   '#d84315',
   '#f0822e',
   '#3fbe95',
@@ -220,7 +221,12 @@ const unitSuffix = (chart: ChartSeries, money: MoneyView) =>
 /** Each series with what `chart-extras.json` gives it, by id. */
 export function attachChartExtras(charts: readonly ChartSeries[], extras: readonly ChartExtras[]): ChartSeries[] {
   const byChart = new Map(extras.map((entry) => [entry.chartId, entry]));
-  return charts.map((chart) => ({ ...chart, horizontalLines: byChart.get(chart.id)?.horizontalLines }));
+  return charts.map((chart) => {
+    const extra = byChart.get(chart.id);
+    const links = extra?.eurostatLinks;
+    const sources = links && chart.sources?.map((source) => (links[source.dataset_id] ? { ...source, url: [links[source.dataset_id]] } : source));
+    return { ...chart, horizontalLines: extra?.horizontalLines, ...(sources ? { sources } : {}) };
+  });
 }
 
 /** A series picked on the chart, and the point on it, if the click landed on one. */
@@ -231,7 +237,7 @@ export interface ChartPick {
 
 /* An annual series can end on a later quarter's reading: only a point closing a
    calendar year speaks for that whole year. */
-const closesYear = (chart: ChartSeries, point: ChartPoint) => chart.dataset?.selection?.freq?.code === 'A' && point.date.endsWith('-12-31');
+const closesYear = (chart: ChartSeries, point: ChartPoint) => chart.dataset?.selection?.['freq']?.code === 'A' && point.date.endsWith('-12-31');
 
 /** A reading labelled by its year in an annual series, and by its date otherwise. */
 function pointReading(chart: ChartSeries, point: ChartPoint, money: MoneyView): CardReading {
@@ -276,6 +282,7 @@ function lawSource(citation: LawCitation): Source {
 /** A series as the detail card prints it: its name and sources, and the reading of the picked point. */
 export function chartCard(chart: ChartSeries, point: ChartPoint | null = null, money: MoneyView = DEFAULT_MONEY): CardContent {
   const { id, name, sources } = chart;
+  const eurostat = eurostatGuide(chart, point);
   return {
     id: point ? `${id}|${point.date}` : id,
     group: '',
@@ -283,6 +290,7 @@ export function chartCard(chart: ChartSeries, point: ChartPoint | null = null, m
     metric: metricName(id),
     sources: point?.sources?.map(lawSource) ?? sources?.map((source) => ({ name: source.name.bg, link: source.url })),
     ...(point ? { reading: pointReading(chart, point, money) } : {}),
+    ...(eurostat ? { eurostat } : {}),
   };
 }
 

@@ -137,6 +137,8 @@ export interface TimelineView {
   readonly lineShape?: LineShape;
   /** Baked into its series, so a rebuild keeps the marked point without a second update. */
   readonly pick?: ChartPick | null;
+  /** The picked event's card id, baked in for the same reason. */
+  readonly selectedEvent?: string | null;
 }
 
 export type TimelineOption = ReturnType<typeof buildTimelineOption>;
@@ -358,7 +360,7 @@ export function buildTimelineOption(
     series: [
       buildCurrentDateLine(0),
       buildCurrentDateLine(1),
-      ...buildEventSeriesList(events),
+      ...buildEventSeriesList(events, view.selectedEvent ?? null),
       ...charts.flatMap((chart, index) =>
         withPlans([chart]).map((line) => buildLineSeries(line, money, view.labels, lineColor(index), view.pick?.chart === line ? view.pick.point : null, view.lineShape))
       ),

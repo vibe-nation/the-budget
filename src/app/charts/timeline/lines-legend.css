@@ -168,9 +168,9 @@
 }
 
 /* A row switched off keeps its place but steps back: a broken grey line, and
-   text in the grey of the chart's own inactive marks. */
+   mid-grey text, still readable since these rows are what a reader picks from. */
 .legend-row.is-off .legend-mark {
-  color: var(--ink-6);
+  color: var(--ink-5);
 }
 
 .legend-row.is-off .legend-mark line {
@@ -178,7 +178,7 @@
 }
 
 .legend-row.is-off .legend-name {
-  color: var(--ink-5);
+  color: var(--ink-4);
 }
 
 @media (prefers-reduced-motion: reduce) {

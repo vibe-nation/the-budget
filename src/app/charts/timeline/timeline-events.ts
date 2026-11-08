@@ -1,3 +1,5 @@
+import * as echarts from 'echarts/core';
+
 import { readNames, storeNames } from './role-order';
 import { humanDate, humanDateDiff, humanRangeEnd } from './timeline-format';
 import { BarContent, EventItem, TimelineEvent } from './timeline.model';
@@ -20,6 +22,8 @@ const OVER_BARS_Z = 15;
 const UNDER_LINES_Z = 2;
 const DAY_LINE_WIDTH = 2;
 const DAY_LINE_HOVER_WIDTH = 4;
+const DAY_LINE_SELECTED_WIDTH = 5;
+const BAND_SELECTED_FILL_ALPHA = 0.34;
 
 export const readStoredHiddenEvents = (): ReadonlySet<string> => new Set(readNames(HIDDEN_EVENTS_STORAGE_KEY));
 export const storeHiddenEvents = (hidden: ReadonlySet<string>): void => storeNames(HIDDEN_EVENTS_STORAGE_KEY, hidden);
@@ -63,16 +67,47 @@ function eventTooltip(params: { data: { content: BarContent } }): string {
   </div>`;
 }
 
+const eventSeriesId = (event: TimelineEvent, grid: number): string => `event:${event.id}:${grid}`;
+
+/* The selected band keeps its hue: only its strength says it is picked. */
+function bandData(event: TimelineEvent, selectedId: string | null) {
+  const { itemStyle } = event.meta.style;
+
+  return event.items
+    .filter((item) => !isSingleDay(item))
+    .map((item) => {
+      const content = eventContent(event, item);
+      const color = content.id === selectedId ? echarts.color.modifyAlpha(itemStyle.color, BAND_SELECTED_FILL_ALPHA) : itemStyle.color;
+      return [{ name: item.name, xAxis: content.from, content, itemStyle: { ...itemStyle, color } }, { xAxis: content.to }];
+    });
+}
+
+function dayLineData(event: TimelineEvent, selectedId: string | null) {
+  const { color } = event.meta.style.itemStyle;
+
+  return event.items.filter(isSingleDay).map((item) => {
+    const content = eventContent(event, item);
+    const lineStyle = { color, type: 'solid', width: DAY_LINE_WIDTH };
+    if (content.id !== selectedId) return { name: item.name, xAxis: content.from, content, lineStyle };
+    return {
+      name: item.name,
+      xAxis: content.from,
+      content,
+      lineStyle: { ...lineStyle, width: DAY_LINE_SELECTED_WIDTH, shadowBlur: 6, shadowColor: 'rgba(15, 17, 21, 0.45)' },
+      /* The series' hover width is thinner, and would shrink the line under the pointer. */
+      emphasis: { lineStyle: { width: DAY_LINE_SELECTED_WIDTH } },
+    };
+  });
+}
+
 /* One grid's marks of an event: a band per span, a line per single day. Both
    grids share the series name, so the one legend entry switches them together. */
-function buildEventSeries(event: TimelineEvent, grid: number) {
+function buildEventSeries(event: TimelineEvent, grid: number, selectedId: string | null) {
   const overBars = grid === GANTT_GRID;
-  const spans = event.items.filter((item) => !isSingleDay(item));
-  const days = event.items.filter(isSingleDay);
-  const { color } = event.meta.style.itemStyle;
   const labelled = !overBars && event.meta.label !== false;
 
   return {
+    id: eventSeriesId(event, grid),
     type: 'line',
     name: event.id,
     data: [],
@@ -89,10 +124,7 @@ function buildEventSeries(event: TimelineEvent, grid: number) {
       tooltip: { formatter: eventTooltip },
       /* Epochs rather than the file's date strings: ECharts reads those as local
          midnight, the bars beside the band as UTC. */
-      data: spans.map((item) => {
-        const content = eventContent(event, item);
-        return [{ name: item.name, xAxis: content.from, content, itemStyle: event.meta.style.itemStyle }, { xAxis: content.to }];
-      }),
+      data: bandData(event, selectedId),
     },
     markLine: {
       /* The same split as the band: over the bars it is only seen. */
@@ -113,15 +145,29 @@ function buildEventSeries(event: TimelineEvent, grid: number) {
         padding: [1, 3],
       },
       tooltip: { formatter: eventTooltip },
-      data: days.map((item) => {
-        const content = eventContent(event, item);
-        return { name: item.name, xAxis: content.from, content, lineStyle: { color, type: 'solid', width: DAY_LINE_WIDTH } };
-      }),
+      data: dayLineData(event, selectedId),
     },
   };
 }
 
-/** Every event's bands and lines over both grids. */
-export function buildEventSeriesList(events: readonly TimelineEvent[]) {
-  return events.flatMap((event) => [buildEventSeries(event, GANTT_GRID), buildEventSeries(event, LINE_GRID)]);
+/**
+ * Every event's bands and lines over both grids.
+ *
+ * @param selectedId The picked item's card id, baked in so a rebuild keeps it lit.
+ */
+export function buildEventSeriesList(events: readonly TimelineEvent[], selectedId: string | null = null) {
+  return events.flatMap((event) => [buildEventSeries(event, GANTT_GRID, selectedId), buildEventSeries(event, LINE_GRID, selectedId)]);
+}
+
+/** The partial series that move the selection from one item to another; empty if no event is involved. */
+export function eventSelectionUpdate(events: readonly TimelineEvent[], previousId: string | null, selectedId: string | null): object[] {
+  return events
+    .filter((event) => event.items.some((item) => [previousId, selectedId].includes(eventContent(event, item).id)))
+    .flatMap((event) =>
+      [GANTT_GRID, LINE_GRID].map((grid) => ({
+        id: eventSeriesId(event, grid),
+        markArea: { data: bandData(event, selectedId) },
+        markLine: { data: dayLineData(event, selectedId) },
+      }))
+    );
 }

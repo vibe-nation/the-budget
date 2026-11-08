@@ -7,7 +7,10 @@
         "color": "#000000",
         "width": 1
       }
-    ]
+    ],
+    "eurostatLinks": {
+      "GOV_10DD_EDPT1": "https://ec.europa.eu/eurostat/databrowser/bookmark/571e55be-9cff-47bd-abd3-d69bf5d9d05f?lang=en"
+    }
   },
   {
     "chartId": "government-deficit-and-surplus-percent",
@@ -24,6 +27,47 @@
         "type": "dotted",
         "label": "Праг: -3%"
       }
-    ]
+    ],
+    "eurostatLinks": {
+      "GOV_10DD_EDPT1": "https://ec.europa.eu/eurostat/databrowser/bookmark/c9f2b4b9-0bbf-4a41-8706-b42235eeaff9?lang=en"
+    }
+  },
+  {
+    "chartId": "government-debt-eur",
+    "eurostatLinks": {
+      "GOV_10DD_EDPT1": "https://ec.europa.eu/eurostat/databrowser/bookmark/278e4968-edeb-405a-9113-a1f6b546c3c0?lang=en",
+      "GOV_10Q_GGDEBT": "https://ec.europa.eu/eurostat/databrowser/bookmark/4c075d97-0a09-44d1-8aa8-6b6d4da3c64b?lang=en"
+    }
+  },
+  {
+    "chartId": "government-debt-percent",
+    "eurostatLinks": {
+      "GOV_10DD_EDPT1": "https://ec.europa.eu/eurostat/databrowser/bookmark/621521b3-453b-4d26-ba3a-b1c1ea809a08?lang=en",
+      "GOV_10Q_GGDEBT": "https://ec.europa.eu/eurostat/databrowser/bookmark/06977ae6-b91b-4948-bd73-8d18c0c3bb3d?lang=en"
+    }
+  },
+  {
+    "chartId": "government-interest-percent",
+    "eurostatLinks": {
+      "GOV_10A_MAIN": "https://ec.europa.eu/eurostat/databrowser/bookmark/0b3a01e3-1f36-49c1-86ba-0b78b6edccd7?lang=en"
+    }
+  },
+  {
+    "chartId": "government-expenditure-percent",
+    "eurostatLinks": {
+      "GOV_10A_MAIN": "https://ec.europa.eu/eurostat/databrowser/bookmark/fc355d78-e18c-419d-9b5a-cca80899cba4?lang=en"
+    }
+  },
+  {
+    "chartId": "inflation-annual-rate",
+    "eurostatLinks": {
+      "PRC_HICP_MINR": "https://ec.europa.eu/eurostat/databrowser/bookmark/c2f419ba-00b4-44c6-9f96-bef7673218ef?lang=en"
+    }
+  },
+  {
+    "chartId": "gini-coefficient",
+    "eurostatLinks": {
+      "ILC_DI12": "https://ec.europa.eu/eurostat/databrowser/bookmark/ca29e2f4-814e-4b31-9fe0-2b7d61771897?lang=en"
+    }
   }
 ]

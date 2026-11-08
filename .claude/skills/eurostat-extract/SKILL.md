@@ -175,6 +175,8 @@ If `charts.json` was the target, the diff should touch only the series you meant
 
 A new series on the chart also needs its explanation for the side panel. If `public/data/metrics/` has no file for it, use the `describe-metric` skill.
 
+It also needs a saved Eurostat view, because the dataset's plain link opens with other options. The URL can't set them, so create the view on Eurostat's page: „Customise your dataset“, then for each dimension „Static positions“ and the series' option, and for Time „Always all positions“, which keeps new years in the view. „Static positions“ on Time would freeze it. „Save and go to data view“, then „Share / bookmark“: the response of `/api/bookmark/LIVE/save/` holds the id. Add `https://ec.europa.eu/eurostat/databrowser/bookmark/<id>?lang=en` to the series' `eurostatLinks` in `public/data/chart-extras.json`, under the dataset code. Without one, the card lists the options to pick by hand.
+
 ## 6. Report
 
 State the series written, its period range, the file, its explanation file, and anything the data couldn't do. Don't commit unless asked.

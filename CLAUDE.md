@@ -36,7 +36,7 @@ The "HTMLCanvasElement's getContext() not implemented" lines in test output are 
 | `elections.json` | Attached to Народно събрание bars by `assembly` number (`timeline-elections.ts`) |
 | `events.json` | Bands and lines across both grids (`timeline-events.ts`) |
 | `charts.json` | Line series (`ChartSeries`): Eurostat data and budget-law figures |
-| `chart-extras.json` | Horizontal reference lines merged into series by `chartId`. It is kept separate so regenerating `charts.json` leaves it alone |
+| `chart-extras.json` | Merged into series by `chartId`: horizontal reference lines, and `eurostatLinks`, Eurostat saved views with the series' options set, by dataset code. It is kept separate so regenerating `charts.json` leaves it alone |
 | `metrics/<name>.md` | The explanation shown when a line is clicked. `<name>` is the series `id` without a `-eur`/`-bgn`/`-percent` suffix. The app derives the URL from that name, so nothing else needs registering |
 
 All types for these files live in `timeline.model.ts`. Read it before touching any data file.
@@ -45,7 +45,7 @@ All types for these files live in `timeline.model.ts`. Read it before touching a
 
 Several value axes coexist: percent, money, coefficient, inflation and monthly. A series picks its axis from `unit` and `meta.axis` (`valueAxisOf`). Money is stored in the series' unit and converted for display by `timeline-money.ts`, using the reader's currency (EUR/BGN, fixed rate 1.95583) and magnitude. Series `meta` flags matter: `startsOff` hides a part-of-total line at first, `wholeYear` holds a yearly figure flat across its year, and `planOf` makes a series the planned figures of another line (a draft budget's), which `attachPlans` hangs on it: dashed in its colour, on its axis, under its legend entry.
 
-**Chart instance handling:** the `[options]` binding only creates the chart. After that the component updates the ECharts instance directly, because re-binding options would reset the reader's zoom. Selection repaints the cached `bars` without a rebuild. Reader preferences such as row order, hidden events, money view and labels persist in `localStorage` under `the-budget.*` keys.
+**Chart instance handling:** the `[options]` binding only creates the chart. After that the component updates the ECharts instance directly, because re-binding options would reset the reader's zoom. Selection repaints the cached `bars` without a rebuild. Reader preferences such as row order, hidden events, money view and labels persist in `localStorage` under `the-budget.*` keys. The lines switched on, currency, scale, shown events and the Настройки options also live in the address (`#/?lines=…&currency=…&scale=…&events=…&shape=…`, `timeline-url.ts`), which wins over `localStorage` on load, so a link reproduces the view.
 
 **Shell:** `App` holds a navigation header. A page puts its toolbar into the header through the `NavSlot` service, a signal holding a `TemplateRef`. Routes use hash location (`withHashLocation`) because GitHub Pages returns 404 for unknown paths. `/` is the chart and `/documentation` is lazy-loaded. The app is zoneless with OnPush components and signals throughout.
 

@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it } from 'vitest';
 
 import { buildTimelineOption } from './timeline-chart-option';
-import { EVENT_GROUP, buildEventSeriesList, inMenuOrder, readStoredHiddenEvents, storeHiddenEvents } from './timeline-events';
+import { EVENT_GROUP, buildEventSeriesList, eventSelectionUpdate, inMenuOrder, readStoredHiddenEvents, storeHiddenEvents } from './timeline-events';
 import { buildLegend } from './timeline-lines';
 import { GanttGroup, TimelineEvent } from './timeline.model';
 
@@ -58,6 +58,80 @@ describe('buildEventSeriesList', () => {
     const [, series] = buildEventSeriesList([event('war', ['2022-02-24', null])]) as any[];
 
     expect(series.markArea.data[0][1].xAxis).toBeGreaterThanOrEqual(before);
+  });
+});
+
+describe('selected event', () => {
+  const band = event('covid', ['2020-03-13', '2022-03-30']);
+  const day: TimelineEvent = {
+    id: 'eu',
+    meta: { style: { itemStyle: { color: '#1d4ed8' } } },
+    items: [{ name: 'ЕС', value: ['2007-01-01'] }],
+  };
+  const bandId = 'covid|2020-03-13';
+  const dayId = 'eu|2007-01-01';
+
+  it('leaves everything plain with nothing selected', () => {
+    const [, lines] = buildEventSeriesList([band]) as any[];
+
+    expect(lines.markArea.data[0][0].itemStyle).toEqual({ color: 'rgba(128, 128, 128, 0.2)' });
+  });
+
+  it('strengthens a selected band, in both grids, in its own hue and without a border', () => {
+    const [gantt, lines] = buildEventSeriesList([band], bandId) as any[];
+
+    for (const series of [gantt, lines]) {
+      const { color, borderWidth } = series.markArea.data[0][0].itemStyle;
+      expect(color).toMatch(/^rgba\(128,\s*128,\s*128,\s*0\.\d+\)$/);
+      expect(parseFloat(color.split(',')[3])).toBeGreaterThan(0.2);
+      expect(borderWidth).toBeUndefined();
+    }
+  });
+
+  it('thickens a selected day, and hovering it does not thin it again', () => {
+    const [plainGantt] = buildEventSeriesList([day]) as any[];
+    const [gantt, lines] = buildEventSeriesList([day], dayId) as any[];
+    const plain = plainGantt.markLine.data[0].lineStyle;
+
+    for (const series of [gantt, lines]) {
+      const item = series.markLine.data[0];
+      expect(item.lineStyle.color).toBe(plain.color);
+      expect(item.lineStyle.width).toBeGreaterThan(plain.width);
+      expect(item.emphasis.lineStyle.width).toBe(item.lineStyle.width);
+    }
+  });
+
+  it('does not touch the other items of the same event', () => {
+    const twice: TimelineEvent = { ...day, items: [...day.items, { name: 'Друго', value: ['2010-01-01'] }] };
+    const [, lines] = buildEventSeriesList([twice], dayId) as any[];
+    const [selected, other] = lines.markLine.data;
+
+    expect(other.lineStyle.width).toBeLessThan(selected.lineStyle.width);
+    expect(other.emphasis).toBeUndefined();
+  });
+
+  it('updates only the events that change, by series id, in both grids', () => {
+    const update = eventSelectionUpdate([band, day], bandId, dayId) as any[];
+    const [gantt, lines] = buildEventSeriesList([band, day]) as any[];
+
+    expect(update).toHaveLength(4);
+    expect(update.map(({ id }) => id)).toContain(gantt.id);
+    expect(update.map(({ id }) => id)).toContain(lines.id);
+    expect(new Set(update.map(({ id }) => id)).size).toBe(4);
+  });
+
+  it('paints the new selection and clears the old one in the same update', () => {
+    const update = eventSelectionUpdate([band, day], bandId, dayId) as any[];
+    const bands = update.flatMap(({ markArea }) => markArea.data);
+    const lines = update.flatMap(({ markLine }) => markLine.data);
+
+    expect(bands.every(([start]) => start.itemStyle.color === 'rgba(128, 128, 128, 0.2)')).toBe(true);
+    expect(lines.every((item) => item.emphasis)).toBe(true);
+  });
+
+  it('asks for no update when no event is involved', () => {
+    expect(eventSelectionUpdate([band, day], null, null)).toEqual([]);
+    expect(eventSelectionUpdate([band, day], 'level|1', null)).toEqual([]);
   });
 });
 

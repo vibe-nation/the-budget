@@ -191,7 +191,7 @@ export function resolveUnit(cube, pinned, rows, override = {}) {
   if (rest === 'EUR' || rest === 'BGN') return { chartUnit: rest, scale };
   if (rest === 'NAC') return { chartUnit: nationalCurrency(cube, pinned, rows, prefix), scale };
   throw new Error(
-    `Unit "${code}" has no automatic mapping. charts.json takes BGN, EUR, percent or coefficient: pass --chart-unit and ` +
+    `Unit "${code}" has no automatic mapping. charts.json takes BGN, EUR, percent, coefficient or index: pass --chart-unit and ` +
       `--scale if it is one of those (e.g. CP_MEUR is --chart-unit EUR --scale 1e6, Gini is --chart-unit coefficient).`,
   );
 }
@@ -254,6 +254,7 @@ function sourceFor(cube, pinned, chartUnit, label) {
     EUR: { en: 'euro', bg: 'евро' },
     BGN: { en: 'leva', bg: 'лева' },
     coefficient: { en: 'coefficient', bg: 'коефициент' },
+    index: { en: 'index', bg: 'индекс' },
   };
   const measure = measures[chartUnit] ?? percent;
   return {
@@ -433,8 +434,8 @@ function main() {
   }
 
   const chartUnit = values['chart-unit'];
-  if (chartUnit && !['BGN', 'EUR', 'percent', 'coefficient'].includes(chartUnit)) {
-    throw new Error(`--chart-unit must be BGN, EUR, percent or coefficient, got "${chartUnit}"`);
+  if (chartUnit && !['BGN', 'EUR', 'percent', 'coefficient', 'index'].includes(chartUnit)) {
+    throw new Error(`--chart-unit must be BGN, EUR, percent, coefficient or index, got "${chartUnit}"`);
   }
   if (!values.into) throw new Error('--into <file> is required');
 

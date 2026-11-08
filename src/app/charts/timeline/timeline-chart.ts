@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, DestroyRef, TemplateRef, computed, effect, inject, signal, untracked, viewChild } from '@angular/core';
 
@@ -34,7 +35,7 @@ import {
 import { RoleMove, RoleRow, RolesPanel } from './roles-panel';
 import { NARROW_WIDTH_PX, TimelineOption, TimelineView, buildTimelineOption, legendColumnWidth, valueAxisLayout } from './timeline-chart-option';
 import { attachElections } from './timeline-elections';
-import { inMenuOrder, readStoredHiddenEvents, storeHiddenEvents } from './timeline-events';
+import { eventSelectionUpdate, inMenuOrder, readStoredHiddenEvents, storeHiddenEvents } from './timeline-events';
 import { adjustImpreciseOverlaps } from './timeline-lanes';
 import { ValueAxisRanges, timeWindow, valueAxisPatches, valueAxisRanges } from './timeline-value-axes';
 import { TimelineZoom } from './timeline-view';
@@ -62,6 +63,7 @@ import {
 import { CURRENCIES, Currency, MAGNITUDES, Magnitude, MoneyView, readStoredMoney, storeMoney } from './timeline-money';
 import { GANTT_SERIES_ID, RelatedTenureRow, centeredZoom, paintSelection, relatedTenures } from './timeline-selection';
 import { SNAP_RADIUS_PX, SnapSeries, nearestPoint, snapCandidates } from './timeline-snap';
+import { hiddenEventsFromUrl, legendFromUrl, lineShapeFromUrl, moneyFromUrl, viewParams, viewQuery } from './timeline-url';
 import { BudgetPeriods, CardContent, ChartExtras, ChartPoint, ChartSeries, Election, GanttBar, GanttGroup, TimelineEvent } from './timeline.model';
 
 // `LineChart` hosts the today line and the events: marks on empty series.
@@ -108,6 +110,9 @@ export class TimelineChart {
   private readonly http = inject(HttpClient);
   private readonly destroyRef = inject(DestroyRef);
   private readonly navSlot = inject(NavSlot);
+  private readonly location = inject(Location);
+  /* The address as the page was opened: what a shared link asks for wins over what this browser has stored. */
+  private readonly openedWith = viewParams(this.location.path());
   private readonly toolbar = viewChild.required('toolbar', { read: TemplateRef });
 
   private readonly groups = signal<readonly GanttGroup[] | null>(null);
@@ -154,9 +159,9 @@ export class TimelineChart {
 
   protected readonly currencies = CURRENCIES;
   protected readonly magnitudes = MAGNITUDES;
-  protected readonly money = signal<MoneyView>(readStoredMoney());
+  protected readonly money = signal<MoneyView>(moneyFromUrl(this.openedWith, readStoredMoney()));
   protected readonly labels = signal(readStoredLabels());
-  protected readonly lineShape = signal<LineShape>(readStoredLineShape());
+  protected readonly lineShape = signal<LineShape>(lineShapeFromUrl(this.openedWith, readStoredLineShape()));
 
   protected readonly narrow = signal(typeof window !== 'undefined' && window.innerWidth < NARROW_WIDTH_PX);
 
@@ -191,6 +196,8 @@ export class TimelineChart {
   private axesTimer: ReturnType<typeof setTimeout> | null = null;
   /* The series carrying the point mark, which the next pick has to clear. */
   private markedChart: ChartSeries | null = null;
+  /* The card id of the event drawn as selected, which the next pick has to clear. */
+  private litEvent: string | null = null;
 
   constructor() {
     effect((onCleanup) => {
@@ -213,6 +220,7 @@ export class TimelineChart {
         attachElections(roles, elections);
         this.charts.set(attachPlans(attachChartExtras(charts, chartExtras)));
         this.events.set(events);
+        this.hiddenEvents.set(hiddenEventsFromUrl(this.openedWith, events, this.hiddenEvents()));
         this.initRows([toBudgetPeriodGroup(periods), ...roles]);
       },
       error: (err) => this.error.set(`Данните не можаха да се заредят (${err?.status ?? 'мрежова грешка'}).`),
@@ -227,6 +235,14 @@ export class TimelineChart {
       const labels = this.labels();
       const lineShape = this.lineShape();
       untracked(() => this.rebuild(visible, all, narrow, money, labels, lineShape));
+    });
+
+    /* Straight to the address and not through the router: a navigation would scroll
+       the page to the top on every switch, and each would be a step of the back button. */
+    effect(() => {
+      if (!this.groups()) return;
+      const query = viewQuery(this.charts(), this.legendSelection(), this.events(), this.hiddenEvents(), this.money(), this.lineShape());
+      this.location.replaceState('/', query, this.location.getState());
     });
   }
 
@@ -252,6 +268,7 @@ export class TimelineChart {
       lineShape,
       hiddenEvents: this.hiddenEvents(),
       pick: this.selectedPick(),
+      selectedEvent: this.selectedEntry()?.id ?? null,
     });
     const gantt = option.series.at(-1) as unknown as { data: GanttBar[] };
 
@@ -260,6 +277,7 @@ export class TimelineChart {
     const id = this.selectedBar()?.content.id ?? null;
     const kept = id !== null && gantt.data.some((bar) => bar.content.id === id);
     if (id !== null && !kept) this.clearSelectionState();
+    this.litEvent = this.selectedEntry()?.id ?? null;
     gantt.data = paintSelection(gantt.data, kept ? id : null);
     this.bars = gantt.data;
     this.axis = { min: +new Date(option.xAxis[0].min), max: +new Date(option.xAxis[0].max) };
@@ -380,7 +398,7 @@ export class TimelineChart {
   private currentView(): TimelineView {
     const option = this.chart?.getOption() as { dataZoom?: TimelineZoom[] } | undefined;
     const zoom = option?.dataZoom?.[0];
-    return { zoom: zoom ? { start: zoom.start, end: zoom.end } : undefined, legend: this.chart ? this.legendSelection() : startingLegend(this.charts()) };
+    return { zoom: zoom ? { start: zoom.start, end: zoom.end } : undefined, legend: this.chart ? this.legendSelection() : legendFromUrl(this.openedWith, this.charts(), startingLegend(this.charts())) };
   }
 
   protected onChartInit(chart: echarts.EChartsType): void {
@@ -532,10 +550,14 @@ export class TimelineChart {
 
   private toggleEntry(content: CardContent): void {
     const open = this.selectedEntry()?.id === content.id && this.cardOpen();
-    this.clearSelection();
-    if (open) return;
+    this.clearSelectionState();
+    if (open) {
+      this.paintSelected(null, null);
+      return;
+    }
     this.selectedEntry.set(content);
     this.cardOpen.set(true);
+    this.paintSelected(null, null, content.id);
   }
 
   private togglePick(pick: ChartPick): void {
@@ -564,9 +586,9 @@ export class TimelineChart {
     this.related.set(relatedTenures(this.bars, id));
   }
 
-  /* One update for the bars and the point mark alike: each `setOption` redraws
-     every bar, whatever it touches. */
-  private paintSelected(barId: string | null, pick: ChartPick | null): void {
+  /* One update for the bars, the point mark and the event alike: each `setOption`
+     redraws every bar, whatever it touches. */
+  private paintSelected(barId: string | null, pick: ChartPick | null, eventId: string | null = null): void {
     this.bars = paintSelection(this.bars, barId);
     const point = pick?.point;
     const marked = point ? pick.chart : null;
@@ -577,6 +599,8 @@ export class TimelineChart {
       series.push({ id: marked.id, markPoint: pointMark(marked, point, this.money(), chartColor(this.charts(), marked)) });
     }
     this.markedChart = marked;
+    series.push(...eventSelectionUpdate(this.events(), this.litEvent, eventId));
+    this.litEvent = eventId;
     this.chart?.setOption({ series });
   }
 

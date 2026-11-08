@@ -84,7 +84,27 @@ export type CardContent = Omit<BarContent, 'from' | 'to'> &
     readonly reading?: CardReading;
     /** The name of the series' description in `public/data/metrics`. */
     readonly metric?: string;
+    /** What to pick on Eurostat's page to see the series. */
+    readonly eurostat?: EurostatGuide;
   };
+
+/** One line of directions for Eurostat's page: a dimension, as named there, and what to pick in it. */
+export interface EurostatRow {
+  readonly dimension: string;
+  readonly option: string;
+  readonly code?: string;
+  /** The option in Bulgarian, since Eurostat's page is in English. */
+  readonly meaning?: string;
+}
+
+/** How to reach a series on Eurostat, whose link opens the dataset's default view. */
+export interface EurostatGuide {
+  readonly dataset: string;
+  readonly url: string;
+  /** The link is a saved view that already has these options set. */
+  readonly preset: boolean;
+  readonly rows: readonly EurostatRow[];
+}
 
 /** One data item of the gantt series. */
 export interface GanttBar {
@@ -173,6 +193,8 @@ export interface ChartPoint {
   readonly sources?: readonly LawCitation[];
   /** The details behind this value: how an amendment changed it, or what is known about a jump. Kept in the data, not displayed. */
   readonly comment?: string;
+  /** Where this value comes from, when that isn't the series' own dataset. */
+  readonly dataset?: { readonly id: string; readonly period: string };
 }
 
 /** A level drawn across the line grid, in the series' own unit. */
@@ -190,6 +212,8 @@ export interface HorizontalLine {
 export interface ChartExtras {
   readonly chartId: string;
   readonly horizontalLines?: readonly HorizontalLine[];
+  /** A saved Eurostat view with the series' options set, by dataset code; it replaces that source's link. */
+  readonly eurostatLinks?: Readonly<Record<string, string>>;
 }
 
 /** A dataset behind a series, as `public/data/charts.json` cites it. */
@@ -197,6 +221,12 @@ export interface ChartSource {
   readonly name: { readonly en: string; readonly bg: string };
   readonly dataset_id: string;
   readonly url: readonly string[];
+}
+
+/** One option a series was extracted with. */
+export interface DatasetOption {
+  readonly code: string;
+  readonly label?: { readonly en: string; readonly bg: string };
 }
 
 /** One series of `public/data/charts.json`, as bulfin-bigtime normalises it. */
@@ -207,8 +237,8 @@ export interface ChartSeries {
   /** `coefficient` is a published scale such as Gini's 0–100: not a percentage, and drawn on its own axis. */
   readonly unit: 'BGN' | 'EUR' | 'percent' | 'coefficient';
   readonly sources?: readonly ChartSource[];
-  /** The dataset's filters; `freq.code` is Eurostat's: `A` annual, `M` monthly. */
-  readonly dataset?: { readonly selection?: { readonly freq?: { readonly code: string } } };
+  /** The dataset and its filters, by dimension; `freq.code` is Eurostat's: `A` annual, `M` monthly. */
+  readonly dataset?: { readonly id?: string; readonly selection?: Readonly<Record<string, DatasetOption>> };
   /**
    * `axis` takes a series off the shared axis, where the scales would flatten one line or the
    * other: a large percentage, or an amount per person a month beside billions.

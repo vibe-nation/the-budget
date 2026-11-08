@@ -164,6 +164,46 @@
     </section>
   }
 
+  @if (content().eurostat; as guide) {
+    <!-- Eurostat's own link opens the dataset's default view, so a series without a saved
+         view has to spell out its options, and one with a saved view shows what to expect.
+         Eurostat's page is in English, so its names stay as printed there. -->
+    <section class="dcb-eurostat">
+      <h4 class="dcb-section-title">
+        <span class="dcb-section-title-text">Как да го видиш в Евростат</span>
+        <span class="dcb-section-title-rule"></span>
+      </h4>
+
+      <p class="dcb-eurostat-intro">
+        @if (guide.preset) {
+          <a [href]="guide.url" target="_blank" rel="noopener">{{ guide.dataset }}</a>
+          се отваря с тези настройки. Ако видиш други, ги избери в „Customise your dataset“:
+        } @else {
+          Евростат отваря таблицата с други настройки. Отвори
+          <a [href]="guide.url" target="_blank" rel="noopener">{{ guide.dataset }}</a>
+          и в „Customise your dataset“ избери:
+        }
+      </p>
+
+      <dl class="dcb-eurostat-list">
+        @for (row of guide.rows; track row.dimension) {
+          <div class="dcb-eurostat-row">
+            <dt>{{ row.dimension }}</dt>
+            <dd>
+              <strong>{{ row.option }}</strong>
+              @if (row.code) {
+                <code>{{ row.code }}</code>
+              }
+              @if (row.meaning) {
+                <span class="dcb-eurostat-meaning">{{ row.meaning }}</span>
+              }
+            </dd>
+          </div>
+        }
+      </dl>
+    </section>
+  }
+
   @if (otherSources().length) {
     <section class="dcb-sources">
       <h4 class="dcb-section-title">
