@@ -35,17 +35,24 @@ body {
   width: 100%;
   max-width: var(--page-max);
   margin-inline: auto;
-  padding: 1.5rem var(--page-inset);
+  padding: 3rem var(--page-inset) 2rem;
   text-align: center;
+}
+
+/* Keeps the line of text short and centred instead of running the page's width. */
+.site-footer-inner {
+  max-width: 36rem;
+  margin-inline: auto;
 }
 
 .site-footer a {
   display: inline-block;
-  color: var(--ink-4);
+  margin-top: 1.5rem;
+  color: var(--ink);
 }
 
 .site-footer a:hover {
-  color: var(--ink);
+  color: var(--ink-2);
 }
 
 .site-footer svg {
@@ -53,10 +60,9 @@ body {
 }
 
 .site-footer p {
-  margin-top: 0.75rem;
   font-size: 0.875rem;
   line-height: 1.4;
-  color: var(--ink-4);
+  color: var(--ink);
 }
 
 /* The seat bar and party list of a Народно събрание bar. Global because the chart
