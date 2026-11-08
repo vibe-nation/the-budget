@@ -34,6 +34,7 @@ python3 $P public/budget/ZDBRB-2009.pdf --pages 3                               
 - `--col left|right` crops one column. ДВ sets running text in two columns, so a table row and an unrelated column's numbers land on the same output line.
 - Mojibake (`ÄÚÐÆÀÂÅÍ`, cp1251 rendered as Latin-1) is repaired automatically.
 - Exit status 1 plus a warning means **no text layer**: the page is a scan.
+- A warning about an **undecodable text layer** names pages set in a font whose codes map to no letters, as in the inner pages of ДВ issues from 2001. Their text is control codes, so a search there can't find anything. Read those pages as images.
 
 **When the page is a scan, or when columns are still interleaved after cropping, read the page image** with `Read` on the PDF and the `pages` parameter. It is faster and safer than fighting the extractor, and it is how the 2007, 2008 and 2009 judiciary tables were resolved.
 

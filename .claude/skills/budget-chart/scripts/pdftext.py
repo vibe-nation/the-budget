@@ -18,6 +18,10 @@ Usage:
 
 Exit status 1 and a warning on stderr when a page yields almost no text —
 that means a scanned PDF with no text layer; go to the DV issue instead.
+
+Some issues (DV 2001) set pages in a font whose codes map to no characters, so
+pdftotext emits control codes that no re-decoding repairs. --find names those
+pages on stderr instead of reporting a silent "no match": read their images.
 """
 import argparse, re, subprocess, sys
 
@@ -37,6 +41,36 @@ def _fix(text):
     if latin_high > 20 and latin_high > cyrillic:
         text = text.encode('latin1', 'replace').decode('cp1251', errors='replace')
     return text.replace(SOFT_HYPHEN, '')
+
+
+def garbled(text):
+    """True when the text layer is control codes rather than letters.
+
+    Control codes against Cyrillic letters, not a lack of Cyrillic alone: a page
+    of a numeric table has few letters and is still perfectly readable, and a
+    repaired cp1251 page keeps a little noise.
+    """
+    control = sum(c < ' ' and not c.isspace() for c in text)
+    cyrillic = sum('Ѐ' <= c <= 'ӿ' for c in text)
+    return control >= 100 and control > cyrillic
+
+
+def unreadable_warning(pdf, pages):
+    return (f'pdftext: {pdf} has an undecodable text layer on '
+            f'{"page" if len(pages) == 1 else "pages"} {_ranges(pages)} (a font with its own '
+            f'glyph codes): its text there is unreadable and a search finds nothing. Read those '
+            f'pages as images.')
+
+
+def _ranges(pages):
+    """1 2 3 7 9 10 → "1–3, 7, 9–10"."""
+    out, start = [], None
+    for i, pg in enumerate(pages):
+        start = pg if start is None else start
+        if i + 1 == len(pages) or pages[i + 1] != pg + 1:
+            out.append(str(pg) if pg == start else f'{start}–{pg}')
+            start = None
+    return ', '.join(out)
 
 
 def page_size(pdf):
@@ -93,10 +127,14 @@ def main():
     if a.find and not a.pages:
         pat = fuzzy(a.find)
         hits = []
+        unreadable = []
         chars = 0
         for pg in range(1, n_pages(a.pdf) + 1):
             text = extract(a.pdf, pg, pg, a.col)
             chars += len(text.strip())
+            if garbled(text):
+                unreadable.append(pg)
+                continue
             if pat.search(text):
                 hits.append(pg)
                 if a.context:
@@ -111,6 +149,8 @@ def main():
                   f'so "not found" here means nothing. Fetch the same law from '
                   f'dv.parliament.bg instead.', file=sys.stderr)
             return 1
+        if unreadable:
+            print(unreadable_warning(a.pdf, unreadable), file=sys.stderr)
         if not a.context:
             print(' '.join(map(str, hits)) if hits else '(no pages match)')
         if not hits:
@@ -124,6 +164,12 @@ def main():
               f'scan. Fetch the same law from dv.parliament.bg instead.',
               file=sys.stderr)
         return 1
+    pages = range(first, (last or first) + 1) if first else range(1, n_pages(a.pdf) + 1)
+    unreadable = [pg for pg in pages if garbled(extract(a.pdf, pg, pg, a.col))]
+    if unreadable:
+        print(unreadable_warning(a.pdf, unreadable), file=sys.stderr)
+        if len(unreadable) == len(pages):
+            return 1
     if a.find:
         pat = fuzzy(a.find)
         lines = text.split('\n')
