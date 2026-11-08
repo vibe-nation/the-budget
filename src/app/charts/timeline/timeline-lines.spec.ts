@@ -304,7 +304,7 @@ describe('chartCard', () => {
     it('never strays from the amount the law prints, whatever the series', () => {
       const lawSeries = (charts as unknown as ChartSeries[]).filter(({ data }) => data.some((point) => point.sources));
 
-      expect(lawSeries).toHaveLength(12);
+      expect(lawSeries).toHaveLength(13);
       const inUnits: Readonly<Record<string, number>> = { 'лв.': 1 / 1.95583, 'хил. лв.': 1_000 / 1.95583, 'млн. лв.': 1_000_000 / 1.95583, евро: 1, 'хил. евро': 1_000 };
       for (const { id, data } of lawSeries) {
         for (const { date, value, sources } of data) {

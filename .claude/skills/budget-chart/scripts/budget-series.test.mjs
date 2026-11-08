@@ -48,6 +48,18 @@ test('keeps a location its own amount, for a rounded second table', () => {
   assert.deepEqual([sources[0].amount, sources[1].amount, sources[1].amountUnit], [121873.7, 121.9, 'млн. лв.']);
 });
 
+test('cites a location in its own act, for an amendment that changes the figure', () => {
+  const amendment = { title: 'Закон за изменение на Закона за бюджета на X за 2014 г.', citation: 'ДВ, бр. 67 от 12.08.2014 г.', issue: 67, date: '2014-08-12', actUrl: 'https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=1', issueUrl: null };
+  const amended = { ...where, act: amendment };
+  const adopted = { ...where, amount: 400000 };
+  const [{ value, sources }] = buildSeries(input([row({ sources: [amended, adopted] })]), acts).data;
+
+  assert.equal(value, 221900676.44);
+  assert.deepEqual([sources[0].title, sources[0].gazette.citation, sources[0].amount], [amendment.title, amendment.citation, 434000]);
+  assert.deepEqual([sources[1].title, sources[1].amount], ['Закон за държавния бюджет на Република България за 2014 г.', 400000]);
+  assert.throws(() => buildSeries(input([row({ sources: [{ ...amended, act: { ...amendment, actUrl: null } }] })]), acts), /no gazette link/);
+});
+
 for (const missing of ['article', 'label', 'column', 'page', 'filePage', 'checks']) {
   test(`refuses a value with no ${missing}`, () => {
     const { [missing]: _, ...rest } = where;

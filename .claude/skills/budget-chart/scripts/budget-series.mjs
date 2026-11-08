@@ -35,8 +35,9 @@ export const symmetricPercent = (previous, value) => {
   return mean === 0 ? 0 : Number((((value - previous) / mean) * 100).toFixed(2));
 };
 
-function citation(where, row, act) {
-  const { article, paragraph, point, letter, annex, label, column, page, actPage, filePage, checks, amount = row.amount, unit = row.unit } = where;
+/* A location may name its own act: an amendment that changes the figure is cited beside the law it amends. */
+function citation(where, row, rowAct) {
+  const { article, paragraph, point, letter, annex, label, column, page, actPage, filePage, checks, amount = row.amount, unit = row.unit, act = rowAct } = where;
   const at = `${row.date}: ${label ?? 'a source'}`;
   for (const [name, value] of Object.entries({ article, label, column, filePage, checks })) {
     if (value === undefined || value === null || value === '') throw new Error(`${at} has no ${name}`);

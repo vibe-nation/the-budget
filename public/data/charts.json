@@ -6374,6 +6374,1274 @@
     ]
   },
   {
+    "id": "nzok-budget-eur",
+    "name": "Бюджет на НЗОК",
+    "sources": [
+      {
+        "name": {
+          "en": "National Health Insurance Fund Budget Acts, 2000–2026 (adopted expenditure and transfers, State Gazette)",
+          "bg": "Закони за бюджета на Националната здравноосигурителна каса, 2000–2026 г. (приети разходи и трансфери, „Държавен вестник“)"
+        },
+        "dataset_id": "ZBNZOK",
+        "url": ["https://dv.parliament.bg/DVWeb/broeveList.faces"]
+      }
+    ],
+    "dataset": {
+      "id": "ZBNZOK",
+      "label": {
+        "en": "National Health Insurance Fund Budget Act",
+        "bg": "Закон за бюджета на Националната здравноосигурителна каса"
+      },
+      "selection": {
+        "freq": {
+          "code": "A",
+          "label": {
+            "en": "Annual",
+            "bg": "Годишно"
+          }
+        },
+        "institution": {
+          "code": "NZOK",
+          "label": {
+            "en": "National Health Insurance Fund",
+            "bg": "Национална здравноосигурителна каса"
+          }
+        },
+        "indicator": {
+          "code": "EXPENDITURE_AND_TRANSFERS",
+          "label": {
+            "en": "Adopted expenditure and transfers",
+            "bg": "Приети разходи и трансфери"
+          }
+        }
+      }
+    },
+    "unit": "EUR",
+    "meta": {
+      "wholeYear": true
+    },
+    "data": [
+      {
+        "date": "2000-12-31",
+        "value": 131109609.73,
+        "change": 0,
+        "change_percent": 0,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2000 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=148448&allowCache=true&openDirectly=false",
+            "amount": 256428108,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 1 от 4.01.2000 г.",
+              "issue": 1,
+              "extraordinary": false,
+              "date": "2000-01-04",
+              "page": 18,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=148448&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ—ВСИЧКО",
+            "column": "В лева",
+            "filePage": 18,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 + 3 = II; I − II = V; V + VI = 0"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2001-12-31",
+        "value": 245091453.24,
+        "change": 113981843.51,
+        "change_percent": 60.6,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2001 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=165401&allowCache=true&openDirectly=false",
+            "amount": 479357217,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 108 от 29.12.2000 г.",
+              "issue": 108,
+              "extraordinary": false,
+              "date": "2000-12-29",
+              "page": 22,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=165401&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "I. Разходи—всичко",
+            "column": "Сума (лв.)",
+            "filePage": 22,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 + 3 = разходи; приходи − разходи = излишък (ал. 3)"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2002-12-31",
+        "value": 280664474.93,
+        "change": 35573021.69,
+        "change_percent": 13.53,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2002 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=142387&allowCache=true&openDirectly=false",
+            "amount": 548932,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 110 от 21.12.2001 г.",
+              "issue": 110,
+              "extraordinary": false,
+              "date": "2001-12-21",
+              "page": 10,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=142387&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума (хил. лв.)",
+            "filePage": 10,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 + 3 = II; I − II = излишък (ал. 3)"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2003-12-31",
+        "value": 396769146.6,
+        "change": 116104671.67,
+        "change_percent": 34.28,
+        "sources": [
+          {
+            "title": "Закон за изменение и допълнение на Закона за бюджета на Националната здравноосигурителна каса за 2003 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=124540&allowCache=true&openDirectly=false",
+            "amount": 776013,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 107 от 9.12.2003 г.",
+              "issue": 107,
+              "extraordinary": false,
+              "date": "2003-12-09",
+              "page": 2,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=123325",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=124540&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "§ 1, т. 1, б. „б“: ред II. Разходи",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 2,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 − 2.1 + 3 = II"
+            }
+          },
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2003 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=142384&allowCache=true&openDirectly=false",
+            "amount": 731013,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 119 от 27.12.2002 г.",
+              "issue": 119,
+              "extraordinary": false,
+              "date": "2002-12-27",
+              "page": 17,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=142384&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. Разходи",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 17,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 + 3 = II; I − II = излишък (ал. 3)"
+            }
+          }
+        ],
+        "note": "Законът приема разходи и трансфери за 731 013 хил. лв. Законът за изменение и допълнение (ДВ, бр. 107 от 2003 г.) ги увеличава на 776 013 хил. лв."
+      },
+      {
+        "date": "2004-12-31",
+        "value": 459852746.4,
+        "change": 63083599.8,
+        "change_percent": 14.73,
+        "sources": [
+          {
+            "title": "Закон за изменение на Закона за бюджета на Националната здравноосигурителна каса за 2004 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=83391&allowCache=true&openDirectly=false",
+            "amount": 899393797,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 115 от 30.12.2004 г.",
+              "issue": 115,
+              "extraordinary": false,
+              "date": "2004-12-30",
+              "page": 2,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=18026",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=83391&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "§ 1, т. 2, б. „а“: текстът на ал. 2",
+            "column": "текст",
+            "filePage": 2,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "II + III = обща сума"
+            }
+          },
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2004 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=124554&allowCache=true&openDirectly=false",
+            "amount": 879393797,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 114 от 30.12.2003 г.",
+              "issue": 114,
+              "extraordinary": false,
+              "date": "2003-12-30",
+              "page": 43,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=124343",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=124554&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "по разходите и трансфера на обща сума",
+            "column": "текст",
+            "filePage": 43,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "II + III = обща сума; I − обща сума = −дефицит (ал. 3)"
+            }
+          }
+        ],
+        "note": "Законът приема разходи и трансфери за 879 393 797 лв. Законът за изменение (ДВ, бр. 115 от 2004 г.) ги увеличава на 899 393 797 лв."
+      },
+      {
+        "date": "2005-12-31",
+        "value": 548253012.79,
+        "change": 88400266.39,
+        "change_percent": 17.54,
+        "sources": [
+          {
+            "title": "Закон за изменение на Закона за бюджета на Националната здравноосигурителна каса за 2005 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=81298&allowCache=true&openDirectly=false",
+            "amount": 1072289690,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 102 от 20.12.2005 г.",
+              "issue": 102,
+              "extraordinary": false,
+              "date": "2005-12-20",
+              "page": 4,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=1153",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=81298&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "§ 1, т. 2, б. „а“: текстът на ал. 2",
+            "column": "текст",
+            "filePage": 4,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 + 3 = II; II + III = обща сума"
+            }
+          },
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2005 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=83391&allowCache=true&openDirectly=false",
+            "amount": 984289690,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 115 от 30.12.2004 г.",
+              "issue": 115,
+              "extraordinary": false,
+              "date": "2004-12-30",
+              "page": 2,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=18016",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=83391&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "по разходите и трансфера на обща сума",
+            "column": "текст",
+            "filePage": 2,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 + 3 = II; II + III = обща сума"
+            }
+          }
+        ],
+        "note": "Законът приема разходи и трансфери за 984 289 690 лв. Законът за изменение (ДВ, бр. 102 от 2005 г.) ги увеличава на 1 072 289 690 лв."
+      },
+      {
+        "date": "2006-12-31",
+        "value": 695151419.09,
+        "change": 146898406.3,
+        "change_percent": 23.63,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2006 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=81298&allowCache=true&openDirectly=false",
+            "amount": 1359598,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 102 от 20.12.2005 г.",
+              "issue": 102,
+              "extraordinary": false,
+              "date": "2005-12-20",
+              "page": 20,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=1164",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=81298&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "по разходите и трансфера на обща сума",
+            "column": "текст",
+            "filePage": 20,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 + 3 = II; II + |III| = обща сума; I − обща сума = −дефицит (ал. 3)"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2007-12-31",
+        "value": 792985586.68,
+        "change": 97834167.59,
+        "change_percent": 13.15,
+        "sources": [
+          {
+            "title": "Закон за изменение на Закона за бюджета на Националната здравноосигурителна каса за 2007 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=57013&allowCache=true&openDirectly=false",
+            "amount": 1550945,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 98 от 27.11.2007 г.",
+              "issue": 98,
+              "extraordinary": false,
+              "date": "2007-11-27",
+              "page": 7,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=4451",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=57013&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "§ 1, т. 2, б. „б“: ред II. Разходи",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 7,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 + 3 = II"
+            }
+          },
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2007 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=77136&allowCache=true&openDirectly=false",
+            "amount": 1464945,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 105 от 22.12.2006 г.",
+              "issue": 105,
+              "extraordinary": false,
+              "date": "2006-12-22",
+              "page": 110,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=3008",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=77136&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 110,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 + 3 = II"
+            }
+          }
+        ],
+        "note": "Законът приема разходи и трансфери за 1 464 945 хил. лв. Законът за изменение (ДВ, бр. 98 от 2007 г.) ги увеличава на 1 550 945 хил. лв."
+      },
+      {
+        "date": "2008-12-31",
+        "value": 862097932.85,
+        "change": 69112346.17,
+        "change_percent": 8.35,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2008 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=48881&allowCache=true&openDirectly=false",
+            "amount": 1686117,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 113 от 28.12.2007 г.",
+              "issue": 113,
+              "extraordinary": false,
+              "date": "2007-12-28",
+              "page": 24,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=4613",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=48881&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ - ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 24,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 + 3 + 4 = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2009-12-31",
+        "value": 1058978541.08,
+        "change": 196880608.23,
+        "change_percent": 20.5,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2009 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=60382&allowCache=true&openDirectly=false",
+            "amount": 2071182,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 109 от 23.12.2008 г.",
+              "issue": 109,
+              "extraordinary": false,
+              "date": "2008-12-23",
+              "page": 21,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=13583",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=60382&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ - ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 21,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + … + 5 = II; I − II = излишък (ал. 3)"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2010-12-31",
+        "value": 1042745023.85,
+        "change": -16233517.23,
+        "change_percent": -1.54,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2011 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=95686&allowCache=true&openDirectly=false",
+            "amount": 2039432,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 98 от 14.12.2010 г.",
+              "issue": 98,
+              "extraordinary": false,
+              "date": "2010-12-14",
+              "page": 37,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=41232",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=95686&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "§ 10, т. 1, б. „б“: ред II. Разходи и трансфери – всичко",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 37,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 + 3 + 4 = II"
+            }
+          },
+          {
+            "title": "Закон за изменение и допълнение на Закона за бюджета на Националната здравноосигурителна каса за 2010 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=89801&allowCache=true&openDirectly=false",
+            "amount": 1909432,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 62 от 10.08.2010 г.",
+              "issue": 62,
+              "extraordinary": false,
+              "date": "2010-08-10",
+              "page": 10,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=35520",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=89801&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "§ 1, т. 2, б. „б“: ред II. Разходи и трансфери – всичко",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 10,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 + 3 + 4 = II"
+            }
+          },
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2010 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=84713&allowCache=true&openDirectly=false",
+            "amount": 1689432,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 99 от 15.12.2009 г.",
+              "issue": 99,
+              "extraordinary": false,
+              "date": "2009-12-15",
+              "page": 79,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=27581",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=84713&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 79,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 + 3 + 4 = II; I − II = излишък (ал. 3)"
+            }
+          }
+        ],
+        "note": "Законът приема разходи и трансфери за 1 689 432 хил. лв. Законът за изменение и допълнение (ДВ, бр. 62 от 2010 г.) ги увеличава на 1 909 432 хил. лв. § 10, т. 1, б. „б“ от Закона за бюджета на НЗОК за 2011 г. (ДВ, бр. 98 от 2010 г.) ги увеличава на 2 039 432 хил. лв."
+      },
+      {
+        "date": "2011-12-31",
+        "value": 1346604766.26,
+        "change": 303859742.41,
+        "change_percent": 25.43,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2011 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=95686&allowCache=true&openDirectly=false",
+            "amount": 2633730,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 98 от 14.12.2010 г.",
+              "issue": 98,
+              "extraordinary": false,
+              "date": "2010-12-14",
+              "page": 35,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=41232",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=95686&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 35,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + … + 5 = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2012-12-31",
+        "value": 1346604766.26,
+        "change": 0,
+        "change_percent": 0,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2012 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=113175&allowCache=true&openDirectly=false",
+            "amount": 2633730,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 99 от 16.12.2011 г.",
+              "issue": 99,
+              "extraordinary": false,
+              "date": "2011-12-16",
+              "page": 7,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=59424",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=113175&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 7,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + … + 5 = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2013-12-31",
+        "value": 1399546995.39,
+        "change": 52942229.13,
+        "change_percent": 3.86,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2014 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=141369&allowCache=true&openDirectly=false",
+            "amount": 2737276,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 106 от 10.12.2013 г.",
+              "issue": 106,
+              "extraordinary": false,
+              "date": "2013-12-10",
+              "page": 23,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=80850",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=141369&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "§ 15, т. 1, б. „б“: ред II. Разходи и трансфери – всичко",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 23,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 = II"
+            }
+          },
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2013 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=124824&allowCache=true&openDirectly=false",
+            "amount": 2710276,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 101 от 18.12.2012 г.",
+              "issue": 101,
+              "extraordinary": false,
+              "date": "2012-12-18",
+              "page": 2,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=71094",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=124824&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 2,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 = II; 1.1 + 1.2 + 1.3 = 1"
+            }
+          }
+        ],
+        "note": "Законът приема разходи и трансфери за 2 710 276 хил. лв. § 15, т. 1, б. „б“ от Закона за бюджета на НЗОК за 2014 г. (ДВ, бр. 106 от 2013 г.) ги увеличава на 2 737 276 хил. лв."
+      },
+      {
+        "date": "2014-12-31",
+        "value": 1609603084.11,
+        "change": 210056088.72,
+        "change_percent": 13.96,
+        "sources": [
+          {
+            "title": "Закон за изменение и допълнение на Закона за бюджета на Националната здравноосигурителна каса за 2014 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=163674&allowCache=true&openDirectly=false",
+            "amount": 3148110,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 98 от 28.11.2014 г.",
+              "issue": 98,
+              "extraordinary": false,
+              "date": "2014-11-28",
+              "page": 13,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=90170",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=163674&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "§ 1, т. 1, б. „б“: ред II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 13,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 = II"
+            }
+          },
+          {
+            "title": "Закон за изменение и допълнение на Закона за бюджета на Националната здравноосигурителна каса за 2014 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=159296&allowCache=true&openDirectly=false",
+            "amount": 3048110,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 67 от 12.08.2014 г.",
+              "issue": 67,
+              "extraordinary": false,
+              "date": "2014-08-12",
+              "page": 2,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=87153",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=159296&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "§ 1, т. 2, б. „б“: ред II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 2,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 = II"
+            }
+          },
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2014 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=141369&allowCache=true&openDirectly=false",
+            "amount": 2823110,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 106 от 10.12.2013 г.",
+              "issue": 106,
+              "extraordinary": false,
+              "date": "2013-12-10",
+              "page": 20,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=80850",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=141369&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 20,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 = II; 1.1 + … + 1.4 = 1"
+            }
+          }
+        ],
+        "note": "Законът приема разходи и трансфери за 2 823 110 хил. лв. Законът за изменение и допълнение (ДВ, бр. 67 от 2014 г.) ги увеличава на 3 048 110 хил. лв. Законът за изменение и допълнение (ДВ, бр. 98 от 2014 г.) ги увеличава на 3 148 110 хил. лв."
+      },
+      {
+        "date": "2015-12-31",
+        "value": 1572495564.54,
+        "change": -37107519.57,
+        "change_percent": -2.33,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2015 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=165335&allowCache=true&openDirectly=false",
+            "amount": 3075534,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 107 от 24.12.2014 г.",
+              "issue": 107,
+              "extraordinary": false,
+              "date": "2014-12-24",
+              "page": 4,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=90898",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=165335&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 4,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 = II; 1.1 + 1.3 + 1.4 = 1 (1.2 е в 1.1)"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-12-31",
+        "value": 1638562144.97,
+        "change": 66066580.43,
+        "change_percent": 4.11,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2016 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=204299&allowCache=true&openDirectly=false",
+            "amount": 3204749,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 98 от 15.12.2015 г.",
+              "issue": 98,
+              "extraordinary": false,
+              "date": "2015-12-15",
+              "page": 3,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=99250",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=204299&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 3,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 = II; 1.1 + 1.2 + 1.3 = 1"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-12-31",
+        "value": 1765396788.06,
+        "change": 126834643.09,
+        "change_percent": 7.45,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2017 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=246702&allowCache=true&openDirectly=false",
+            "amount": 3452816,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 98 от 9.12.2016 г.",
+              "issue": 98,
+              "extraordinary": false,
+              "date": "2016-12-09",
+              "page": 14,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=109994",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=246702&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 14,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 = II; 1.1 + 1.2 + 1.3 = 1"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2018-12-31",
+        "value": 1973575413,
+        "change": 208178624.94,
+        "change_percent": 11.14,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2018 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=285018&allowCache=true&openDirectly=false",
+            "amount": 3859978,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 101 от 19.12.2017 г.",
+              "issue": 101,
+              "extraordinary": false,
+              "date": "2017-12-19",
+              "page": 14,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=120930",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=285018&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 14,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 = II; 1.1 + 1.2 + 1.3 = 1"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-12-31",
+        "value": 2224121217.08,
+        "change": 250545804.08,
+        "change_percent": 11.94,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2019 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=326600&allowCache=true&openDirectly=false",
+            "amount": 4350003,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 102 от 11.12.2018 г.",
+              "issue": 102,
+              "extraordinary": false,
+              "date": "2018-12-11",
+              "page": 3,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=132509",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=326600&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 3,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 + 2 = II; 1.1 + 1.2 + 1.3 = 1"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2020-12-31",
+        "value": 2425929094.04,
+        "change": 201807876.96,
+        "change_percent": 8.68,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2020 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=143519",
+            "amount": 4744704.9,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 99 от 17.12.2019 г.",
+              "issue": 99,
+              "extraordinary": false,
+              "date": "2019-12-17",
+              "page": null,
+              "actPage": 3,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=143519",
+              "issueUrl": null
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 1,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "1 + 2 = II; 1.1 + 1.2 + 1.3 = 1"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2021-12-31",
+        "value": 2784655568.22,
+        "change": 358726474.18,
+        "change_percent": 13.77,
+        "sources": [
+          {
+            "title": "Закон за изменение и допълнение на Закона за бюджета на Националната здравноосигурителна каса за 2021 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=453943&allowCache=true&openDirectly=false",
+            "amount": 5446312.9,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 77 от 16.09.2021 г.",
+              "issue": 77,
+              "extraordinary": false,
+              "date": "2021-09-16",
+              "page": 10,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=162062",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=453943&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "§ 1, т. 2, б. „б“: ред II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 10,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 = II; 1.1 + 1.2 + 1.3 = 1"
+            }
+          },
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2021 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=414278&allowCache=true&openDirectly=false",
+            "amount": 5341312.9,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 103 от 4.12.2020 г.",
+              "issue": 103,
+              "extraordinary": false,
+              "date": "2020-12-04",
+              "page": 11,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=154059",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=414278&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 11,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 = II; 1.1 + 1.2 + 1.3 = 1"
+            }
+          }
+        ],
+        "note": "Законът приема разходи и трансфери за 5 341 312,9 хил. лв. Законът за изменение и допълнение (ДВ, бр. 77 от 2021 г.) ги увеличава на 5 446 312,9 хил. лв."
+      },
+      {
+        "date": "2022-12-31",
+        "value": 3127217038.29,
+        "change": 342561470.07,
+        "change_percent": 11.59,
+        "sources": [
+          {
+            "title": "Закон за изменение на Закона за бюджета на Националната здравноосигурителна каса за 2022 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=506403&allowCache=true&openDirectly=false",
+            "amount": 6116304.9,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 52 от 5.07.2022 г.",
+              "issue": 52,
+              "extraordinary": false,
+              "date": "2022-07-05",
+              "page": 2,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=174604",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=506403&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "§ 1, т. 2, б. „б“: ред II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 2,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 = II; 1.1 + 1.2 + 1.3 = 1 с § 32 от ЗИД на ЗДБРБ 2022"
+            }
+          },
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2022 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=479139&allowCache=true&openDirectly=false",
+            "amount": 6050749.9,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 18 от 4.03.2022 г.",
+              "issue": 18,
+              "extraordinary": false,
+              "date": "2022-03-04",
+              "page": 2,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=170129",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=479139&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 2,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "1 = II; 1.1 + 1.2 + 1.3 = 1"
+            }
+          }
+        ],
+        "note": "Законът приема разходи и трансфери за 6 050 749,9 хил. лв. Законът за изменение (ДВ, бр. 52 от 2022 г.) ги увеличава на 6 116 304,9 хил. лв. § 32 от Закона за изменение и допълнение на Закона за държавния бюджет на Република България за 2022 г. (ДВ, бр. 52 от 2022 г.) премества суми между редовете, без да променя общата сума."
+      },
+      {
+        "date": "2023-12-31",
+        "value": 3592957261.11,
+        "change": 465740222.82,
+        "change_percent": 13.86,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2023 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=197925",
+            "amount": 7027213.6,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 66 от 1.08.2023 г.",
+              "issue": 66,
+              "extraordinary": false,
+              "date": "2023-08-01",
+              "page": null,
+              "actPage": 34,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=197925",
+              "issueUrl": null
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 1,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "1 = II; 1.1 + 1.2 + 1.3 = 1"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2024-12-31",
+        "value": 4176412622.77,
+        "change": 583455361.66,
+        "change_percent": 15.02,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2024 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=202042",
+            "amount": 8168353.1,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 106 от 22.12.2023 г.",
+              "issue": 106,
+              "extraordinary": false,
+              "date": "2023-12-22",
+              "page": null,
+              "actPage": 73,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=202042",
+              "issueUrl": null
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 1,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "1 = II; 1.1 + 1.2 + 1.3 = 1"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2025-12-31",
+        "value": 4844345469.7,
+        "change": 667932846.93,
+        "change_percent": 14.81,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2025 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=233618",
+            "amount": 9474716.2,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 25 от 25.03.2025 г.",
+              "issue": 25,
+              "extraordinary": false,
+              "date": "2025-03-25",
+              "page": null,
+              "actPage": 30,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=233618",
+              "issueUrl": null
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. лв.)",
+            "filePage": 1,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "1 = II; 1.1 + 1.2 + 1.3 = 1"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2026-12-31",
+        "value": 5256677200,
+        "change": 412331730.3,
+        "change_percent": 8.16,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Националната здравноосигурителна каса за 2026 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=244981",
+            "amount": 5256677.2,
+            "amountUnit": "хил. евро",
+            "gazette": {
+              "citation": "ДВ, бр. 68 от 28.07.2026 г.",
+              "issue": 68,
+              "extraordinary": false,
+              "date": "2026-07-28",
+              "page": null,
+              "actPage": 34,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=244981",
+              "issueUrl": null
+            },
+            "article": 1,
+            "paragraph": 2,
+            "row": "II. РАЗХОДИ И ТРАНСФЕРИ – ВСИЧКО",
+            "column": "Сума (в хил. евро)",
+            "filePage": 1,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "1 = II; 1.1 + 1.2 + 1.3 = 1"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "judiciary-budget-eur",
     "name": "Бюджет на съдебната власт",
     "sources": [

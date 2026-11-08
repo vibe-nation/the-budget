@@ -35,7 +35,19 @@ This returned no file for 2023–2026, or for бр. 99 от 2019 г., so those h
 
 In a full-issue PDF, the PDF page equals the printed page. Minfin's and НОИ's PDFs are extracts or retyped, so their pages differ. Read the printed page from the `СТР. N` header, or find the figure in the issue. In older issues the headers decode as cp1251.
 
+**The yearly index finds an act before 2004.** Until 2002, the year's last issue ends with „Справочник на „Държавен вестник“ за <year> г.“, which lists each act as `issue/page` under its institution: „Национална здравноосигурителна каса, Закон за бюджета на—за 2001 г. 108/22“. The same entry lists that body's other acts, so a ЗИД of the act would be listed there too. An amendment made inside another law is not, so say so when you rely on the index. An issue's first page lists its contents with pages.
+
+Some pages of old issues use fonts with no text mapping, and `pdftext.py` returns symbols. `бр. 110 от 2001 г.` is one. Render the page with `pdftoppm -f N -l N -r 130 -png` and read the image.
+
 Old issues are set in two columns. Use `pdftotext` without `-layout` to find a phrase: with it, the columns interleave and the phrase breaks. The text layer can space out letters („Национа лна“), so search for the digits. In `zsh`, a line starting `===` fails, and `pkill -f <name>` can kill its own shell.
+
+## lex.bg
+
+[lex.bg](https://lex.bg) publishes acts with their history, which makes it a quick place to look things up. It is never the source a value cites.
+
+- **Amendment history.** An act's page starts with „Обн. ДВ. бр. …“, followed by every „изм.“, „доп.“ and „попр. ДВ. бр. …“. This includes amendments made by other laws. Use it to list what step 5 has to read, then read each one in the gazette.
+- **The text is consolidated.** The page shows the act as it stands now, with amendments folded in, so its figures may not be the adopted ones. Read the figure from the gazette.
+- **Fetching.** The pages are cp1251. Act pages are at `https://lex.bg/laws/ldoc/<id>` and open with `curl -A research-client`. The site search needs a browser session: a plain POST returns „Няма резултати“, which says nothing about whether the act exists.
 
 ## Polite use
 
