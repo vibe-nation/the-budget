@@ -1,0 +1,970 @@
+{
+  "title": "Периоди на действие на законите за държавния бюджет на Република България",
+  "description": "За всяка бюджетна година: какво казва законът (номинален период), кога законът е приет и обнародван, и кой бюджет реално е управлявал разходите във всеки отрязък от време между 2000 и 2026 г.",
+  "extractedFrom": "Законите в тази папка (index.json) и обнародваните удължителни закони",
+  "extractedOn": "2026-08-24",
+  "notes": [
+    "Всеки закон за държавния бюджет влиза в сила от 1 януари на своята година — включително когато е приет месеци по-късно. `nominalFrom`/`nominalTo` е този период; сумите в parite-na-horata.json са за цялата година и не се пресмятат пропорционално.",
+    "`appliedFrom` е денят на обнародването, когато то е след 1 януари — тоест денят, от който законът реално започва да се прилага. Разликата спрямо 1 януари е `lateByDays`.",
+    "Периодът преди `appliedFrom` е в `gap` и е управляван от удължителен закон, който пренася рамката на предходната година. Затова `gap.carriedOverBudgetYear` е предходната година.",
+    "Удължителните закони също влизат в сила с обратна дата от 1 януари, макар да са обнародвани по-късно — виж `laws[].inForceFrom` спрямо `laws[].promulgated`.",
+    "`regimes` е непрекъснато разбиване на времето от 2000-01-01 до 2026-12-31 без празнини и без застъпване: всеки отрязък казва коя бюджетна рамка е била в сила тогава. Това е редът, който се нанася директно на времева ос.",
+    "`inUseFrom`/`inUseTo`/`inUseDays` събират всички отрязъци на една бюджетна година — собствения ѝ период плюс времето, в което е била удължавана в следващата година. Бюджетът за 2025 г. например е бил в сила 16 месеца.",
+    "`inForceFromVerified: false` означава, че клаузата „Законът влиза в сила от 1 януари“ не е прочетена в самия PDF — сканираните броеве за 2000, 2001, 2007, 2008 и 2010 г. нямат годен текстов слой. Всички тези закони са обнародвани през декември на предходната година, така че празнина няма; единственото изключение е 2000 г., обнародван на 4 януари.",
+    "Датите на приемане (`law.adopted`) са прочетени от заключителната разпоредба на самия закон или от указа за обнародването му. Там, където PDF-ът е сканиран без текстов слой, стойността е null — не е налучквана."
+  ],
+  "budgets": [
+    {
+      "year": 2000,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2000 г.",
+        "dv": "ДВ, бр. 1 от 4.01.2000 г.",
+        "file": "ZDBRB-2000--DV-br-1-2000.pdf",
+        "adopted": null,
+        "assembly": null,
+        "promulgated": "2000-01-04",
+        "inForceReference": null,
+        "inForceFromVerified": false
+      },
+      "nominalFrom": "2000-01-01",
+      "nominalTo": "2000-12-31",
+      "appliedFrom": "2000-01-04",
+      "appliedTo": "2000-12-31",
+      "lateByDays": 3,
+      "gap": {
+        "from": "2000-01-01",
+        "to": "2000-01-03",
+        "carriedOverBudgetYear": 1999,
+        "laws": [],
+        "note": "Законът е обнародван на 4 януари 2000 г.; текстовият слой на сканирания брой на ДВ не позволи да се провери клаузата за влизане в сила, затова първите три дни на годината остават непроверени."
+      },
+      "inUseFrom": "2000-01-04",
+      "inUseTo": "2000-12-31",
+      "inUseDays": 363
+    },
+    {
+      "year": 2001,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2001 г.",
+        "dv": "ДВ, бр. 108 от 29.12.2000 г.",
+        "file": "ZDBRB-2001--DV-br-108-2000.pdf",
+        "adopted": null,
+        "assembly": null,
+        "promulgated": "2000-12-29",
+        "inForceReference": null,
+        "inForceFromVerified": false
+      },
+      "nominalFrom": "2001-01-01",
+      "nominalTo": "2001-12-31",
+      "appliedFrom": "2001-01-01",
+      "appliedTo": "2001-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2001-01-01",
+      "inUseTo": "2001-12-31",
+      "inUseDays": 365
+    },
+    {
+      "year": 2002,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2002 г.",
+        "dv": "ДВ, бр. 111 от 28.12.2001 г.",
+        "file": "ZDBRB-2002.pdf",
+        "adopted": null,
+        "assembly": null,
+        "promulgated": "2001-12-28",
+        "inForceReference": null,
+        "inForceFromVerified": false
+      },
+      "nominalFrom": "2002-01-01",
+      "nominalTo": "2002-12-31",
+      "appliedFrom": "2002-01-01",
+      "appliedTo": "2002-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2002-01-01",
+      "inUseTo": "2002-12-31",
+      "inUseDays": 365
+    },
+    {
+      "year": 2003,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2003 г.",
+        "dv": "ДВ, бр. 120 от 29.12.2002 г.",
+        "file": "ZDBRB-2003.pdf",
+        "adopted": null,
+        "assembly": null,
+        "promulgated": "2002-12-29",
+        "inForceReference": null,
+        "inForceFromVerified": false
+      },
+      "nominalFrom": "2003-01-01",
+      "nominalTo": "2003-12-31",
+      "appliedFrom": "2003-01-01",
+      "appliedTo": "2003-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2003-01-01",
+      "inUseTo": "2003-12-31",
+      "inUseDays": 365
+    },
+    {
+      "year": 2004,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2004 г.",
+        "dv": "ДВ, бр. 114 от 30.12.2003 г.",
+        "file": "ZDBRB-2004.pdf",
+        "adopted": "2003-12-18",
+        "assembly": "39-то Народно събрание",
+        "promulgated": "2003-12-30",
+        "inForceReference": null,
+        "inForceFromVerified": false
+      },
+      "nominalFrom": "2004-01-01",
+      "nominalTo": "2004-12-31",
+      "appliedFrom": "2004-01-01",
+      "appliedTo": "2004-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2004-01-01",
+      "inUseTo": "2004-12-31",
+      "inUseDays": 366
+    },
+    {
+      "year": 2005,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2005 г.",
+        "dv": "ДВ, бр. 115 от 30.12.2004 г.",
+        "file": "ZDBRB-2005.pdf",
+        "adopted": "2004-12-19",
+        "assembly": "39-то Народно събрание",
+        "promulgated": "2004-12-30",
+        "inForceReference": null,
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2005-01-01",
+      "nominalTo": "2005-12-31",
+      "appliedFrom": "2005-01-01",
+      "appliedTo": "2005-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2005-01-01",
+      "inUseTo": "2005-12-31",
+      "inUseDays": 365
+    },
+    {
+      "year": 2006,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2006 г.",
+        "dv": "ДВ, бр. 105 от 29.12.2005 г.",
+        "file": "ZDBRB-2006.pdf",
+        "adopted": "2005-12-20",
+        "assembly": "40-то Народно събрание",
+        "promulgated": "2005-12-29",
+        "inForceReference": "§ 96",
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2006-01-01",
+      "nominalTo": "2006-12-31",
+      "appliedFrom": "2006-01-01",
+      "appliedTo": "2006-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2006-01-01",
+      "inUseTo": "2006-12-31",
+      "inUseDays": 365
+    },
+    {
+      "year": 2007,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2007 г.",
+        "dv": "ДВ, бр. 108 от 29.12.2006 г.",
+        "file": "ZDBRB-2007.pdf",
+        "adopted": null,
+        "assembly": null,
+        "promulgated": "2006-12-29",
+        "inForceReference": null,
+        "inForceFromVerified": false
+      },
+      "nominalFrom": "2007-01-01",
+      "nominalTo": "2007-12-31",
+      "appliedFrom": "2007-01-01",
+      "appliedTo": "2007-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2007-01-01",
+      "inUseTo": "2007-12-31",
+      "inUseDays": 365
+    },
+    {
+      "year": 2008,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2008 г.",
+        "dv": "ДВ, бр. 113 от 28.12.2007 г.",
+        "file": "ZDBRB-2008.pdf",
+        "adopted": null,
+        "assembly": null,
+        "promulgated": "2007-12-28",
+        "inForceReference": null,
+        "inForceFromVerified": false
+      },
+      "nominalFrom": "2008-01-01",
+      "nominalTo": "2008-12-31",
+      "appliedFrom": "2008-01-01",
+      "appliedTo": "2008-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2008-01-01",
+      "inUseTo": "2008-12-31",
+      "inUseDays": 366
+    },
+    {
+      "year": 2009,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2009 г.",
+        "dv": "ДВ, бр. 110 от 30.12.2008 г.",
+        "file": "ZDBRB-2009.pdf",
+        "adopted": null,
+        "assembly": null,
+        "promulgated": "2008-12-30",
+        "inForceReference": null,
+        "inForceFromVerified": false
+      },
+      "nominalFrom": "2009-01-01",
+      "nominalTo": "2009-12-31",
+      "appliedFrom": "2009-01-01",
+      "appliedTo": "2009-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2009-01-01",
+      "inUseTo": "2009-12-31",
+      "inUseDays": 365
+    },
+    {
+      "year": 2010,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2010 г.",
+        "dv": "ДВ, бр. 99 от 15.12.2009 г.",
+        "file": "ZDBRB-2010.pdf",
+        "adopted": null,
+        "assembly": null,
+        "promulgated": "2009-12-15",
+        "inForceReference": null,
+        "inForceFromVerified": false
+      },
+      "nominalFrom": "2010-01-01",
+      "nominalTo": "2010-12-31",
+      "appliedFrom": "2010-01-01",
+      "appliedTo": "2010-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2010-01-01",
+      "inUseTo": "2010-12-31",
+      "inUseDays": 365
+    },
+    {
+      "year": 2011,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2011 г.",
+        "dv": "ДВ, бр. 99 от 17.12.2010 г.",
+        "file": "ZDBRB-2011.pdf",
+        "adopted": "2010-12-02",
+        "assembly": "41-ото Народно събрание",
+        "promulgated": "2010-12-17",
+        "inForceReference": null,
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2011-01-01",
+      "nominalTo": "2011-12-31",
+      "appliedFrom": "2011-01-01",
+      "appliedTo": "2011-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2011-01-01",
+      "inUseTo": "2011-12-31",
+      "inUseDays": 365
+    },
+    {
+      "year": 2012,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2012 г.",
+        "dv": "ДВ, бр. 99 от 16.12.2011 г.",
+        "file": "ZDBRB-2012.pdf",
+        "adopted": "2011-12-08",
+        "assembly": "41-ото Народно събрание",
+        "promulgated": "2011-12-16",
+        "inForceReference": "§ 76",
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2012-01-01",
+      "nominalTo": "2012-12-31",
+      "appliedFrom": "2012-01-01",
+      "appliedTo": "2012-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2012-01-01",
+      "inUseTo": "2012-12-31",
+      "inUseDays": 366
+    },
+    {
+      "year": 2013,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2013 г.",
+        "dv": "ДВ, бр. 102 от 21.12.2012 г.",
+        "file": "ZDBRB-2013.pdf",
+        "adopted": "2012-12-06",
+        "assembly": "41-ото Народно събрание",
+        "promulgated": "2012-12-21",
+        "inForceReference": null,
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2013-01-01",
+      "nominalTo": "2013-12-31",
+      "appliedFrom": "2013-01-01",
+      "appliedTo": "2013-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2013-01-01",
+      "inUseTo": "2013-12-31",
+      "inUseDays": 365
+    },
+    {
+      "year": 2014,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2014 г.",
+        "dv": "ДВ, бр. 109 от 20.12.2013 г.",
+        "file": "ZDBRB-2014.pdf",
+        "adopted": "2013-12-09",
+        "assembly": "42-то Народно събрание",
+        "promulgated": "2013-12-20",
+        "inForceReference": null,
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2014-01-01",
+      "nominalTo": "2014-12-31",
+      "appliedFrom": "2014-01-01",
+      "appliedTo": "2014-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2014-01-01",
+      "inUseTo": "2014-12-31",
+      "inUseDays": 365
+    },
+    {
+      "year": 2015,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2015 г.",
+        "dv": "ДВ, бр. 107 от 24.12.2014 г.",
+        "file": "ZDBRB-2015.pdf",
+        "adopted": "2014-12-19",
+        "assembly": "43-то Народно събрание",
+        "promulgated": "2014-12-24",
+        "inForceReference": null,
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2015-01-01",
+      "nominalTo": "2015-12-31",
+      "appliedFrom": "2015-01-01",
+      "appliedTo": "2015-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2015-01-01",
+      "inUseTo": "2015-12-31",
+      "inUseDays": 365
+    },
+    {
+      "year": 2016,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2016 г.",
+        "dv": "ДВ, бр. 96 (извънреден) от 9.12.2015 г.",
+        "file": "ZDBRB-2016.pdf",
+        "adopted": "2015-12-02",
+        "assembly": "43-то Народно събрание",
+        "promulgated": "2015-12-09",
+        "inForceReference": null,
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2016-01-01",
+      "nominalTo": "2016-12-31",
+      "appliedFrom": "2016-01-01",
+      "appliedTo": "2016-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2016-01-01",
+      "inUseTo": "2016-12-31",
+      "inUseDays": 366
+    },
+    {
+      "year": 2017,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2017 г.",
+        "dv": "ДВ, бр. 98 от 9.12.2016 г.",
+        "file": "ZDBRB-2017.pdf",
+        "adopted": "2016-12-01",
+        "assembly": "43-то Народно събрание",
+        "promulgated": "2016-12-09",
+        "inForceReference": null,
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2017-01-01",
+      "nominalTo": "2017-12-31",
+      "appliedFrom": "2017-01-01",
+      "appliedTo": "2017-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2017-01-01",
+      "inUseTo": "2017-12-31",
+      "inUseDays": 365
+    },
+    {
+      "year": 2018,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2018 г.",
+        "dv": "ДВ, бр. 99 от 12.12.2017 г.",
+        "file": "ZDBRB-2018.pdf",
+        "adopted": "2017-11-30",
+        "assembly": "44-то Народно събрание",
+        "promulgated": "2017-12-12",
+        "inForceReference": null,
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2018-01-01",
+      "nominalTo": "2018-12-31",
+      "appliedFrom": "2018-01-01",
+      "appliedTo": "2018-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2018-01-01",
+      "inUseTo": "2018-12-31",
+      "inUseDays": 365
+    },
+    {
+      "year": 2019,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2019 г.",
+        "dv": "ДВ, бр. 103 (извънреден) от 13.12.2018 г.",
+        "file": "ZDBRB-2019.pdf",
+        "adopted": "2018-11-29",
+        "assembly": "44-то Народно събрание",
+        "promulgated": "2018-12-13",
+        "inForceReference": null,
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2019-01-01",
+      "nominalTo": "2019-12-31",
+      "appliedFrom": "2019-01-01",
+      "appliedTo": "2019-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2019-01-01",
+      "inUseTo": "2019-12-31",
+      "inUseDays": 365
+    },
+    {
+      "year": 2020,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2020 г.",
+        "dv": "ДВ, бр. 100 от 20.12.2019 г.",
+        "file": "ZDBRB-2020.pdf",
+        "adopted": "2019-12-05",
+        "assembly": "44-то Народно събрание",
+        "promulgated": "2019-12-20",
+        "inForceReference": null,
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2020-01-01",
+      "nominalTo": "2020-12-31",
+      "appliedFrom": "2020-01-01",
+      "appliedTo": "2020-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2020-01-01",
+      "inUseTo": "2020-12-31",
+      "inUseDays": 366
+    },
+    {
+      "year": 2021,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2021 г.",
+        "dv": "ДВ, бр. 104 от 8.12.2020 г.",
+        "file": "ZDBRB-2021.pdf",
+        "adopted": "2020-11-26",
+        "assembly": "44-то Народно събрание",
+        "promulgated": "2020-12-08",
+        "inForceReference": null,
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2021-01-01",
+      "nominalTo": "2021-12-31",
+      "appliedFrom": "2021-01-01",
+      "appliedTo": "2021-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2021-01-01",
+      "inUseTo": "2022-03-03",
+      "inUseDays": 427
+    },
+    {
+      "year": 2022,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2022 г.",
+        "dv": "ДВ, бр. 18 от 4.03.2022 г.",
+        "file": "ZDBRB-2022.pdf",
+        "adopted": "2022-02-25",
+        "assembly": "47-ото Народно събрание",
+        "promulgated": "2022-03-04",
+        "inForceReference": null,
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2022-01-01",
+      "nominalTo": "2022-12-31",
+      "appliedFrom": "2022-03-04",
+      "appliedTo": "2022-12-31",
+      "lateByDays": 62,
+      "gap": {
+        "from": "2022-01-01",
+        "to": "2022-03-03",
+        "carriedOverBudgetYear": 2021,
+        "laws": [
+          {
+            "title": "Закон за прилагане на разпоредби на Закона за държавния бюджет на Република България за 2021 г., Закона за бюджета на държавното обществено осигуряване за 2021 г. и Закона за бюджета на Националната здравноосигурителна каса за 2021 г.",
+            "kind": "udalzhitelen",
+            "dv": "ДВ, бр. 8 от 28.01.2022 г.",
+            "promulgated": "2022-01-28",
+            "inForceFrom": "2022-01-01",
+            "adopted": null,
+            "url": "https://dv.parliament.bg/DVWeb/broeveList.faces",
+            "note": "Обнародван 28 януари, но с обратно действие от 1 януари 2022 г."
+          }
+        ]
+      },
+      "inUseFrom": "2022-03-04",
+      "inUseTo": "2023-07-31",
+      "inUseDays": 515
+    },
+    {
+      "year": 2023,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2023 г.",
+        "dv": "ДВ, бр. 66 от 1.08.2023 г.",
+        "file": "ZDBRB-2023.pdf",
+        "adopted": "2023-07-28",
+        "assembly": "49-ото Народно събрание",
+        "promulgated": "2023-08-01",
+        "inForceReference": null,
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2023-01-01",
+      "nominalTo": "2023-12-31",
+      "appliedFrom": "2023-08-01",
+      "appliedTo": "2023-12-31",
+      "lateByDays": 212,
+      "gap": {
+        "from": "2023-01-01",
+        "to": "2023-07-31",
+        "carriedOverBudgetYear": 2022,
+        "laws": [
+          {
+            "title": "Закон за прилагане на разпоредби на Закона за държавния бюджет на Република България за 2022 г., Закона за бюджета на държавното обществено осигуряване за 2022 г. и Закона за бюджета на Националната здравноосигурителна каса за 2022 г.",
+            "kind": "udalzhitelen",
+            "dv": "ДВ, бр. 104 от 30.12.2022 г.",
+            "promulgated": "2022-12-30",
+            "inForceFrom": "2023-01-01",
+            "adopted": null,
+            "url": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=182628",
+            "note": "Срок не по-дълъг от три месеца, който спира да тече от разпускането до конституирането на следващото Народно събрание — изтекъл на 10 юни 2023 г."
+          },
+          {
+            "title": "Закон за изменение и допълнение на Закона за прилагане на разпоредби на Закона за държавния бюджет на Република България за 2022 г. …",
+            "kind": "zid",
+            "dv": "ДВ, бр. 53 от 20.06.2023 г.",
+            "promulgated": "2023-06-20",
+            "inForceFrom": "2023-07-01",
+            "adopted": null,
+            "url": "https://www.namrb.org/bg/aktualno/nsorb-s-komentar-po-zid-na-zakona-za-prilagane-na-razporedbi-na-zakona-za-darzhavniya-byudzhet-na-republika-balgariya-za-2022-g",
+            "note": "Удължава действието до 31 юли 2023 г."
+          }
+        ]
+      },
+      "inUseFrom": "2023-08-01",
+      "inUseTo": "2023-12-31",
+      "inUseDays": 153
+    },
+    {
+      "year": 2024,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2024 г.",
+        "dv": "ДВ, бр. 108 (извънреден) от 30.12.2023 г.",
+        "file": "ZDBRB-2024.pdf",
+        "adopted": "2023-12-21",
+        "assembly": "49-ото Народно събрание",
+        "promulgated": "2023-12-30",
+        "inForceReference": "§ 29",
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2024-01-01",
+      "nominalTo": "2024-12-31",
+      "appliedFrom": "2024-01-01",
+      "appliedTo": "2024-12-31",
+      "lateByDays": 0,
+      "inUseFrom": "2024-01-01",
+      "inUseTo": "2025-03-26",
+      "inUseDays": 451
+    },
+    {
+      "year": 2025,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2025 г.",
+        "dv": "ДВ, бр. 26 (извънреден) от 27.03.2025 г.",
+        "file": "ZDBRB-2025.pdf",
+        "adopted": "2025-03-21",
+        "assembly": "51-вото Народно събрание",
+        "promulgated": "2025-03-27",
+        "inForceReference": "§ 41",
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2025-01-01",
+      "nominalTo": "2025-12-31",
+      "appliedFrom": "2025-03-27",
+      "appliedTo": "2025-12-31",
+      "lateByDays": 85,
+      "gap": {
+        "from": "2025-01-01",
+        "to": "2025-03-26",
+        "carriedOverBudgetYear": 2024,
+        "laws": [
+          {
+            "title": "Закон за събирането на приходи и извършването на разходи през 2025 г. до приемането на Закона за държавния бюджет на Република България за 2025 г., Закона за бюджета на държавното обществено осигуряване за 2025 г. и Закона за бюджета на Националната здравноосигурителна каса за 2025 г.",
+            "kind": "udalzhitelen",
+            "dv": "ДВ, бр. 6 от 21.01.2025 г.",
+            "promulgated": "2025-01-21",
+            "inForceFrom": "2025-01-01",
+            "adopted": "2025-01-15",
+            "url": "https://legislation.apis.bg/doc/6178930",
+            "note": "Приет от 51-вото Народно събрание на 15 януари 2025 г.; обнародван 21 януари, но с обратно действие от 1 януари. Срок до три месеца."
+          }
+        ]
+      },
+      "inUseFrom": "2025-03-27",
+      "inUseTo": "2026-07-30",
+      "inUseDays": 491
+    },
+    {
+      "year": 2026,
+      "law": {
+        "title": "Закон за държавния бюджет на Република България за 2026 г.",
+        "dv": "ДВ, бр. 69 от 31.07.2026 г.",
+        "file": "ZDBRB-2026.pdf",
+        "adopted": "2026-07-24",
+        "assembly": "52-рото Народно събрание",
+        "promulgated": "2026-07-31",
+        "inForceReference": "§ 48",
+        "inForceFromVerified": true
+      },
+      "nominalFrom": "2026-01-01",
+      "nominalTo": "2026-12-31",
+      "appliedFrom": "2026-07-31",
+      "appliedTo": "2026-12-31",
+      "lateByDays": 211,
+      "gap": {
+        "from": "2026-01-01",
+        "to": "2026-07-30",
+        "carriedOverBudgetYear": 2025,
+        "laws": [
+          {
+            "title": "Закон за събирането на приходи и извършването на разходи през 2026 г. до приемането на Закона за държавния бюджет на Република България за 2026 г., Закона за бюджета на държавното обществено осигуряване за 2026 г. и Закона за бюджета на Националната здравноосигурителна каса за 2026 г.",
+            "kind": "udalzhitelen",
+            "dv": "ДВ, бр. 113 от 23.12.2025 г.",
+            "promulgated": "2025-12-23",
+            "inForceFrom": "2026-01-01",
+            "adopted": "2025-12-17",
+            "url": "https://btvnovinite.bg/bulgaria/udalzhitelnijat-zakon-za-bjudzheta-e-obnarodvan-indeksirat-vaznagrazhdenijata-za-vsichki-v-bjudzhetnata-sfera.html",
+            "note": "Първи удължителен закон — за срок не по-дълъг от три месеца (януари–март 2026 г.)."
+          },
+          {
+            "title": "Закон за изменение и допълнение на Закона за събирането на приходи и извършването на разходи през 2026 г. …",
+            "kind": "zid",
+            "dv": "ДВ, бр. 30 от 27.03.2026 г.",
+            "promulgated": "2026-03-27",
+            "inForceFrom": "2026-03-27",
+            "adopted": "2026-03-18",
+            "url": "https://zopplus.com/2026/03/30/obnarodvaha-udylzhitelnia-bjudjet-vazhnite-promeni-veche-sa-v-sila/",
+            "note": "Втори удължителен закон — без фиксиран краен срок, важи до приемането на редовен бюджет."
+          }
+        ]
+      },
+      "inUseFrom": "2026-07-31",
+      "inUseTo": "2026-12-31",
+      "inUseDays": 154
+    }
+  ],
+  "regimes": [
+    {
+      "from": "2000-01-01",
+      "to": "2000-01-03",
+      "budgetYear": 1999,
+      "kind": "carryover",
+      "days": 3,
+      "label": "бюджет 1999 г. (удължен)",
+      "laws": []
+    },
+    {
+      "from": "2000-01-04",
+      "to": "2000-12-31",
+      "budgetYear": 2000,
+      "kind": "own",
+      "days": 363,
+      "label": "бюджет 2000 г.",
+      "laws": ["ДВ, бр. 1 от 4.01.2000 г."]
+    },
+    {
+      "from": "2001-01-01",
+      "to": "2001-12-31",
+      "budgetYear": 2001,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2001 г.",
+      "laws": ["ДВ, бр. 108 от 29.12.2000 г."]
+    },
+    {
+      "from": "2002-01-01",
+      "to": "2002-12-31",
+      "budgetYear": 2002,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2002 г.",
+      "laws": ["ДВ, бр. 111 от 28.12.2001 г."]
+    },
+    {
+      "from": "2003-01-01",
+      "to": "2003-12-31",
+      "budgetYear": 2003,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2003 г.",
+      "laws": ["ДВ, бр. 120 от 29.12.2002 г."]
+    },
+    {
+      "from": "2004-01-01",
+      "to": "2004-12-31",
+      "budgetYear": 2004,
+      "kind": "own",
+      "days": 366,
+      "label": "бюджет 2004 г.",
+      "laws": ["ДВ, бр. 114 от 30.12.2003 г."]
+    },
+    {
+      "from": "2005-01-01",
+      "to": "2005-12-31",
+      "budgetYear": 2005,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2005 г.",
+      "laws": ["ДВ, бр. 115 от 30.12.2004 г."]
+    },
+    {
+      "from": "2006-01-01",
+      "to": "2006-12-31",
+      "budgetYear": 2006,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2006 г.",
+      "laws": ["ДВ, бр. 105 от 29.12.2005 г."]
+    },
+    {
+      "from": "2007-01-01",
+      "to": "2007-12-31",
+      "budgetYear": 2007,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2007 г.",
+      "laws": ["ДВ, бр. 108 от 29.12.2006 г."]
+    },
+    {
+      "from": "2008-01-01",
+      "to": "2008-12-31",
+      "budgetYear": 2008,
+      "kind": "own",
+      "days": 366,
+      "label": "бюджет 2008 г.",
+      "laws": ["ДВ, бр. 113 от 28.12.2007 г."]
+    },
+    {
+      "from": "2009-01-01",
+      "to": "2009-12-31",
+      "budgetYear": 2009,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2009 г.",
+      "laws": ["ДВ, бр. 110 от 30.12.2008 г."]
+    },
+    {
+      "from": "2010-01-01",
+      "to": "2010-12-31",
+      "budgetYear": 2010,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2010 г.",
+      "laws": ["ДВ, бр. 99 от 15.12.2009 г."]
+    },
+    {
+      "from": "2011-01-01",
+      "to": "2011-12-31",
+      "budgetYear": 2011,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2011 г.",
+      "laws": ["ДВ, бр. 99 от 17.12.2010 г."]
+    },
+    {
+      "from": "2012-01-01",
+      "to": "2012-12-31",
+      "budgetYear": 2012,
+      "kind": "own",
+      "days": 366,
+      "label": "бюджет 2012 г.",
+      "laws": ["ДВ, бр. 99 от 16.12.2011 г."]
+    },
+    {
+      "from": "2013-01-01",
+      "to": "2013-12-31",
+      "budgetYear": 2013,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2013 г.",
+      "laws": ["ДВ, бр. 102 от 21.12.2012 г."]
+    },
+    {
+      "from": "2014-01-01",
+      "to": "2014-12-31",
+      "budgetYear": 2014,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2014 г.",
+      "laws": ["ДВ, бр. 109 от 20.12.2013 г."]
+    },
+    {
+      "from": "2015-01-01",
+      "to": "2015-12-31",
+      "budgetYear": 2015,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2015 г.",
+      "laws": ["ДВ, бр. 107 от 24.12.2014 г."]
+    },
+    {
+      "from": "2016-01-01",
+      "to": "2016-12-31",
+      "budgetYear": 2016,
+      "kind": "own",
+      "days": 366,
+      "label": "бюджет 2016 г.",
+      "laws": ["ДВ, бр. 96 (извънреден) от 9.12.2015 г."]
+    },
+    {
+      "from": "2017-01-01",
+      "to": "2017-12-31",
+      "budgetYear": 2017,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2017 г.",
+      "laws": ["ДВ, бр. 98 от 9.12.2016 г."]
+    },
+    {
+      "from": "2018-01-01",
+      "to": "2018-12-31",
+      "budgetYear": 2018,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2018 г.",
+      "laws": ["ДВ, бр. 99 от 12.12.2017 г."]
+    },
+    {
+      "from": "2019-01-01",
+      "to": "2019-12-31",
+      "budgetYear": 2019,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2019 г.",
+      "laws": ["ДВ, бр. 103 (извънреден) от 13.12.2018 г."]
+    },
+    {
+      "from": "2020-01-01",
+      "to": "2020-12-31",
+      "budgetYear": 2020,
+      "kind": "own",
+      "days": 366,
+      "label": "бюджет 2020 г.",
+      "laws": ["ДВ, бр. 100 от 20.12.2019 г."]
+    },
+    {
+      "from": "2021-01-01",
+      "to": "2021-12-31",
+      "budgetYear": 2021,
+      "kind": "own",
+      "days": 365,
+      "label": "бюджет 2021 г.",
+      "laws": ["ДВ, бр. 104 от 8.12.2020 г."]
+    },
+    {
+      "from": "2022-01-01",
+      "to": "2022-03-03",
+      "budgetYear": 2021,
+      "kind": "carryover",
+      "days": 62,
+      "label": "бюджет 2021 г. (удължен)",
+      "laws": ["ДВ, бр. 8 от 28.01.2022 г."]
+    },
+    {
+      "from": "2022-03-04",
+      "to": "2022-12-31",
+      "budgetYear": 2022,
+      "kind": "own",
+      "days": 303,
+      "label": "бюджет 2022 г.",
+      "laws": ["ДВ, бр. 18 от 4.03.2022 г."]
+    },
+    {
+      "from": "2023-01-01",
+      "to": "2023-07-31",
+      "budgetYear": 2022,
+      "kind": "carryover",
+      "days": 212,
+      "label": "бюджет 2022 г. (удължен)",
+      "laws": ["ДВ, бр. 104 от 30.12.2022 г.", "ДВ, бр. 53 от 20.06.2023 г."]
+    },
+    {
+      "from": "2023-08-01",
+      "to": "2023-12-31",
+      "budgetYear": 2023,
+      "kind": "own",
+      "days": 153,
+      "label": "бюджет 2023 г.",
+      "laws": ["ДВ, бр. 66 от 1.08.2023 г."]
+    },
+    {
+      "from": "2024-01-01",
+      "to": "2024-12-31",
+      "budgetYear": 2024,
+      "kind": "own",
+      "days": 366,
+      "label": "бюджет 2024 г.",
+      "laws": ["ДВ, бр. 108 (извънреден) от 30.12.2023 г."]
+    },
+    {
+      "from": "2025-01-01",
+      "to": "2025-03-26",
+      "budgetYear": 2024,
+      "kind": "carryover",
+      "days": 85,
+      "label": "бюджет 2024 г. (удължен)",
+      "laws": ["ДВ, бр. 6 от 21.01.2025 г."]
+    },
+    {
+      "from": "2025-03-27",
+      "to": "2025-12-31",
+      "budgetYear": 2025,
+      "kind": "own",
+      "days": 280,
+      "label": "бюджет 2025 г.",
+      "laws": ["ДВ, бр. 26 (извънреден) от 27.03.2025 г."]
+    },
+    {
+      "from": "2026-01-01",
+      "to": "2026-07-30",
+      "budgetYear": 2025,
+      "kind": "carryover",
+      "days": 211,
+      "label": "бюджет 2025 г. (удължен)",
+      "laws": ["ДВ, бр. 113 от 23.12.2025 г.", "ДВ, бр. 30 от 27.03.2026 г."]
+    },
+    {
+      "from": "2026-07-31",
+      "to": "2026-12-31",
+      "budgetYear": 2026,
+      "kind": "own",
+      "days": 154,
+      "label": "бюджет 2026 г.",
+      "laws": ["ДВ, бр. 69 от 31.07.2026 г."]
+    }
+  ]
+}

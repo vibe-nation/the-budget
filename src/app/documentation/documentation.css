@@ -1,0 +1,103 @@
+.docs {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: 2.5rem var(--page-inset);
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 44rem);
+  gap: 3rem;
+}
+
+.docs-rail {
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-inline-end: 1rem;
+  border-inline-end: 1px solid var(--border);
+}
+
+.docs-rail a {
+  color: var(--ink-4);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.docs-rail a:hover {
+  color: var(--ink);
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+section + section {
+  margin-top: 2.5rem;
+}
+
+h2 {
+  margin-bottom: 0.4rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+h3 {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-4);
+}
+
+p,
+ol {
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+
+ol {
+  margin-top: 0.75rem;
+  padding-inline-start: 1.25rem;
+  list-style: decimal;
+}
+
+code {
+  font-size: 0.9em;
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+.docs-prompt {
+  margin-top: 0.35rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface-3);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+
+/* On a phone the list sits above the text and wraps. */
+@media (max-width: 720px) {
+  .docs {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    padding-block: 1.5rem;
+  }
+
+  .docs-rail {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    padding-inline-end: 0;
+    padding-bottom: 0.75rem;
+    border-inline-end: 0;
+    border-bottom: 1px solid var(--border);
+  }
+}

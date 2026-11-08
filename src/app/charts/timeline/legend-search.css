@@ -1,0 +1,226 @@
+/* In the toolbar's row. A small basis, because the row wraps by it: the field
+   gives up its width before the buttons give up the line, and takes it back as
+   far as its maximum whenever there is room. */
+:host {
+  position: relative;
+  flex: 1 1 11rem;
+  max-width: 20rem;
+  font-family: 'Sofia Sans', sans-serif;
+}
+
+/* A line of its own on a phone: the toolbar's controls fill the one above. */
+@media (max-width: 640px) {
+  :host {
+    flex-basis: 100%;
+    max-width: none;
+  }
+}
+
+.search-field {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 1.9rem;
+  padding: 0 0.3rem 0 0.7rem;
+  border: 1px solid var(--ink-5);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink-3);
+  cursor: text;
+}
+
+.search-field:focus-within {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+
+:host(.is-miss) .search-field {
+  border-color: #f0a9a9;
+}
+
+:host(.is-miss) .search-count {
+  color: #b91c1c;
+}
+
+.search-icon {
+  flex: none;
+}
+
+.search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+}
+
+.search-input::placeholder {
+  color: var(--ink-4);
+  opacity: 1;
+}
+
+/* Touch browsers zoom the page to a field set under 16px. */
+@media (pointer: coarse) {
+  .search-input {
+    font-size: 16px;
+  }
+}
+
+.search-count {
+  flex: none;
+  color: var(--ink-4);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.search-clear {
+  appearance: none;
+  flex: none;
+  width: 1.3rem;
+  height: 1.3rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-4);
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.search-clear:hover {
+  color: var(--ink);
+  background: var(--surface-3);
+}
+
+.search-clear:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -1px;
+}
+
+/* Over the chart, wider than the field so the long names stay on one line, and
+   scrolling once the series outgrow it. */
+.search-list {
+  position: absolute;
+  inset-block-start: calc(100% + 0.3rem);
+  inset-inline-start: 0;
+  z-index: 30;
+  box-sizing: border-box;
+  width: 26rem;
+  min-width: 100%;
+  max-width: calc(100vw - 2 * var(--page-inset));
+  max-height: 22rem;
+  margin: 0;
+  padding: 0.3rem;
+  overflow-y: auto;
+  list-style: none;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: var(--surface);
+  box-shadow:
+    0 1px 2px rgba(15, 17, 21, 0.06),
+    0 12px 28px -12px rgba(15, 17, 21, 0.3);
+}
+
+.search-list-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4rem 0.55rem 0.3rem;
+  color: var(--ink-4);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.search-list-forget {
+  appearance: none;
+  flex: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink-4);
+  font: inherit;
+  cursor: pointer;
+}
+
+.search-list-forget:hover {
+  color: var(--ink);
+}
+
+.search-list-forget:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.search-list-divider {
+  margin: 0.3rem 0.55rem 0.35rem;
+  border-top: 1px solid var(--border-soft);
+}
+
+/* Hover and the arrow keys share one state: there is never a second cursor. */
+.search-option {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.3rem 0.45rem;
+  border: 0;
+  border-radius: 0.6rem;
+  background: transparent;
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: left;
+  cursor: pointer;
+}
+
+.search-option.is-active {
+  background: var(--surface-3);
+  color: var(--ink);
+}
+
+.search-option.is-picked {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.search-option-check {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 0.95rem;
+  height: 0.95rem;
+  border: 1px solid var(--ink-5);
+  border-radius: 0.3rem;
+  color: transparent;
+}
+
+.search-option.is-picked .search-option-check {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #ffffff;
+}
+
+/* The series' colour, as its legend row and its line have it. */
+.search-option-swatch {
+  flex: none;
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.search-option-name {
+  min-width: 0;
+}

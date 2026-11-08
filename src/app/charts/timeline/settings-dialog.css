@@ -1,0 +1,129 @@
+:host {
+  display: inline-block;
+}
+
+.settings-trigger {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  padding: 0;
+  border: 1px solid var(--ink-5);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.settings-trigger:hover {
+  background: var(--surface-3);
+}
+
+.settings-trigger:focus-visible,
+.settings-close:focus-visible,
+.segmented-option:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+
+/* Centred in the viewport: the page's reset takes away the <dialog>'s own auto margin. */
+.settings-dialog {
+  box-sizing: border-box;
+  margin: auto;
+  width: min(26rem, calc(100vw - 2rem));
+  padding: 1rem 1.25rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+}
+
+.settings-dialog::backdrop {
+  background: rgba(15, 17, 21, 0.35);
+}
+
+.settings-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.settings-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.settings-close {
+  appearance: none;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-3);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.settings-close:hover {
+  background: var(--surface-3);
+  color: var(--ink);
+}
+
+.settings-section + .settings-section {
+  margin-top: 1rem;
+}
+
+.settings-label {
+  margin: 0 0 0.25rem;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.settings-hint {
+  margin: 0 0 0.6rem;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ink-4);
+}
+
+/* The toolbar's segmented control, repeated: component styles do not reach here. */
+.segmented {
+  display: inline-flex;
+  height: 1.9rem;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.segmented-option {
+  appearance: none;
+  padding: 0 0.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-3);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition:
+    color 140ms ease,
+    background-color 140ms ease;
+}
+
+.segmented-option:hover {
+  color: var(--ink);
+}
+
+.segmented-option.is-active {
+  background: var(--ink);
+  color: #ffffff;
+}

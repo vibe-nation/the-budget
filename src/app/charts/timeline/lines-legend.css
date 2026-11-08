@@ -1,0 +1,191 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: 'Sofia Sans', sans-serif;
+  color: var(--ink);
+}
+
+/* Beside the chart, in the column it leaves free on its right, from the top of
+   the chart to its foot: the list scrolls inside that height. `width` is bound
+   from the chart, which measures the longest name and adds this padding, the
+   row's, the mark and its gap (`LEGEND_CHROME_PX`), so nothing is cut. */
+:host(:not(.is-narrow)) {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0 1rem 0.5rem 0.25rem;
+}
+
+/* Under the chart, the rows side by side as far as the width allows. */
+:host(.is-narrow) {
+  padding: 0.25rem var(--page-inset) 0;
+}
+
+.legend-head {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 0.5rem 0.35rem;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.legend-title {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+
+/* The pair the institutions panel has: one switches every row on, one off, and
+   each sits greyed while it has nothing to do. */
+.legend-head-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1rem;
+  margin-inline-end: -0.4rem;
+}
+
+.legend-action {
+  appearance: none;
+  padding: 0.2rem 0.4rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink-3);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    color 140ms ease,
+    background-color 140ms ease;
+}
+
+.legend-action:hover:not(:disabled) {
+  color: var(--ink);
+  background: var(--surface-3);
+}
+
+.legend-action:disabled {
+  color: var(--ink-6);
+  cursor: default;
+}
+
+.legend-action:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+
+/* The panel's flex remainder and its only scrolling region. */
+.legend-list {
+  list-style: none;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+/* Each row as wide as its name, wrapping onto as many lines as needed. */
+:host(.is-narrow) .legend-list {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1px 0.25rem;
+  overflow: visible;
+}
+
+:host(.is-narrow) .legend-row {
+  width: auto;
+}
+
+.legend-item {
+  margin: 0;
+}
+
+.legend-row {
+  appearance: none;
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  column-gap: 0.5rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.28rem 0.4rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 140ms ease;
+}
+
+.legend-row:hover {
+  background: var(--surface-2);
+}
+
+.legend-row:focus-visible {
+  outline: none;
+  background: var(--surface-2);
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+}
+
+.legend-mark {
+  display: block;
+  color: var(--mark);
+  transition: color 160ms ease;
+}
+
+.legend-mark line {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.legend-mark circle {
+  fill: var(--surface);
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+/* One line each, whole: the column is measured to the longest name. */
+.legend-name {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--ink-2);
+  white-space: nowrap;
+  transition: color 160ms ease;
+}
+
+/* A row switched off keeps its place but steps back: a broken grey line, and
+   text in the grey of the chart's own inactive marks. */
+.legend-row.is-off .legend-mark {
+  color: var(--ink-6);
+}
+
+.legend-row.is-off .legend-mark line {
+  stroke-dasharray: 2 3.5;
+}
+
+.legend-row.is-off .legend-name {
+  color: var(--ink-5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .legend-action,
+  .legend-row,
+  .legend-mark,
+  .legend-name {
+    transition: none;
+  }
+}

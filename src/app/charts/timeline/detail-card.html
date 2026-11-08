@@ -1,0 +1,287 @@
+<div class="dcb">
+  @if (headName(); as head) {
+    <div class="dcb-head">
+      <h3 class="dcb-name">
+        @if (firstSourceUrl(); as url) {
+          <a [href]="url" target="_blank" rel="noopener" class="dcb-name-link">{{ head }}</a>
+        } @else {
+          {{ head }}
+        }
+      </h3>
+      @if (roleUnderName(); as role) {
+        <p class="dcb-role">{{ role }}</p>
+      }
+    </div>
+  }
+
+  @if (content().reading; as reading) {
+    <p class="dcb-reading">
+      <span class="dcb-reading-label">{{ reading.label }}</span>
+      <strong class="dcb-reading-value">{{ reading.value }}</strong>
+      @if (reading.note; as note) {
+        <span class="dcb-reading-note">{{ note }}</span>
+      }
+    </p>
+  }
+
+  <!-- The date is the way back to the chart: clicking it re-centres the time
+       window on this period. The crosshair reads the row as the control it is. -->
+  @if (span(); as span) {
+    <div class="dcb-meta">
+      <button type="button" class="dcb-meta-range" (click)="locate.emit()" title="Покажи на графиката" aria-label="Покажи на графиката">
+        <svg class="dcb-meta-locate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="2" x2="5" y1="12" y2="12" /><line x1="19" x2="22" y1="12" y2="12" /><line x1="12" x2="12" y1="2" y2="5" /><line x1="12" x2="12" y1="19" y2="22" /><circle cx="12" cy="12" r="7" /><circle cx="12" cy="12" r="3" /></svg>{{ span.from | humanDate }}@if (!singleDay()) { — {{ span.to | humanDate: true }} }
+      </button>
+      @if (!singleDay()) {
+        <span class="dcb-meta-dur">{{ duration() }}</span>
+      }
+    </div>
+  }
+
+  @if (election(); as election) {
+    <!-- The election that returned this assembly. The numbered chips are its own
+         citations, kept apart from the bar's sources further down. -->
+    <section class="dcb-election">
+      <h4 class="dcb-section-title">
+        <span class="dcb-section-title-text">Избори</span>
+        <span class="dcb-section-title-rule"></span>
+        @if (electionSources().length) {
+          <span class="dcb-cite-chips" aria-label="Източници за изборите">
+            @for (src of electionSources(); track src.url) {
+              <a class="dcb-cite-chip" [href]="src.url" target="_blank" rel="noopener" [title]="src.name">{{ $index + 1 }}</a>
+            }
+          </span>
+        }
+      </h4>
+
+      <div class="dcb-election-meta">
+        <span class="dcb-election-date">{{ election.date | humanDate }}</span>
+        <span class="dcb-election-turnout">активност {{ formatPercent(election.activity) }}</span>
+      </div>
+
+      @if (seatRows().length) {
+        <div class="election-seat-bar" aria-hidden="true">
+          @for (row of seatRows(); track row.alias) {
+            <span class="election-seat" [style.width.%]="row.share * 100" [style.background]="row.color"></span>
+          }
+        </div>
+
+        <table class="dcb-election-table">
+          <thead>
+            <tr>
+              <th scope="col">Партия</th>
+              <th scope="col">Гласове</th>
+              <th scope="col">%</th>
+              <th scope="col">Мандати</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of seatRows(); track row.alias) {
+              <tr>
+                <td class="dcb-election-party">
+                  <span class="election-seat-dot" [style.background]="row.color" aria-hidden="true"></span>
+                  <span [title]="row.name">{{ row.alias }}</span>
+                </td>
+                <td class="dcb-election-num">{{ formatVotes(row.votes) }}</td>
+                <td class="dcb-election-num">{{ formatPercent(row.percent) }}</td>
+                <td class="dcb-election-num dcb-election-mandates">{{ row.mandates }}</td>
+              </tr>
+            }
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3" class="dcb-election-total">общо</td>
+              <td class="dcb-election-num dcb-election-mandates">{{ totalSeats() }}</td>
+            </tr>
+          </tfoot>
+        </table>
+      }
+    </section>
+  }
+
+  @if (relatedTenures().length > 1) {
+    <section class="dcb-tenures">
+      <h4 class="dcb-section-title">
+        <button
+          type="button"
+          class="dcb-tenures-toggle"
+          [attr.aria-expanded]="tenuresOpen()"
+          aria-controls="dcb-tenure-list"
+          (click)="tenuresOpen.set(!tenuresOpen())">
+          <span class="dcb-section-title-text">Длъжности</span>
+          <span class="dcb-section-count">{{ relatedTenures().length }}</span>
+          <svg lucideIcon="chevron-down" [size]="14" class="dcb-tenures-chevron" [class.is-open]="tenuresOpen()" />
+        </button>
+        <span class="dcb-section-title-rule"></span>
+        <span class="dcb-tenures-total">общо {{ tenuresTotal() }}</span>
+      </h4>
+
+      @if (tenuresOpen()) {
+        <ul class="dcb-tenure-list" id="dcb-tenure-list">
+          @for (row of tenureRows(); track row.id) {
+            <li>
+              <button
+                type="button"
+                class="dcb-tenure"
+                [class.dcb-tenure--current]="row.isCurrent"
+                [style.--tenure-color]="row.color"
+                [disabled]="row.isCurrent"
+                (click)="onTenureClick(row)">
+                <span class="dcb-tenure-role">{{ row.role }}</span>
+                <span class="dcb-tenure-meta">
+                  <span class="dcb-tenure-range">{{ row.from | humanDate }} — {{ row.to | humanDate: true }}</span>
+                  <span class="dcb-tenure-dur">{{ row.duration }}</span>
+                </span>
+              </button>
+            </li>
+          }
+        </ul>
+      }
+    </section>
+  }
+
+  @if (subtitle(); as subtitle) {
+    <p class="dcb-description">{{ subtitle }}</p>
+  }
+
+  @if (content().description) {
+    <p class="dcb-description">{{ content().description }}</p>
+  }
+
+  @if (content().comment) {
+    <p class="dcb-comment">{{ content().comment }}</p>
+  }
+
+  @if (primarySource(); as row) {
+    <section class="dcb-sources">
+      <h4 class="dcb-section-title">
+        <span class="dcb-section-title-text">Източник</span>
+        <span class="dcb-section-title-rule"></span>
+      </h4>
+
+      <div class="dcb-source-list">
+        <ng-container *ngTemplateOutlet="sourceItem; context: { $implicit: row }" />
+      </div>
+    </section>
+  }
+
+  @if (otherSources().length) {
+    <section class="dcb-sources">
+      <h4 class="dcb-section-title">
+        <span class="dcb-section-title-text">Други източници и контекст</span>
+        <span class="dcb-section-title-rule"></span>
+      </h4>
+
+      <div class="dcb-source-list">
+        @for (row of otherSources(); track $index) {
+          <ng-container *ngTemplateOutlet="sourceItem; context: { $implicit: row }" />
+        }
+      </div>
+    </section>
+  }
+
+  @if (metricHtml(); as html) {
+    <section class="dcb-metric">
+      <h4 class="dcb-section-title">
+        <span class="dcb-section-title-text">{{ content().name }}</span>
+        <span class="dcb-section-title-rule"></span>
+      </h4>
+
+      <app-metric-description [html]="html" />
+    </section>
+  }
+
+  <!-- Every series has data; only one with a description has a file to edit. -->
+  @if (content().metric) {
+    <div class="dcb-metric-actions">
+      <a class="dcb-metric-button" [href]="chartsFileUrl" target="_blank" rel="noopener">
+        <svg lucideIcon="database" [size]="14" aria-hidden="true" />
+        Данни
+      </a>
+      @if (metricHtml()) {
+        <a class="dcb-metric-button" [href]="metricEditLink()" target="_blank" rel="noopener">
+          <svg lucideIcon="pencil" [size]="14" aria-hidden="true" />
+          Предложи текст
+        </a>
+      }
+    </div>
+  }
+
+  <!-- One source renderer, for the lead source and the list. What the document
+       says leads the entry when there is a quote, and its own line (title, other
+       copies, publisher, date) follows as the citation. -->
+  <ng-template #sourceItem let-row>
+    <article class="dcb-src" [class.dcb-src--quoted]="row.excerpt" [attr.data-kind]="row.kind">
+      <span class="dcb-src-icon" aria-hidden="true">
+        @if (row.kind === 'pdf') {
+          <svg class="dcb-src-pdf" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M6 1h9l6 6v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2z" fill="currentColor" />
+            <path d="M15 1v4a2 2 0 0 0 2 2h4z" fill="#fff" fill-opacity="0.55" />
+            <text x="12.5" y="18.5" text-anchor="middle">PDF</text>
+          </svg>
+        } @else {
+          <svg [lucideIcon]="iconFor(row.kind)" [size]="13" />
+        }
+      </span>
+
+      @if (row.excerpt) {
+        <div class="dcb-excerpt">
+          @if (row.url) {
+            <a class="dcb-excerpt-link" [href]="row.url" target="_blank" rel="noopener">
+              <ng-container *ngTemplateOutlet="excerptBody; context: { $implicit: row.excerpt }" />
+            </a>
+          } @else {
+            <ng-container *ngTemplateOutlet="excerptBody; context: { $implicit: row.excerpt }" />
+          }
+        </div>
+      }
+
+      <div class="dcb-src-cite">
+        @if (row.url) {
+          <a [href]="row.url" target="_blank" rel="noopener" class="dcb-src-title">{{ row.name }}</a>
+        } @else {
+          <span class="dcb-src-title">{{ row.name }}</span>
+        }
+        @if (row.mirrors.length) {
+          <p class="dcb-src-meta dcb-src-mirrors">
+            <span class="dcb-src-mirrors-label">също в</span>
+            <span class="dcb-src-mirror">
+              @for (mirror of row.mirrors; track mirror.url; let i = $index) {
+                <a [href]="mirror.url" target="_blank" rel="noopener" class="dcb-src-mirror-link" [title]="mirror.label">{{ i + 1 }}</a>
+              }
+            </span>
+          </p>
+        }
+        @if (row.media || row.date) {
+          <p class="dcb-src-meta dcb-src-dateline">
+            <span class="dcb-src-dateline-when">
+              @if (row.media) {
+                <span class="dcb-src-media">{{ row.media }}</span>
+              }
+              @if (row.media && row.date) {
+                <span aria-hidden="true">, </span>
+              }
+              @if (row.date) {
+                <span class="dcb-src-date">{{ row.date | humanDate }}</span>
+              }
+            </span>
+            @if (row.date) {
+              <span class="dcb-src-ago">преди {{ row.date | dateAgo }}</span>
+            }
+          </p>
+        }
+        @if (row.comment) {
+          <p class="dcb-src-comment">{{ row.comment }}</p>
+        }
+      </div>
+    </article>
+  </ng-template>
+
+  <ng-template #excerptBody let-quote>
+    <p class="dcb-quote">
+      <q class="dcb-quote-text">{{ quote.text }}</q>
+      @if (quote.locator) {
+        <span class="dcb-quote-locator">{{ quote.locator }}</span>
+      }
+    </p>
+  </ng-template>
+</div>

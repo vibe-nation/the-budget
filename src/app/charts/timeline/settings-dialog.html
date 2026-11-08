@@ -1,0 +1,51 @@
+<button
+  type="button"
+  class="settings-trigger"
+  aria-label="Настройки"
+  title="Настройки"
+  aria-haspopup="dialog"
+  (click)="open()"
+>
+  <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+    <path
+      d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</button>
+
+<dialog
+  #dialog
+  class="settings-dialog"
+  aria-labelledby="settings-title"
+  (click)="onDialogClick($event)"
+>
+  <div class="settings-head">
+    <h2 id="settings-title" class="settings-title">Настройки</h2>
+    <button type="button" class="settings-close" aria-label="Затвори" (click)="close()">✕</button>
+  </div>
+
+  <section class="settings-section">
+    <h3 id="settings-shape" class="settings-label">Годишни стойности</h3>
+    <p class="settings-hint">
+      Как се чертаят линиите с по една стойност за година, като дефицита и бюджетите по закон.
+    </p>
+    <div class="segmented" role="group" aria-labelledby="settings-shape">
+      @for (option of shapes; track option.value) {
+        <button
+          type="button"
+          class="segmented-option"
+          [class.is-active]="lineShape() === option.value"
+          [attr.aria-pressed]="lineShape() === option.value"
+          (click)="lineShapeChange.emit(option.value)"
+        >
+          {{ option.label }}
+        </button>
+      }
+    </div>
+  </section>
+</dialog>

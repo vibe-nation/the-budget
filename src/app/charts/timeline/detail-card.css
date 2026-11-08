@@ -1,0 +1,900 @@
+:host {
+  --dcb-ink: #0f172a;
+  --dcb-ink-2: #334155;
+  --dcb-ink-3: #64748b;
+  --dcb-ink-4: #94a3b8;
+  --dcb-rule: #eef2f6;
+  --dcb-rule-2: #e2e8f0;
+  --dcb-quote-rule: #94a3b8;
+}
+
+/* The side padding is kept tight so the full duration wording ("5 години,
+   2 месеца, 29 дни") and the tenure rows fit on one line. The eyebrow rule in
+   styles.scss (.detail-panel-body > .detail-panel-eyebrow) mirrors the left
+   value — keep them in step. */
+.dcb {
+  padding: 0 1rem 2rem;
+  font-family: "Sofia Sans", sans-serif;
+  color: var(--dcb-ink-2);
+}
+
+/* Every link in the card opens a new tab, and an arrow after its last word says
+   so — the same arrow-up-right the /sources page puts on its external cards.
+   One rule rather than an icon in each template branch: it is decoration on the
+   anchor, drawn from a masked Lucide path in the link's own colour, and it
+   scales with the link's type size. The numbered chips (mirror copies, election
+   citations) are left out — a cell reading "1 ↗" is noise, and the chip already
+   reads as a control — and so is the quote's block link, whose arrow would land
+   on a line of its own under the quote; the title beneath carries the entry's. */
+.dcb a[target=_blank]:not(.dcb-src-mirror-link):not(.dcb-cite-chip):not(.dcb-excerpt-link)::after {
+  content: "";
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  margin-left: 0.2em;
+  vertical-align: -0.08em;
+  background-color: currentColor;
+  opacity: 0.7;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 7h10v10'/%3E%3Cpath d='M7 17 17 7'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+.dcb-name {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--dcb-ink);
+  word-break: break-word;
+}
+
+.dcb-name-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.dcb-name-link:hover {
+  color: var(--dcb-ink-3);
+}
+
+/* The office the person held, printed under their name. */
+.dcb-role {
+  margin: 0.2rem 0 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--dcb-ink-3);
+  line-height: 1.3;
+}
+
+/* The picked point of a series, ruled off from the name as the date row is. */
+.dcb-reading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.1rem 0.6rem;
+  margin: 0.85rem 0 0;
+  padding: 0.7rem 0 0;
+  border-top: 1px solid var(--dcb-rule);
+  line-height: 1.4;
+}
+
+.dcb-reading-label {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--dcb-ink-2);
+}
+
+.dcb-reading-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dcb-ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.dcb-reading-note {
+  margin-inline-start: auto;
+  font-size: 0.94rem;
+  color: var(--dcb-ink-3);
+  white-space: nowrap;
+}
+
+.dcb-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  /* Only ever reached by the widest bar — `space-between` holds the two ends
+     apart everywhere else — so this doubles as part of that row's width budget. */
+  gap: 0.4rem;
+  margin: 0.85rem 0 0;
+  padding: 0.7rem 0 0;
+  border-top: 1px solid var(--dcb-rule);
+  font-size: 0.94rem;
+  line-height: 1.4;
+}
+
+/* A button in the dress of a date: clicking it brings the period back into the
+   chart's view. It keeps the line's own type, and hover lightens the ink the
+   way the card's links do — no underline, nothing that would make the date
+   read as something other than the date. */
+.dcb-meta-range {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  color: var(--dcb-ink-2);
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.dcb-meta-range:hover {
+  color: var(--dcb-ink-3);
+}
+
+.dcb-meta-range:focus-visible {
+  outline: 2px solid var(--dcb-ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* The crosshair that opens the date row. Sized in `em` so it tracks the date's
+   own type, and kept inline (not a flex item) so the button's baseline stays
+   the text's — `.dcb-meta` aligns this row on the baseline, and a flex box
+   would hand it the icon's bottom edge instead. It costs the row ~17px of the
+   22px the widest case had spare, which is why it is 0.9em and not larger; see
+   the note on `.dcb-meta-dur` before growing it. */
+.dcb-meta-locate {
+  /* Tailwind's preflight makes every svg `display: block`; left at that the
+     crosshair takes a line of its own above the date instead of leading it. */
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-right: 0.22em;
+  /* Centred on the figure band, not the baseline: the date opens with digits,
+     so the crosshair's arms line up with the middle of "23". Sitting it on
+     the baseline reads a couple of px high. */
+  vertical-align: -0.09em;
+  color: var(--dcb-ink-4);
+  transition: color 0.15s;
+  /* Hover darkens the crosshair as it lightens the date, so the row settles on
+     one ink instead of two. */
+}
+
+.dcb-meta-range:hover .dcb-meta-locate {
+  color: var(--dcb-ink-3);
+}
+
+/* The range and this duration share the row's type size (inherited) and must
+   stay on one line for every bar in the dataset. The binding case is a genuine
+   outlier — "23 октомври 2013 г. — 30 септември 2021 г." next to "7 години,
+   11 месеца, 7 дни", 13px wider than the next widest — and it needs 526 of the
+   532px the 580px panel gives: the range with its `.dcb-meta-locate` crosshair
+   (339), the duration (181) and this row's 0.4rem gap. That requirement is why
+   the panel is 580 and not 520, and ~6px is all the slack there is — measure before adding anything else
+   to this row, and note that the gap above is part of the same budget.
+   Two traps when re-tuning: the range carries `tabular-nums`, which widens
+   digits, and the flex row shrinks the range rather than overflowing — so
+   measure natural width (scrollWidth with `nowrap`) on the real elements in a
+   browser. Canvas metrics and clientWidth both under-report here. */
+.dcb-meta-dur {
+  color: var(--dcb-ink-3);
+  white-space: nowrap;
+}
+
+/* ───── Roles & tenures ───── */
+.dcb-tenures {
+  margin-top: 1.25rem;
+}
+
+.dcb-tenure-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The section heading doubles as the collapse toggle. It inherits the h4's
+   typography so the closed and open states read as the same title. */
+.dcb-tenures-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.dcb-tenures-toggle:hover {
+  color: var(--dcb-ink);
+}
+
+.dcb-section-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.3rem;
+  height: 1.15rem;
+  padding: 0 0.3rem;
+  border-radius: 999px;
+  background: var(--dcb-rule);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--dcb-ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Sits past the heading's rule, so the label on the left and the sum on the
+   right are read as one line. Deliberately in the heading rather than as a
+   footer row: it is the one number worth seeing while the list is collapsed. */
+.dcb-tenures-total {
+  flex: none;
+  font-weight: 600;
+  color: var(--dcb-ink-4);
+  font-variant-numeric: tabular-nums;
+}
+
+.dcb-tenures-chevron {
+  display: inline-flex;
+  transition: transform 0.15s;
+}
+
+.dcb-tenures-chevron.is-open {
+  transform: rotate(180deg);
+}
+
+/* Two lines rather than one: the office names run long ("Председател на
+   Държавна агенция „Национална сигурност“") and would either wrap or truncate
+   beside a date range. The row is kept short by the leading instead.
+
+   A grid rather than a column, so the dot gets a track of its own and both
+   lines hang off the same left edge — set inline before the role it would
+   indent the name and leave the range sticking out under it. */
+.dcb-tenure {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.5rem;
+  row-gap: 0.05rem;
+  width: 100%;
+  /* Rows separate by proximity: the two lines of one tenure stay tight
+     (row-gap above) while the padding puts clear air between neighbours, so a
+     row reads as one unit without heavier ink. */
+  padding: 0.55rem 0.4rem;
+  border: none;
+  border-bottom: 1px solid var(--dcb-rule-2);
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  /* The bar's own fill, carried over as a legend marker: it is what ties the
+     row to the bar the reader sees on the chart. Sized in whole pixels — a rem
+     fraction (0.45rem = 7.2px) straddles the pixel grid and rasterises a pixel
+     wider on one axis than the other, which at this size reads as an ellipse. */
+}
+
+.dcb-tenure::before {
+  content: "";
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tenure-color, var(--dcb-rule-2));
+}
+
+.dcb-tenure:last-child {
+  border-bottom: none;
+}
+
+.dcb-tenure:hover:not(:disabled) {
+  background: #f8fafc;
+}
+
+.dcb-tenure:disabled {
+  cursor: default;
+}
+
+.dcb-tenure--current {
+  background: #f1f5f9;
+}
+
+.dcb-tenure--current .dcb-tenure-role {
+  color: var(--dcb-ink);
+}
+
+.dcb-tenure-role {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--dcb-ink-2);
+  line-height: 1.25;
+}
+
+/* Second line of a row: range on the left, duration on the right — the same
+   split the card's own .dcb-meta uses. */
+.dcb-tenure-meta {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.dcb-tenure-range {
+  font-size: 0.8rem;
+  line-height: 1.3;
+  color: var(--dcb-ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Spelled out in full ("7 години, 11 месеца, 7 дни"), same wording as the card's
+   own .dcb-meta-dur. The widest pair the dataset can produce — "23 октомври
+   2013 г. — 30 септември 2021 г." beside a two-digit year count — needs 456 of
+   the 504px the row's text column has at these two sizes, so both fit on one
+   line with room to spare. Measure on the real elements before growing either side: the range
+   carries tabular figures, which widen digits. The duration is the column the
+   reader compares down the list, so it never wraps; the range would give first.
+   Tabular figures keep that column aligned. */
+.dcb-tenure-dur {
+  flex: none;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  color: var(--dcb-ink-4);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.dcb-cite-chips {
+  flex: none;
+  display: inline-flex;
+  gap: 0.3rem;
+}
+
+/* A numbered chip: a section heading has no room for a name per citation, so
+   its sources are counted, not named. */
+.dcb-cite-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.4rem;
+  height: 1.4rem;
+  padding: 0 0.4rem;
+  border-radius: 4px;
+  background: #ffffff;
+  border: 1px solid var(--dcb-rule-2);
+  color: var(--dcb-ink-3);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.dcb-cite-chip:hover {
+  color: var(--dcb-ink);
+  border-color: var(--dcb-ink-4);
+}
+
+/* ───── Election ───── */
+/* The election that returned a Народно събрание bar: day and turnout, the seat
+   bar (global `.election-seat*`, shared with the tooltip), the seat-winning
+   lists as a table, and the protocol figures. */
+.dcb-election {
+  margin-top: 1.25rem;
+}
+
+.dcb-election .dcb-section-title {
+  margin-bottom: 0.75rem;
+}
+
+.dcb-election-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.dcb-election-date {
+  font-weight: 600;
+  color: var(--dcb-ink-2);
+}
+
+.dcb-election-turnout {
+  font-size: 0.9rem;
+  color: var(--dcb-ink-3);
+  white-space: nowrap;
+}
+
+.dcb-election-table {
+  width: 100%;
+  margin-top: 0.75rem;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.dcb-election-table th {
+  padding: 0 0 0.35rem;
+  border-bottom: 1px solid var(--dcb-rule-2);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-align: right;
+  color: var(--dcb-ink-4);
+}
+
+.dcb-election-table th:first-child {
+  text-align: left;
+}
+
+.dcb-election-table td {
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--dcb-rule);
+  vertical-align: baseline;
+}
+
+.dcb-election-table tfoot td {
+  border-bottom: 0;
+  padding-top: 0.4rem;
+}
+
+.dcb-election-party {
+  font-weight: 600;
+  color: var(--dcb-ink);
+}
+
+.dcb-election-party .election-seat-dot {
+  margin-right: 0.45rem;
+  vertical-align: 0.05em;
+}
+
+.dcb-election-num {
+  padding-left: 0.75rem !important;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--dcb-ink-2);
+  white-space: nowrap;
+}
+
+.dcb-election-mandates {
+  font-weight: 700;
+  color: var(--dcb-ink);
+}
+
+.dcb-election-total {
+  font-size: 0.8rem;
+  color: var(--dcb-ink-3);
+  text-align: right;
+}
+
+/* ───── Prose ───── */
+.dcb-description {
+  margin: 1.25rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--dcb-ink-2);
+}
+
+.dcb-comment {
+  margin: 1rem 0 0;
+  padding: 0 0 0 0.9rem;
+  border-left: 2px solid #f59e0b;
+  color: #78512a;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+/* ───── Sources ───── */
+/* The lead source sits under its own „Източник“ heading and the rest under
+   „Други източници и контекст“; the heading is the whole distinction. Both
+   lists print their entries in one style, so a quote reads the same wherever
+   it stands and the reader compares them as equals. */
+/* 0.85rem plus the entry's own 0.5rem padding = the 1.35rem the description
+   above has always had. The heading sits closer to its list than the other
+   sections' do because the first entry brings its own padding. */
+.dcb-sources {
+  margin-top: 0.85rem;
+}
+
+.dcb-sources .dcb-section-title {
+  margin-bottom: 0.6rem;
+}
+
+.dcb-metric {
+  margin-top: 1.35rem;
+}
+
+.dcb-metric .dcb-section-title {
+  margin-bottom: 0.6rem;
+}
+
+.dcb-metric-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.82rem;
+}
+
+.dcb-metric-button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--dcb-rule-2);
+  border-radius: 0.4rem;
+  font-weight: 600;
+  color: var(--dcb-ink);
+  transition: background 0.15s;
+}
+
+.dcb-metric-button:hover {
+  background: var(--dcb-rule);
+}
+
+/* Shared by every rule-line section heading — election, tenures, sources — so
+   the three keep one size. */
+.dcb-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--dcb-ink);
+}
+
+.dcb-section-title-text {
+  flex: none;
+}
+
+.dcb-section-title-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--dcb-rule);
+}
+
+/* ───── Source entry ───── */
+/* Entries separate by whitespace alone. Each one starts with its icon, which is
+   anchor enough; a hairline between them would be a second linear device next
+   to the icon column. The 0.4rem gap plus two entries' 0.5rem padding keeps
+   1.4rem of air between them — well over the 0.5rem a quote leaves before its
+   own citation, so the eye groups the right lines. */
+.dcb-source-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* One source. What the document says leads the entry when there is a quote,
+   and the document's own line — title, other copies, publisher and date —
+   follows it as the citation, the way an attribution reads under a pull quote.
+   Without a quote the title is all there is and heads the entry. The reader
+   learns one grammar either way: the icon marks where an entry starts, so a
+   citation belongs to the quote printed directly above it, never to the next
+   entry's. Nothing here is boxed: the icon anchors the entry and the grid keeps
+   the quote and the citation on one left edge. */
+.dcb-src {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.75rem;
+  row-gap: 0.5rem;
+  /* The padding is the hover surface's inset; the negative side margin pulls
+     the surface out past the text so the text itself does not move — the
+     same trick the tenure rows use. Hover shows the entry's full extent at the
+     moment someone is about to click, and costs no ink otherwise. */
+  padding: 0.5rem 0.6rem;
+  margin: 0 -0.6rem;
+  border-radius: 8px;
+  transition: background-color 0.15s;
+}
+
+.dcb-src:hover {
+  background: #f8fafc;
+}
+
+.dcb-src {
+  /* One hue per kind of document, carried by the icon alone: a state act in the
+     state blue, a video clip in dark red, a PDF in bright red, the press in teal, and an
+     encyclopaedia entry in neutral slate — a reference work, not a voice. The dateline is
+     deliberately left out of it: publisher and date are compared down the list,
+     so the whole line stays in one ink. */
+  --src-accent: #475569;
+  --src-tint: #e2e8f0;
+}
+
+.dcb-src[data-kind=official] {
+  --src-accent: #2d5a9e;
+  --src-tint: #dbe6f3;
+}
+
+.dcb-src[data-kind=video] {
+  --src-accent: #b91c1c;
+  --src-tint: #fee2e2;
+}
+
+.dcb-src[data-kind=pdf] {
+  --src-accent: #e8141c;
+  --src-tint: transparent;
+}
+
+.dcb-src[data-kind=document] {
+  --src-accent: #0f766e;
+  --src-tint: #d3ede8;
+}
+
+/* The kind of document, as a glyph: a state act, a video, an encyclopaedia
+   entry, a PDF, or any other document. */
+.dcb-src-icon {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  /* Aligns the icon's top edge with the tops of the first line's capitals, not
+     with its line box. For a title (0.98rem × 1.35) the caps start about 4.7px
+     below the line top: 2.7px half-leading, then the ascender space above the
+     cap height. A leading quote is set larger and looser, so its caps sit lower
+     and the icon drops with them — the override below. Measured in the browser
+     with canvas metrics — re-measure if a size or leading changes. */
+  margin-top: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 6px;
+  background: var(--src-tint);
+  color: var(--src-accent);
+}
+
+/* Lucide has no PDF glyph: a red page with a folded corner, the shape readers
+   know from PDF files, fills the tile and names the format in white. */
+.dcb-src-pdf text {
+  fill: #fff;
+  font-size: 7.5px;
+  font-weight: 800;
+}
+
+/* 1.0625rem × 1.5: 4.25px half-leading plus about 2.2px above the caps. */
+.dcb-src--quoted .dcb-src-icon {
+  margin-top: 6px;
+}
+
+/* The citation: the document's own line — title, other copies, publisher and
+   date — stacked on the text edge. Under a quote it is the attribution; on its
+   own it is the whole entry. */
+.dcb-src-cite {
+  grid-column: 2;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+/* Printed in full, however long: a clamped title lost words the reader could
+   not recover on a phone, and swallowed the link arrow with them. */
+.dcb-src-title {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--dcb-ink);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: color 0.15s;
+  /* Hover lightens the ink; the arrow after the title already says it is a
+     link, so no underline. */
+}
+
+.dcb-src-title:is(a):hover {
+  color: var(--dcb-ink-3);
+}
+
+/* After a quote the title steps down towards the dateline's ink and size: it
+   says which document was quoted, and the quote is what the reader came for.
+   It stays a notch above the dateline and keeps its weight, so the citation
+   still reads as title, then publisher and date, rather than as three lines of
+   one grey. */
+.dcb-src--quoted .dcb-src-title {
+  font-size: 0.87rem;
+  line-height: 1.4;
+  color: var(--dcb-ink-2);
+}
+
+/* The dateline: „Държавен вестник, 20 юни 2023 г.“ — publisher, then date, as a
+   citation reads. Both in the card's body ink, one colour for the whole line:
+   publisher and date are read down the list against each other, and a hue that
+   changed per entry broke that column. It closes the entry: the quote says what
+   the document says, the title says which document, and the publisher and date
+   sign it — the way an attribution sits under a pull quote. */
+.dcb-src-meta {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.4;
+  color: var(--dcb-ink-2);
+}
+
+.dcb-src-media {
+  font-weight: 500;
+}
+
+/* The dateline is two halves: publisher and date on the left, how long ago on
+   the right — the pair the card's own head prints under a name, in the same
+   smaller, lighter type. When the two do not fit one line the distance wraps
+   under the date rather than squeezing it. */
+.dcb-src-dateline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  column-gap: 0.75rem;
+}
+
+.dcb-src-ago {
+  font-size: 0.78rem;
+  color: var(--dcb-ink-3);
+  white-space: nowrap;
+}
+
+/* Other copies of the same piece — an archive snapshot, the wire story as run
+   by another outlet, a re-upload of the same clip — as a row of chips, one per
+   host, so the reader can pick the one they trust. The same chip the election
+   heading uses for its citations. Muted as a line: it is a footnote to the title
+   above it. */
+.dcb-src-mirrors {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem 0.35rem;
+  color: var(--dcb-ink-3);
+}
+
+.dcb-src-mirrors-label {
+  margin-right: 0.1rem;
+}
+
+/* One chip, one numbered cell per copy, divided by hairlines; the publisher
+   or host shows in a hover tip. Six cells reading "1 … 6" say less than six
+   names would, but a row of names ran to two lines and mostly repeated one
+   host — the name is a hover away when it matters. */
+.dcb-src-mirror {
+  display: inline-flex;
+  align-items: stretch;
+  height: 1.4rem;
+  border: 1px solid var(--dcb-rule-2);
+  border-radius: 4px;
+  background: #ffffff;
+  overflow: hidden;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.dcb-src-mirror > * + * {
+  border-left: 1px solid var(--dcb-rule-2);
+}
+
+.dcb-src-mirror-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.4rem;
+  padding: 0 0.4rem;
+  color: var(--dcb-ink-3);
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.dcb-src-mirror-link:hover {
+  color: var(--dcb-ink);
+  background: #f1f5f9;
+}
+
+/* ───── Excerpt ───── */
+/* What the source says about the fact: the quote and, where the source is not
+   Bulgarian, its original. It leads the entry, and a rule down its left edge
+   is what makes it read as a quotation from across the card — the quote marks
+   alone were too quiet in a list where most entries are bare titles. The rule
+   is a shade darker than the head's „ mark and heavier than the hairline the
+   old subordinate excerpt had, because here it marks the lead. The citation
+   beneath stays flush on the text edge, the way an attribution hangs under a
+   block quote, so the indent says "quoted", not "secondary". */
+.dcb-excerpt {
+  grid-column: 2;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--dcb-quote-rule);
+  transition: border-color 0.15s;
+}
+
+/* The quote opens the document too, as one block link: a reader who has just
+   read what it says is already looking at it. Hover lifts the block the way
+   the title lifts — the ink lightens and the rule darkens to meet it — with no
+   underline and no arrow; the title beneath carries the entry's one. */
+.dcb-excerpt-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.dcb-excerpt-link .dcb-quote-text {
+  transition: color 0.15s;
+}
+
+.dcb-excerpt-link:focus-visible {
+  outline: 2px solid var(--dcb-ink);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.dcb-excerpt:has(.dcb-excerpt-link:hover),
+.dcb-excerpt:has(.dcb-excerpt-link:focus-visible) {
+  border-left-color: var(--dcb-ink-3);
+}
+
+.dcb-quote {
+  margin: 0;
+}
+
+/* Real quotation marks, „…“ as Bulgarian sets them, drawn by the <q> element so
+   they are not copied along with the text. */
+.dcb-quote-text {
+  quotes: "„" "“";
+  font-size: 0.98rem;
+  line-height: 1.5;
+  font-weight: 450;
+  color: var(--dcb-ink);
+}
+
+/* Where in the document the passage is — the bracketed tail the dataset appends
+   to a quote. Printed after the quote in the metadata style, not inside the
+   quotation marks: it is the editor's, not the source's. */
+.dcb-quote-locator {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--dcb-ink-3);
+}
+
+/* The editor's note on the source — who wrote the piece, which section holds
+   the passage — as the last line of the citation. */
+.dcb-src-comment {
+  margin: 0;
+  color: #b45309;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+/* The last two headings are short and right-aligned, so they need a gap of their own. */
+.dcb-election-table th:last-child {
+  padding-left: 0.75rem;
+}

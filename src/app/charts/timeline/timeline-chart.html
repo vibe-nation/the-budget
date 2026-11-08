@@ -1,0 +1,109 @@
+<!-- Rendered in the site header, through NavSlot. -->
+<ng-template #toolbar>
+  <div class="chart-toolbar">
+    @if (charts().length) {
+      <app-legend-search [charts]="charts()" [picked]="legendPicks()" (pickedChange)="pickLegend($event)" />
+    }
+    <div class="toolbar-end">
+      @if (eventToggles().length) {
+        <app-events-menu [toggles]="eventToggles()" (toggled)="toggleEventBand($event)" />
+      }
+      <div class="segmented">
+        <button
+          type="button"
+          class="segmented-option"
+          [class.is-active]="labels()"
+          [attr.aria-pressed]="labels()"
+          (click)="toggleLabels()">
+          Покажи числата
+        </button>
+      </div>
+      <div class="segmented" role="group" aria-label="Мерна единица">
+        @for (option of magnitudes; track option.value) {
+          <button
+            type="button"
+            class="segmented-option"
+            [class.is-active]="money().magnitude === option.value"
+            [attr.aria-pressed]="money().magnitude === option.value"
+            (click)="setMagnitude(option.value)">
+            {{ option.label }}
+          </button>
+        }
+      </div>
+      <div class="segmented" role="group" aria-label="Валута">
+        @for (option of currencies; track option.value) {
+          <button
+            type="button"
+            class="segmented-option"
+            [class.is-active]="money().currency === option.value"
+            [attr.aria-pressed]="money().currency === option.value"
+            (click)="setCurrency(option.value)">
+            {{ option.label }}
+          </button>
+        }
+      </div>
+      <app-settings-dialog [lineShape]="lineShape()" (lineShapeChange)="setLineShape($event)" />
+    </div>
+  </div>
+</ng-template>
+
+<section class="stage">
+  @if (error(); as message) {
+    <p class="stage-status stage-status--error">{{ message }}</p>
+  } @else if (initialOption(); as option) {
+    <div class="stage-canvas-wrap">
+      <div
+        echarts
+        class="stage-canvas"
+        [options]="option"
+        [initOpts]="initOpts"
+        (chartInit)="onChartInit($event)"
+        (chartClick)="onChartClick($event)"
+        (chartDataZoom)="onDataZoom($event)"></div>
+      <!-- Beside the line grid on a wide chart, in the column the chart keeps
+           free; under it on a narrow one, where the chart keeps no column. -->
+      @if (charts().length) {
+        <app-lines-legend
+          [charts]="charts()"
+          [selection]="legendSelection()"
+          [picked]="legendPicks()"
+          [narrow]="narrow()"
+          [style.width.px]="narrow() ? null : legendColumnPx()"
+          (toggled)="toggleSeries($event)"
+          (hovered)="hoverSeries($event)"
+          (shownAll)="showAllSeries()"
+          (hiddenAll)="hideAllSeries()" />
+      }
+    </div>
+  } @else {
+    <p class="stage-status">Зареждане…</p>
+  }
+</section>
+
+<!-- The ✕ floats over the card's corner, pinned so it survives scrolling. -->
+<div class="detail-panel" [class.open]="cardOpen()" [inert]="!cardOpen()">
+  @if (cardOpen() && card(); as content) {
+    <button type="button" class="side-panel-close side-panel-close--floating" aria-label="Затвори" (click)="closeCard()">✕</button>
+    <div class="detail-panel-body">
+      <!-- The row leads only when the card has no head of its own: a term stripe,
+           which names no one. A person's bar prints name and role in the card. -->
+      @if (!content.name) {
+        <span class="detail-panel-eyebrow">{{ content.group }}</span>
+      }
+      <app-detail-card [content]="content" [relatedTenures]="related()" (selectTenure)="selectBar($event)" (locate)="reveal(true)" />
+    </div>
+  }
+</div>
+
+<app-roles-panel
+  [rows]="rows()"
+  [selected]="selected()"
+  [open]="panelOpen()"
+  [focused]="focusedRole()"
+  [defaultOrder]="isDefaultOrder()"
+  (toggled)="toggleRole($event)"
+  (selectedAll)="selectAll()"
+  (clearedAll)="clearAll()"
+  (orderReset)="resetOrder()"
+  (moved)="moveRow($event)"
+  (closed)="closePanel()" />

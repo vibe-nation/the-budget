@@ -1,0 +1,193 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss';
+
+:root {
+  /* modern monochrome palette: white × grey × ink */
+  --surface: #ffffff;
+  --surface-2: #fafafa;
+  --surface-3: #f4f5f7;
+  --border: #e5e7eb;
+  --border-soft: #eef0f2;
+  --ink: #0f1115;
+  --ink-2: #1f2937;
+  --ink-3: #4b5563;
+  --ink-4: #6b7280;
+  --ink-5: #9ca3af;
+  --ink-6: #b9bfc6;
+
+  /* The page column, shared by the header row and the footer. */
+  --page-max: 1400px;
+  --page-inset: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+html,
+body {
+  background-color: var(--surface);
+  color: var(--ink);
+  font-family: 'Sofia Sans', sans-serif;
+  overflow-x: clip;
+}
+
+/* Global because the footer sits in index.html, outside the app. It shares the
+   header's column. */
+.site-footer {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: 1.5rem var(--page-inset);
+  text-align: center;
+}
+
+.site-footer a {
+  display: inline-block;
+  color: var(--ink-4);
+}
+
+.site-footer a:hover {
+  color: var(--ink);
+}
+
+.site-footer svg {
+  display: block;
+}
+
+.site-footer p {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--ink-4);
+}
+
+/* The seat bar and party list of a Народно събрание bar. Global because the chart
+   tooltip is raw html, written outside Angular's style scoping. */
+.election-seats {
+  margin-top: 10px;
+  font-family: 'Sofia Sans', sans-serif;
+}
+
+/* The whole house as one strip; each seat-winning list is a block as wide as its
+   share, largest first. */
+.election-seat-bar {
+  display: flex;
+  gap: 1px;
+  height: 10px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+
+.election-seat {
+  display: block;
+  height: 100%;
+  min-width: 1px;
+}
+
+/* Grid rather than flex rows so the seat and percent columns line up down the
+   list; each row spreads its four cells into the grid. */
+.election-seat-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  column-gap: 8px;
+  row-gap: 3px;
+  align-items: baseline;
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.election-seat-row {
+  display: contents;
+}
+
+.election-seat-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  align-self: center;
+}
+
+.election-seat-alias {
+  min-width: 0;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.election-seat-mandates {
+  font-weight: 700;
+  color: #0f1115;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.election-seat-percent {
+  color: #64748b;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* The detail card's panel. Global because opening it pushes `body`, so the chart
+   narrows rather than disappearing under it. 580px: the card's date range plus
+   its full duration is the widest thing it carries. */
+:root {
+  --reading-panel-w: min(92vw, 580px);
+}
+
+.detail-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 100vh;
+  z-index: 200;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.detail-panel.open {
+  width: var(--reading-panel-w);
+  border-left: 1px solid #e2e8f0;
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.06);
+}
+
+body:has(.detail-panel.open) {
+  margin-right: var(--reading-panel-w);
+}
+
+/* On a phone the card covers the chart: pushing would leave nothing beside it. */
+@media (max-width: 768px) {
+  body:has(.detail-panel.open) {
+    margin-right: 0;
+  }
+}
+
+.detail-panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.25rem 0 2.5rem;
+}
+
+.detail-panel-body > .detail-panel-eyebrow {
+  display: block;
+  padding: 0.35rem 5.5rem 0.5rem 1rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #64748b;
+}
+
+.side-panel-close--floating {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.55rem;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+}

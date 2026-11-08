@@ -1,0 +1,29 @@
+[
+  {
+    "chartId": "government-deficit-and-surplus-eur",
+    "horizontalLines": [
+      {
+        "value": 0,
+        "color": "#000000",
+        "width": 1
+      }
+    ]
+  },
+  {
+    "chartId": "government-deficit-and-surplus-percent",
+    "horizontalLines": [
+      {
+        "value": 0,
+        "color": "#000000",
+        "width": 1
+      },
+      {
+        "value": -3,
+        "color": "#ff0000",
+        "width": 2,
+        "type": "dotted",
+        "label": "Праг: -3%"
+      }
+    ]
+  }
+]
