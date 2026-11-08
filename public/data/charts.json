@@ -8415,10 +8415,37 @@
       },
       {
         "date": "2018-12-31",
-        "value": 662838794.78,
-        "change": 32109130.14,
-        "change_percent": 4.96,
+        "value": 713967982.9,
+        "change": 83238318.26,
+        "change_percent": 12.38,
         "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2019 г.",
+            "file": "ZDBRB-2019.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/39412/ZDBRB+2019.pdf",
+            "amount": 1396400,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 103 (извънреден) от 13.12.2018 г.",
+              "issue": 103,
+              "extraordinary": true,
+              "date": "2018-12-13",
+              "page": 60,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=132563",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=326980&allowCache=true&openDirectly=false"
+            },
+            "article": 12,
+            "paragraph": 1,
+            "row": "§ 17, т. 2, б. „а“: II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 60,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          },
           {
             "title": "Закон за държавния бюджет на Република България за 2018 г.",
             "amount": 1296400,
@@ -8446,13 +8473,14 @@
               "arithmetic": "I − II + III = IV; IV + V = 0; текущи + капиталови = II"
             }
           }
-        ]
+        ],
+        "comment": "Приетата сума от 1 296 400,0 хил. лв. (ДВ, бр. 99 от 12.12.2017 г., чл. 12, ал. 1, ред „II. РАЗХОДИ“, стр. 30) е изменена на 1 396 400,0 хил. лв. с § 17, т. 2, б. „а“ от преходните и заключителните разпоредби на Закона за държавния бюджет за 2019 г. (ДВ, бр. 103 от 13.12.2018 г., стр. 60). Увеличението е 100 000,0 хил. лв., изцяло за персонал (ред 1.1: от 1 161 763,0 на 1 261 763,0 хил. лв.); бюджетните взаимоотношения (ред III) растат от 1 139 012,0 на 1 239 012,0 хил. лв."
       },
       {
         "date": "2019-12-31",
         "value": 774499930.98,
-        "change": 111661136.2,
-        "change_percent": 15.54,
+        "change": 60531948.08,
+        "change_percent": 8.13,
         "sources": [
           {
             "title": "Закон за държавния бюджет на Република България за 2019 г.",
@@ -8719,7 +8747,8 @@
               "arithmetic": "I − II + III = IV; IV + V = 0; текущи + капиталови = II"
             }
           }
-        ]
+        ],
+        "comment": "Разходите растат от 2 767 327,8 на 4 135 659,7 хил. лв. (+1 368 331,9 хил. лв., +49,4%). Персоналът расте от 2 536 447,0 на 3 819 483,2 хил. лв. (+1 283 036,2 хил. лв.), което е 94% от ръста. От 01.01.2025 г. чл. 177, ал. 2 и чл. 180, ал. 2 от ЗМВР (ДВ, бр. 19 от 2024 г.) обвързват основното месечно възнаграждение за най-ниската длъжност със средната работна заплата за страната за второто тримесечие на предходната година. Мотивите към законопроекта за бюджета за 2025 г. (проект от 18.02.2025 г., стр. 8 и 56, https://minfin.bg/upload/60693/UMTBF-2025-2028-motivi-18+02+25.pdf) разчитат увеличение на средствата за персонал в сектор „Отбрана и сигурност“ „предвид законодателната промяна в механизма за определяне на възнагражденията“ по законите за МВР, отбраната и НСО, считано от 01.01.2025 г.: 2 148,5 млн. лв. спрямо 2024 г."
       },
       {
         "date": "2026-12-31",
@@ -8755,6 +8784,1719 @@
             }
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "nso-budget-eur",
+    "name": "Бюджет на НСО",
+    "sources": [
+      {
+        "name": {
+          "en": "State Budget Acts of the Republic of Bulgaria, 2000–2026 (adopted expenditure, State Gazette)",
+          "bg": "Закони за държавния бюджет на Република България, 2000–2026 г. (приети разходи, „Държавен вестник“)"
+        },
+        "dataset_id": "ZDBRB",
+        "url": ["https://dv.parliament.bg/DVWeb/broeveList.faces", "https://www.minfin.bg/bg/247"]
+      }
+    ],
+    "dataset": {
+      "id": "ZDBRB",
+      "label": {
+        "en": "State Budget Act",
+        "bg": "Закон за държавния бюджет"
+      },
+      "selection": {
+        "freq": {
+          "code": "A",
+          "label": {
+            "en": "Annual",
+            "bg": "Годишно"
+          }
+        },
+        "institution": {
+          "code": "NSO",
+          "label": {
+            "en": "National Protection Service",
+            "bg": "Национална служба за охрана"
+          }
+        },
+        "indicator": {
+          "code": "EXPENDITURE",
+          "label": {
+            "en": "Adopted expenditure",
+            "bg": "Приети разходи"
+          }
+        }
+      }
+    },
+    "unit": "EUR",
+    "meta": {
+      "wholeYear": true
+    },
+    "data": [
+      {
+        "date": "2000-12-31",
+        "value": 6250543.25,
+        "change": 0,
+        "change_percent": 0,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2000 г.",
+            "file": "ZDBRB-2000--DV-br-1-2000.pdf",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=148448&allowCache=true&openDirectly=false",
+            "amount": 12225,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 1 от 4.01.2000 г.",
+              "issue": 1,
+              "extraordinary": false,
+              "date": "2000-01-04",
+              "page": 3,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=148448&allowCache=true&openDirectly=false"
+            },
+            "article": 4,
+            "paragraph": 1,
+            "row": "21. Национална служба за охрана",
+            "column": "Разходи",
+            "filePage": 3,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2001-12-31",
+        "value": 6697923.64,
+        "change": 447380.39,
+        "change_percent": 6.91,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2001 г.",
+            "file": "ZDBRB-2001--DV-br-108-2000.pdf",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=165401&allowCache=true&openDirectly=false",
+            "amount": 13100,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 108 от 29.12.2000 г.",
+              "issue": 108,
+              "extraordinary": false,
+              "date": "2000-12-29",
+              "page": 3,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=165401&allowCache=true&openDirectly=false"
+            },
+            "article": 4,
+            "paragraph": 1,
+            "row": "18. Национална служба за охрана",
+            "column": "Разходи",
+            "filePage": 3,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2002-12-31",
+        "value": 7528261.66,
+        "change": 830338.02,
+        "change_percent": 11.67,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2002 г.",
+            "file": "ZDBRB-2002.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/2877/zakon_za_budgeta_2002.pdf",
+            "amount": 14724,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 111 от 28.12.2001 г.",
+              "issue": 111,
+              "extraordinary": false,
+              "date": "2001-12-28",
+              "page": 10,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=142390&allowCache=true&openDirectly=false"
+            },
+            "article": 4,
+            "paragraph": 1,
+            "row": "19. Национална служба за охрана",
+            "column": "Разходи",
+            "filePage": 7,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2003-12-31",
+        "value": 8593793.94,
+        "change": 1065532.28,
+        "change_percent": 13.22,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2003 г.",
+            "file": "ZDBRB-2003.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/2878/LBUDGET.pdf",
+            "amount": 16808,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 120 от 29.12.2002 г.",
+              "issue": 120,
+              "extraordinary": false,
+              "date": "2002-12-29",
+              "page": 4,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=142392&allowCache=true&openDirectly=false"
+            },
+            "article": 4,
+            "paragraph": 1,
+            "row": "21. Национална служба за охрана",
+            "column": "Разходи",
+            "filePage": 6,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2004-12-31",
+        "value": 8951851.64,
+        "change": 358057.7,
+        "change_percent": 4.08,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2004 г.",
+            "file": "ZDBRB-2004.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/2879/BUDGET20.pdf",
+            "amount": 17508.3,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 114 от 30.12.2003 г.",
+              "issue": 114,
+              "extraordinary": false,
+              "date": "2003-12-30",
+              "page": 5,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=124338",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=124554&allowCache=true&openDirectly=false"
+            },
+            "article": 5,
+            "paragraph": 1,
+            "row": "21. Национална служба за охрана",
+            "column": "Разходи",
+            "filePage": 6,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2005-12-31",
+        "value": 9458899.8,
+        "change": 507048.16,
+        "change_percent": 5.51,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2005 г.",
+            "file": "ZDBRB-2005.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/2880/Budjet_zakon2005.pdf",
+            "amount": 18500,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 115 от 30.12.2004 г.",
+              "issue": 115,
+              "extraordinary": false,
+              "date": "2004-12-30",
+              "page": 7,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=18017",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=83391&allowCache=true&openDirectly=false"
+            },
+            "article": 5,
+            "paragraph": 1,
+            "row": "21. Национална служба за охрана",
+            "column": "Разходи",
+            "filePage": 9,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2006-12-31",
+        "value": 9959965.85,
+        "change": 501066.05,
+        "change_percent": 5.16,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2006 г.",
+            "file": "ZDBRB-2006.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/2881/DB-2006+g+ot+NS-1.pdf",
+            "amount": 19480,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 105 от 29.12.2005 г.",
+              "issue": 105,
+              "extraordinary": false,
+              "date": "2005-12-29",
+              "page": 6,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=1224",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=81295&allowCache=true&openDirectly=false"
+            },
+            "article": 5,
+            "paragraph": 1,
+            "row": "22. Национална служба за охрана",
+            "column": "Разходи",
+            "filePage": 11,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2007-12-31",
+        "value": 10988173.82,
+        "change": 1028207.97,
+        "change_percent": 9.82,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2007 г.",
+            "file": "ZDBRB-2007.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/2882/Zakon+2007+DV108.pdf",
+            "amount": 21491,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 108 от 29.12.2006 г.",
+              "issue": 108,
+              "extraordinary": false,
+              "date": "2006-12-29",
+              "page": 4,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=3060",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=77130&allowCache=true&openDirectly=false"
+            },
+            "article": 5,
+            "paragraph": 1,
+            "row": "25. Национална служба за охрана",
+            "column": "Разходи",
+            "filePage": 4,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2008-12-31",
+        "value": 11815444.08,
+        "change": 827270.26,
+        "change_percent": 7.26,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2008 г.",
+            "file": "ZDBRB-2008.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/4424/%09%09ZDBudget+2008.pdf%09%09",
+            "amount": 23109,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 113 от 28.12.2007 г.",
+              "issue": 113,
+              "extraordinary": false,
+              "date": "2007-12-28",
+              "page": 31,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=4615",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=48881&allowCache=true&openDirectly=false"
+            },
+            "article": 6,
+            "paragraph": 1,
+            "row": "25. Национална служба за охрана",
+            "column": "Разходи",
+            "filePage": 4,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2009-12-31",
+        "value": 16817412.56,
+        "change": 5001968.48,
+        "change_percent": 34.94,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2009 г.",
+            "file": "ZDBRB-2009.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/6138/%09%09Darjaven+budget+2009.pdf%09%09",
+            "amount": 32892,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 110 от 30.12.2008 г.",
+              "issue": 110,
+              "extraordinary": false,
+              "date": "2008-12-30",
+              "page": 7,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=13763",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=60401&allowCache=true&openDirectly=false"
+            },
+            "article": 6,
+            "paragraph": 1,
+            "row": "28. Национална служба за охрана",
+            "column": "Разходи",
+            "filePage": 6,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2010-12-31",
+        "value": 15972758.37,
+        "change": -844654.19,
+        "change_percent": -5.15,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2010 г.",
+            "file": "ZDBRB-2010.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/7558/ZDB+2010.pdf",
+            "amount": 31240,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 99 от 15.12.2009 г.",
+              "issue": 99,
+              "extraordinary": false,
+              "date": "2009-12-15",
+              "page": 8,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=27579",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=84713&allowCache=true&openDirectly=false"
+            },
+            "article": 6,
+            "paragraph": 1,
+            "row": "24. Национална служба за охрана",
+            "column": "Разходи",
+            "filePage": 8,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2011-12-31",
+        "value": 15972758.37,
+        "change": 0,
+        "change_percent": 0,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2011 г.",
+            "file": "ZDBRB-2011.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/8842/2011.pdf",
+            "amount": 31240,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 99 от 17.12.2010 г.",
+              "issue": 99,
+              "extraordinary": false,
+              "date": "2010-12-17",
+              "page": 8,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=41460",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=96065&allowCache=true&openDirectly=false"
+            },
+            "article": 6,
+            "paragraph": 1,
+            "row": "24 Национална служба за охрана",
+            "column": "Разходи",
+            "filePage": 8,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2012-12-31",
+        "value": 15819370.8,
+        "change": -153387.57,
+        "change_percent": -0.96,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2012 г.",
+            "file": "ZDBRB-2012.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/10270/ZDB+2012+-+DV99.pdf",
+            "amount": 30940,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 99 от 16.12.2011 г.",
+              "issue": 99,
+              "extraordinary": false,
+              "date": "2011-12-16",
+              "page": 28,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=59467",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=113175&allowCache=true&openDirectly=false"
+            },
+            "article": 6,
+            "paragraph": 1,
+            "row": "24 Национална служба за охрана",
+            "column": "Разходи",
+            "filePage": 7,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2013-12-31",
+        "value": 18025083.98,
+        "change": 2205713.18,
+        "change_percent": 13.03,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2013 г.",
+            "file": "ZDBRB-2013.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/11810/ZDB+2013-DV+102.pdf",
+            "amount": 35254,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 102 от 21.12.2012 г.",
+              "issue": 102,
+              "extraordinary": false,
+              "date": "2012-12-21",
+              "page": 8,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=71189",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=124988&allowCache=true&openDirectly=false"
+            },
+            "article": 6,
+            "paragraph": 1,
+            "row": "24 Национална служба за охрана",
+            "column": "Разходи",
+            "filePage": 8,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2014-12-31",
+        "value": 16864451.41,
+        "change": -1160632.57,
+        "change_percent": -6.65,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2014 г.",
+            "file": "ZDBRB-2014.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/13667/ZAKON_za_dyrjavniq_budjet_na_Republika_Bylgariq_za_2014.pdf",
+            "amount": 32984,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 109 от 20.12.2013 г.",
+              "issue": 109,
+              "extraordinary": false,
+              "date": "2013-12-20",
+              "page": 33,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=81175",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=142327&allowCache=true&openDirectly=false"
+            },
+            "article": 30,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 26,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ],
+        "note": "ДВ, бр. 67 от 12.08.2014 г. (ЗИД на Закона за бюджета на НЗОК за 2014 г.) пренаписва чл. 55: разходите по чл. 4–46 се утвърждават в размер 90 на сто. Сумата в чл. 30 не се променя."
+      },
+      {
+        "date": "2015-12-31",
+        "value": 16165004.12,
+        "change": -699447.29,
+        "change_percent": -4.24,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2015 г.",
+            "file": "ZDBRB-2015.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/15568/Zakon+za+durjaven+budget+2015.pdf",
+            "amount": 31616,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 107 от 24.12.2014 г.",
+              "issue": 107,
+              "extraordinary": false,
+              "date": "2014-12-24",
+              "page": 49,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=90900",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=165335&allowCache=true&openDirectly=false"
+            },
+            "article": 31,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 28,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ],
+        "note": "§ 10 от преходните и заключителните разпоредби на Закона за държавния бюджет за 2016 г. (ДВ, бр. 96 от 2015 г.) не променя чл. 31, но разпределя от резерва за 2015 г. до 3 200,0 хил. лв. за персонал."
+      },
+      {
+        "date": "2016-12-31",
+        "value": 17340975.44,
+        "change": 1175971.32,
+        "change_percent": 7.02,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2016 г.",
+            "file": "ZDBRB-2016.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/17315/ZDB2016.pdf",
+            "amount": 33916,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 96 (извънреден) от 9.12.2015 г.",
+              "issue": 96,
+              "extraordinary": true,
+              "date": "2015-12-09",
+              "page": 26,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=99252",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=203078&allowCache=true&openDirectly=false"
+            },
+            "article": 31,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 26,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-12-31",
+        "value": 19050735.49,
+        "change": 1709760.05,
+        "change_percent": 9.4,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2017 г.",
+            "file": "ZDBRB-2017.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/19036/Zakon+DBRB+2017.pdf",
+            "amount": 37260,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 98 от 9.12.2016 г.",
+              "issue": 98,
+              "extraordinary": false,
+              "date": "2016-12-09",
+              "page": 63,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=109996",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=246702&allowCache=true&openDirectly=false"
+            },
+            "article": 31,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 28,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2018-12-31",
+        "value": 19144813.2,
+        "change": 94077.71,
+        "change_percent": 0.49,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2018 г.",
+            "file": "ZDBRB-2018.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/35940/ZDB2018.pdf",
+            "amount": 37444,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 99 от 12.12.2017 г.",
+              "issue": 99,
+              "extraordinary": false,
+              "date": "2017-12-12",
+              "page": 47,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=120521",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=284100&allowCache=true&openDirectly=false"
+            },
+            "article": 32,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 30,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-12-31",
+        "value": 20698117.93,
+        "change": 1553304.73,
+        "change_percent": 7.8,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2019 г.",
+            "file": "ZDBRB-2019.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/39412/ZDBRB+2019.pdf",
+            "amount": 40482,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 103 (извънреден) от 13.12.2018 г.",
+              "issue": 103,
+              "extraordinary": true,
+              "date": "2018-12-13",
+              "page": 23,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=132563",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=326980&allowCache=true&openDirectly=false"
+            },
+            "article": 31,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 23,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2020-12-31",
+        "value": 22499194.72,
+        "change": 1801076.79,
+        "change_percent": 8.34,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2020 г.",
+            "file": "ZDBRB-2020.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/45899/Zakon+Budget+2020.pdf",
+            "amount": 44004.6,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 100 от 20.12.2019 г.",
+              "issue": 100,
+              "extraordinary": false,
+              "date": "2019-12-20",
+              "page": 34,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=143562",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=368368&allowCache=true&openDirectly=false"
+            },
+            "article": 31,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 38,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2021-12-31",
+        "value": 24480399.63,
+        "change": 1981204.91,
+        "change_percent": 8.43,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2021 г.",
+            "file": "ZDBRB-2021.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/46095/ZDB+2021.pdf",
+            "amount": 47879.5,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 104 от 8.12.2020 г.",
+              "issue": 104,
+              "extraordinary": false,
+              "date": "2020-12-08",
+              "page": 35,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=154110",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=414666&allowCache=true&openDirectly=false"
+            },
+            "article": 31,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 34,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2022-12-31",
+        "value": 24621925.22,
+        "change": 141525.59,
+        "change_percent": 0.58,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2022 г.",
+            "file": "ZDBRB-2022.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/51091/18_22-ZDBRB-2022.pdf",
+            "amount": 48156.3,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 18 от 4.03.2022 г.",
+              "issue": 18,
+              "extraordinary": false,
+              "date": "2022-03-04",
+              "page": 69,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=170229",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=479139&allowCache=true&openDirectly=false"
+            },
+            "article": 33,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 41,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ],
+        "note": "ЗИД 2022 (ДВ, бр. 52 от 2022 г.) не променя чл. 33, но предвижда в централния бюджет 2 000,0 хил. лв. за увеличение на възнагражденията."
+      },
+      {
+        "date": "2023-12-31",
+        "value": 27327784.11,
+        "change": 2705858.89,
+        "change_percent": 10.42,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2023 г.",
+            "file": "ZDBRB-2023.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/55662/ZDBRB2023%2C+DB.66.pdf",
+            "amount": 53448.5,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 66 от 1.08.2023 г.",
+              "issue": 66,
+              "extraordinary": false,
+              "date": "2023-08-01",
+              "page": 99,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=198020",
+              "issueUrl": null
+            },
+            "article": 33,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 38,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2024-12-31",
+        "value": 34061447.06,
+        "change": 6733662.95,
+        "change_percent": 21.94,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2024 г.",
+            "file": "ZDBRB-2024.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/57073/ZDB2024.pdf",
+            "amount": 66618.4,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 108 (извънреден) от 30.12.2023 г.",
+              "issue": 108,
+              "extraordinary": true,
+              "date": "2023-12-30",
+              "page": 38,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=202168",
+              "issueUrl": null
+            },
+            "article": 34,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 38,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2025-12-31",
+        "value": 48890956.78,
+        "change": 14829509.72,
+        "change_percent": 35.75,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2025 г.",
+            "file": "ZDBRB-2025.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/60901/ZDBRB+2025.pdf",
+            "amount": 95622.4,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 26 (извънреден) от 27.03.2025 г.",
+              "issue": 26,
+              "extraordinary": true,
+              "date": "2025-03-27",
+              "page": 29,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=233694",
+              "issueUrl": null
+            },
+            "article": 34,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 29,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ],
+        "comment": "Разходите растат от 66 618,4 на 95 622,4 хил. лв. (+29 004,0 хил. лв., +43,5%). Персоналът расте от 59 312,4 на 87 981,2 хил. лв. (+28 668,8 хил. лв.), което е 99% от ръста. От 01.01.2025 г. чл. 64, ал. 3 и 4 от Закона за НСО (ДВ, бр. 70 от 2024 г.) обвързва основното месечно възнаграждение за най-ниската длъжност със средната работна заплата за страната за второто тримесечие на предходната година, с коефициент не по-малко от 1,2 за офицери и 1,0 за сержанти. Мотивите към законопроекта за бюджета за 2025 г. (проект от 18.02.2025 г., стр. 8 и 56, https://minfin.bg/upload/60693/UMTBF-2025-2028-motivi-18+02+25.pdf) разчитат увеличение на средствата за персонал в сектор „Отбрана и сигурност“ „предвид законодателната промяна в механизма за определяне на възнагражденията“ по законите за МВР, отбраната и НСО, считано от 01.01.2025 г.: 2 148,5 млн. лв. спрямо 2024 г."
+      },
+      {
+        "date": "2026-12-31",
+        "value": 48891000,
+        "change": 43.22,
+        "change_percent": 0,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2026 г.",
+            "file": "ZDBRB-2026.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/64609/ZDB-2026.pdf",
+            "amount": 48891,
+            "amountUnit": "хил. евро",
+            "gazette": {
+              "citation": "ДВ, бр. 69 от 31.07.2026 г.",
+              "issue": 69,
+              "extraordinary": false,
+              "date": "2026-07-31",
+              "page": 34,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=245041",
+              "issueUrl": null
+            },
+            "article": 32,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 34,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ],
+        "comment": "Общата сума е равна на тази за 2025 г. (95 622,4 хил. лв.), превърната по курс 1,95583 и закръглена. Персоналът не е просто превърнат: 45 079,5 хил. евро срещу 87 981,2 хил. лв. за 2025 г. Такова съвпадение има само при 4 от 43-те институции със сравним бюджет в двата закона. Мотивите към бюджета за 2025 г. посочваха таван на разходите за 2026 г. 103 365,1 хил. лв. (стр. 195, https://minfin.bg/upload/60693/UMTBF-2025-2028-motivi-18+02+25.pdf), повече от приетата сума. Причината не е потвърдена."
+      }
+    ]
+  },
+  {
+    "id": "dans-budget-eur",
+    "name": "Бюджет на ДАНС",
+    "sources": [
+      {
+        "name": {
+          "en": "State Budget Acts of the Republic of Bulgaria, 2000–2026 (adopted expenditure, State Gazette)",
+          "bg": "Закони за държавния бюджет на Република България, 2000–2026 г. (приети разходи, „Държавен вестник“)"
+        },
+        "dataset_id": "ZDBRB",
+        "url": ["https://dv.parliament.bg/DVWeb/broeveList.faces", "https://www.minfin.bg/bg/247"]
+      }
+    ],
+    "dataset": {
+      "id": "ZDBRB",
+      "label": {
+        "en": "State Budget Act",
+        "bg": "Закон за държавния бюджет"
+      },
+      "selection": {
+        "freq": {
+          "code": "A",
+          "label": {
+            "en": "Annual",
+            "bg": "Годишно"
+          }
+        },
+        "institution": {
+          "code": "DANS",
+          "label": {
+            "en": "State Agency for National Security",
+            "bg": "Държавна агенция „Национална сигурност“"
+          }
+        },
+        "indicator": {
+          "code": "EXPENDITURE",
+          "label": {
+            "en": "Adopted expenditure",
+            "bg": "Приети разходи"
+          }
+        }
+      }
+    },
+    "unit": "EUR",
+    "meta": {
+      "wholeYear": true
+    },
+    "data": [
+      {
+        "date": "2009-12-31",
+        "value": 68208893.41,
+        "change": 0,
+        "change_percent": 0,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2009 г.",
+            "file": "ZDBRB-2009.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/6138/%09%09Darjaven+budget+2009.pdf%09%09",
+            "amount": 133405,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 110 от 30.12.2008 г.",
+              "issue": 110,
+              "extraordinary": false,
+              "date": "2008-12-30",
+              "page": 6,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=13763",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=60401&allowCache=true&openDirectly=false"
+            },
+            "article": 6,
+            "paragraph": 1,
+            "row": "20. Държавна агенция “Национална сигурност”",
+            "column": "Разходи",
+            "filePage": 5,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2010-12-31",
+        "value": 39543314.09,
+        "change": -28665579.32,
+        "change_percent": -53.21,
+        "sources": [
+          {
+            "title": "Закон за изменение и допълнение на Закона за държавния бюджет на Република България за 2010 г.",
+            "file": "ZIDZDBRB-2010.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/8206/ZID+2010.pdf",
+            "amount": 77340,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 56 от 23.07.2010 г.",
+              "issue": 56,
+              "extraordinary": false,
+              "date": "2010-07-23",
+              "page": 5,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=34857",
+              "issueUrl": null
+            },
+            "article": 6,
+            "paragraph": 1,
+            "row": "19 Държавна агенция „Национална сигурност“",
+            "column": "Разходи",
+            "filePage": 5,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          },
+          {
+            "title": "Закон за държавния бюджет на Република България за 2010 г.",
+            "file": "ZDBRB-2010.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/7558/ZDB+2010.pdf",
+            "amount": 96675,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 99 от 15.12.2009 г.",
+              "issue": 99,
+              "extraordinary": false,
+              "date": "2009-12-15",
+              "page": 8,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=27579",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=84713&allowCache=true&openDirectly=false"
+            },
+            "article": 6,
+            "paragraph": 1,
+            "row": "19. Държавна агенция „Национална сигурност“",
+            "column": "Разходи",
+            "filePage": 8,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ],
+        "comment": "Приетата сума от 96 675,0 хил. лв. (ДВ, бр. 99 от 15.12.2009 г., чл. 6, ал. 1, ред 19, стр. 8) е изменена на 77 340,0 хил. лв. с § 4, т. 1 от Закона за изменение и допълнение на Закона за държавния бюджет за 2010 г. (ДВ, бр. 56 от 23.07.2010 г., стр. 5). Намалението е 19 335,0 хил. лв.: субсидията от централния бюджет пада от 96 535,0 на 77 200,0 хил. лв., а приходите остават 140,0 хил. лв."
+      },
+      {
+        "date": "2011-12-31",
+        "value": 43633649.14,
+        "change": 4090335.05,
+        "change_percent": 9.84,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2011 г.",
+            "file": "ZDBRB-2011.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/8842/2011.pdf",
+            "amount": 85340,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 99 от 17.12.2010 г.",
+              "issue": 99,
+              "extraordinary": false,
+              "date": "2010-12-17",
+              "page": 8,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=41460",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=96065&allowCache=true&openDirectly=false"
+            },
+            "article": 6,
+            "paragraph": 1,
+            "row": "19 Държавна агенция „Национална сигурност“",
+            "column": "Разходи",
+            "filePage": 8,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2012-12-31",
+        "value": 38520730.33,
+        "change": -5112918.81,
+        "change_percent": -12.45,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2012 г.",
+            "file": "ZDBRB-2012.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/10270/ZDB+2012+-+DV99.pdf",
+            "amount": 75340,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 99 от 16.12.2011 г.",
+              "issue": 99,
+              "extraordinary": false,
+              "date": "2011-12-16",
+              "page": 28,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=59467",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=113175&allowCache=true&openDirectly=false"
+            },
+            "article": 6,
+            "paragraph": 1,
+            "row": "19 Държавна агенция „Национална сигурност“",
+            "column": "Разходи",
+            "filePage": 7,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2013-12-31",
+        "value": 43686312.21,
+        "change": 5165581.88,
+        "change_percent": 12.57,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2013 г.",
+            "file": "ZDBRB-2013.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/11810/ZDB+2013-DV+102.pdf",
+            "amount": 85443,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 102 от 21.12.2012 г.",
+              "issue": 102,
+              "extraordinary": false,
+              "date": "2012-12-21",
+              "page": 8,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=71189",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=124988&allowCache=true&openDirectly=false"
+            },
+            "article": 6,
+            "paragraph": 1,
+            "row": "19 Държавна агенция „Национална сигурност“",
+            "column": "Разходи",
+            "filePage": 8,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "приходи + субсидия = разходи"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2014-12-31",
+        "value": 57390979.79,
+        "change": 13704667.58,
+        "change_percent": 27.12,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2014 г.",
+            "file": "ZDBRB-2014.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/13667/ZAKON_za_dyrjavniq_budjet_na_Republika_Bylgariq_za_2014.pdf",
+            "amount": 112247,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 109 от 20.12.2013 г.",
+              "issue": 109,
+              "extraordinary": false,
+              "date": "2013-12-20",
+              "page": 30,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=81175",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=142327&allowCache=true&openDirectly=false"
+            },
+            "article": 25,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 23,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ],
+        "note": "ДВ, бр. 67 от 12.08.2014 г. (ЗИД на Закона за бюджета на НЗОК за 2014 г.) пренаписва чл. 55: разходите по чл. 4–46 се утвърждават в размер 90 на сто. Сумата в чл. 25 не се променя."
+      },
+      {
+        "date": "2015-12-31",
+        "value": 55180664.99,
+        "change": -2210314.8,
+        "change_percent": -3.93,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2015 г.",
+            "file": "ZDBRB-2015.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/15568/Zakon+za+durjaven+budget+2015.pdf",
+            "amount": 107924,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 107 от 24.12.2014 г.",
+              "issue": 107,
+              "extraordinary": false,
+              "date": "2014-12-24",
+              "page": 47,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=90900",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=165335&allowCache=true&openDirectly=false"
+            },
+            "article": 26,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 26,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-12-31",
+        "value": 49760971.05,
+        "change": -5419693.94,
+        "change_percent": -10.33,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2016 г.",
+            "file": "ZDBRB-2016.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/17315/ZDB2016.pdf",
+            "amount": 97324,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 96 (извънреден) от 9.12.2015 г.",
+              "issue": 96,
+              "extraordinary": true,
+              "date": "2015-12-09",
+              "page": 24,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=99252",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=203078&allowCache=true&openDirectly=false"
+            },
+            "article": 26,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 24,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-12-31",
+        "value": 55061533.98,
+        "change": 5300562.93,
+        "change_percent": 10.11,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2017 г.",
+            "file": "ZDBRB-2017.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/19036/Zakon+DBRB+2017.pdf",
+            "amount": 107691,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 98 от 9.12.2016 г.",
+              "issue": 98,
+              "extraordinary": false,
+              "date": "2016-12-09",
+              "page": 60,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=109996",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=246702&allowCache=true&openDirectly=false"
+            },
+            "article": 26,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 25,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2018-12-31",
+        "value": 55300818.58,
+        "change": 239284.6,
+        "change_percent": 0.43,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2018 г.",
+            "file": "ZDBRB-2018.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/35940/ZDB2018.pdf",
+            "amount": 108159,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 99 от 12.12.2017 г.",
+              "issue": 99,
+              "extraordinary": false,
+              "date": "2017-12-12",
+              "page": 44,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=120521",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=284100&allowCache=true&openDirectly=false"
+            },
+            "article": 27,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 27,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-12-31",
+        "value": 59151050.96,
+        "change": 3850232.38,
+        "change_percent": 6.73,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2019 г.",
+            "file": "ZDBRB-2019.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/39412/ZDBRB+2019.pdf",
+            "amount": 115689.4,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 103 (извънреден) от 13.12.2018 г.",
+              "issue": 103,
+              "extraordinary": true,
+              "date": "2018-12-13",
+              "page": 21,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=132563",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=326980&allowCache=true&openDirectly=false"
+            },
+            "article": 26,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 21,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2020-12-31",
+        "value": 64352014.23,
+        "change": 5200963.27,
+        "change_percent": 8.42,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2020 г.",
+            "file": "ZDBRB-2020.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/45899/Zakon+Budget+2020.pdf",
+            "amount": 125861.6,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 100 от 20.12.2019 г.",
+              "issue": 100,
+              "extraordinary": false,
+              "date": "2019-12-20",
+              "page": 30,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=143562",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=368368&allowCache=true&openDirectly=false"
+            },
+            "article": 26,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 34,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2021-12-31",
+        "value": 70328709.55,
+        "change": 5976695.32,
+        "change_percent": 8.88,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2021 г.",
+            "file": "ZDBRB-2021.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/46095/ZDB+2021.pdf",
+            "amount": 137551,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 104 от 8.12.2020 г.",
+              "issue": 104,
+              "extraordinary": false,
+              "date": "2020-12-08",
+              "page": 31,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=154110",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=414666&allowCache=true&openDirectly=false"
+            },
+            "article": 26,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 30,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ],
+        "note": "ЗИД 2021 (ДВ, бр. 77 от 2021 г.) не променя чл. 26, но отпуска от резерва до 2 121,0 хил. лв. при засилен миграционен натиск."
+      },
+      {
+        "date": "2022-12-31",
+        "value": 70706400.86,
+        "change": 377691.31,
+        "change_percent": 0.54,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2022 г.",
+            "file": "ZDBRB-2022.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/51091/18_22-ZDBRB-2022.pdf",
+            "amount": 138289.7,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 18 от 4.03.2022 г.",
+              "issue": 18,
+              "extraordinary": false,
+              "date": "2022-03-04",
+              "page": 66,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=170229",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=479139&allowCache=true&openDirectly=false"
+            },
+            "article": 28,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 38,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ],
+        "note": "ЗИД 2022 (ДВ, бр. 52 от 2022 г.) не променя чл. 28, но предвижда в централния бюджет 1 200,0 и 2 000,0 хил. лв. за агенцията."
+      },
+      {
+        "date": "2023-12-31",
+        "value": 83763772.93,
+        "change": 13057372.07,
+        "change_percent": 16.91,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2023 г.",
+            "file": "ZDBRB-2023.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/55662/ZDBRB2023%2C+DB.66.pdf",
+            "amount": 163827.7,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 66 от 1.08.2023 г.",
+              "issue": 66,
+              "extraordinary": false,
+              "date": "2023-08-01",
+              "page": 96,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=198020",
+              "issueUrl": null
+            },
+            "article": 28,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 35,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2024-12-31",
+        "value": 87449062.55,
+        "change": 3685289.62,
+        "change_percent": 4.3,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2024 г.",
+            "file": "ZDBRB-2024.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/57073/ZDB2024.pdf",
+            "amount": 171035.5,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 108 (извънреден) от 30.12.2023 г.",
+              "issue": 108,
+              "extraordinary": true,
+              "date": "2023-12-30",
+              "page": 34,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=202168",
+              "issueUrl": null
+            },
+            "article": 28,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 34,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2025-12-31",
+        "value": 142580081.09,
+        "change": 55131018.54,
+        "change_percent": 47.93,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2025 г.",
+            "file": "ZDBRB-2025.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/60901/ZDBRB+2025.pdf",
+            "amount": 278862.4,
+            "amountUnit": "хил. лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 26 (извънреден) от 27.03.2025 г.",
+              "issue": 26,
+              "extraordinary": true,
+              "date": "2025-03-27",
+              "page": 26,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=233694",
+              "issueUrl": null
+            },
+            "article": 28,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 26,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ],
+        "comment": "Разходите растат от 171 035,5 на 278 862,4 хил. лв. (+107 826,9 хил. лв., +63,0%). Персоналът расте от 162 538,0 на 261 377,1 хил. лв. (+98 839,1 хил. лв.), което е 92% от ръста. Законът за ДАНС не обвързва възнагражденията със средната работна заплата, както законите за МВР и НСО, и причината за ръста на агенцията не е потвърдена: мотивите към законопроекта (проект от 18.02.2025 г., https://minfin.bg/upload/60693/UMTBF-2025-2028-motivi-18+02+25.pdf) дават сумата на стр. 194, но не посочват ДАНС сред ведомствата с променен механизъм (стр. 8 и 56)."
+      },
+      {
+        "date": "2026-12-31",
+        "value": 142580100,
+        "change": 18.91,
+        "change_percent": 0,
+        "sources": [
+          {
+            "title": "Закон за държавния бюджет на Република България за 2026 г.",
+            "file": "ZDBRB-2026.pdf",
+            "fileUrl": "https://www.minfin.bg/upload/64609/ZDB-2026.pdf",
+            "amount": 142580.1,
+            "amountUnit": "хил. евро",
+            "gazette": {
+              "citation": "ДВ, бр. 69 от 31.07.2026 г.",
+              "issue": 69,
+              "extraordinary": false,
+              "date": "2026-07-31",
+              "page": 31,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=245041",
+              "issueUrl": null
+            },
+            "article": 27,
+            "paragraph": 1,
+            "row": "II. РАЗХОДИ",
+            "column": "Сума",
+            "filePage": 31,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false,
+              "arithmetic": "I − II + III = 0; текущи + капиталови = II"
+            }
+          }
+        ],
+        "comment": "Общата сума е равна на тази за 2025 г. (278 862,4 хил. лв.), превърната по курс 1,95583 и закръглена. Персоналът не е просто превърнат: 133 600,0 хил. евро срещу 261 377,1 хил. лв. за 2025 г. Такова съвпадение има само при 4 от 43-те институции със сравним бюджет в двата закона. Мотивите към бюджета за 2025 г. посочваха таван на разходите за 2026 г. 286 052,5 хил. лв. (стр. 194, https://minfin.bg/upload/60693/UMTBF-2025-2028-motivi-18+02+25.pdf), повече от приетата сума. Причината не е потвърдена."
       }
     ]
   },

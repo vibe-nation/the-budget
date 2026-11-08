@@ -1,6 +1,6 @@
 ---
 name: budget-chart
-description: Use when adding or refreshing a line on the timeline from a Bulgarian budget law: an institution's budget over the years (бюджет на МВР, съдебна власт, прокуратура, НСО, министерство, агенция), a body inside one, or a figure a budget law sets, such as НЗОК's budget or the максимален осигурителен доход. Also use when the user asks where a chart figure stands in the law or says a budget line is wrong, or wants a planned or forecast figure on the chart from a document that is not law yet: a законопроект, проектобюджет, проект на бюджетен план, средносрочна бюджетна прогноза, for any chart line including Eurostat's. For Eurostat data use eurostat-extract.
+description: Use when adding or refreshing a line on the timeline from a Bulgarian budget law: an institution's budget over the years (бюджет на МВР, съдебна власт, прокуратура, НСО, министерство, агенция), a body inside one, or a figure a budget law sets, such as НЗОК's budget or the максимален осигурителен доход. Also use when the user asks where a chart figure stands in the law or says a budget line is wrong, or has open items on a budget line to settle with the user, or wants a planned or forecast figure on the chart from a document that is not law yet: a законопроект, проектобюджет, проект на бюджетен план, средносрочна бюджетна прогноза, for any chart line including Eurostat's. For Eurostat data use eurostat-extract.
 ---
 
 # Budget chart
@@ -30,9 +30,9 @@ Before 2014 an institution usually has only a row in the roster (`чл. 4–6, �
 2. **Prefer the exact row.** When two tables give a figure, take the one with more digits and cite the other as a second location with its own `amount` and `unit`. The 2002 judiciary table says „121,9“ млн. лв., while `II. РАЗХОДИ` says 121 873,7 хил. лв.
 3. **Run the arithmetic.** Use every identity the table has, including reserve rows, which can be labelled differently across years. Parts must sum to the total. Lines starting `в т.ч.` are not parts.
 4. **Confirm in the gazette.** Check the figure in the act's text (`gazette.actUrl`) or the full issue (`gazette.issueUrl`). Act pages can omit tables, and acts before 2004 have no page, so use the issue PDF. Older issues decode as cp1251. A failed text search on a scan is not evidence: read the page image.
-5. **Read every amendment of those years** with your own eyes. The ЗИД files in `public/budget` are only some of them. The heading of a year's latest ЗИД lists the earlier ones („изм., бр. 66 и 68 от 2013 г.“), and so does the act's page on lex.bg. Amendments also sit in other laws, above all the ЗИД of the НЗОК and ДОО budget acts: the one in ДВ, бр. 67 от 2014 г. rewrites `чл. 55` of the state budget act and withholds 10% under `чл. 4–46`. Record what changes the figure. Money added or withheld without changing it goes in the row's `note`. Report what you searched and what you read, and say so if a title search is all you did.
-6. **Build with the script, dry run first.** `node .claude/skills/budget-chart/scripts/budget-series.mjs <input.json>`. It refuses a value lacking a location, a gazette link or a gazette check. Add `--write --after <id>`, then run prettier on `charts.json`.
-7. **Finish the line.** For a draft's figure, follow **Draft figures** instead. Name it plainly, like „Бюджет на МВР“, with no suffix such as „(по закон)“. The „Обяснение“ text says the figures are adopted amounts. Add a colour to `LINE_COLORS` so no two lines share one. A part of a total gets `meta: { startsOff: true }`. A line of yearly amounts gets `meta: { wholeYear: true }`, which holds it flat across each year, and the input's `meta` has to carry both or a rebuild drops them. Load `describe-metric` for its text. Run the tests, the build and open the app. A global ignore rule hides `.claude`, so a new file in this skill needs `git add -f` when committing.
+5. **Read every amendment of those years** with your own eyes. The ЗИД files in `public/budget` are only some of them. The heading of a year's latest ЗИД lists the earlier ones („изм., бр. 66 и 68 от 2013 г.“), and so does the act's page on lex.bg. Amendments also sit in other laws, above all the ЗИД of the НЗОК and ДОО budget acts: the one in ДВ, бр. 67 от 2014 г. rewrites `чл. 55` of the state budget act and withholds 10% under `чл. 4–46`. The next year's budget act can amend this one in its преходни и заключителни разпоредби: § 17 of the 2019 act rewrites `чл. 12` for МВР 2018, +100 000,0 хил. лв. Compare each figure with the consolidated text on lex.bg (`references/gazette.md`). A difference means an amendment you haven't read, so go and read it. Record what changes the figure. Money added or withheld without changing it goes in the row's `note`. Report what you searched and what you read, and say so if a title search is all you did.
+6. **Build with the script, dry run first.** `node .claude/skills/budget-chart/scripts/budget-series.mjs <input.json>`. It refuses a value lacking a location, a gazette link or a gazette check. Add `--write --after <id>`, then run prettier on `charts.json`. To change values of a series already on the chart, use `--update` (see **Input**).
+7. **Finish the line.** For a draft's figure, follow **Draft figures** instead. Name it plainly, like „Бюджет на МВР“, with no suffix such as „(по закон)“. A line shows the final figure of each year, so an amendment that changes it is the value. The „Обяснение“ text says the figures are the amounts adopted in the annual law and, for a year with a changed amount, the amended one. Add a colour to `LINE_COLORS` so no two lines share one. A part of a total gets `meta: { startsOff: true }`. A line of yearly amounts gets `meta: { wholeYear: true }`, which holds it flat across each year, and the input's `meta` has to carry both or a rebuild drops them. Load `describe-metric` for its text. Run the tests, the build and open the app. A global ignore rule hides `.claude`, so a new file in this skill needs `git add -f` when committing.
 
 ## Input
 
@@ -47,6 +47,7 @@ Before 2014 an institution usually has only a row in the roster (`чл. 4–6, �
       "amount": 999556.0,
       "unit": "хил. лв.",
       "note": "Optional, on the value",
+      "comment": "Optional: the details of an amendment that changed the value, or of a jump",
       "sources": [
         {
           "article": 12,
@@ -63,9 +64,10 @@ Before 2014 an institution usually has only a row in the roster (`чл. 4–6, �
 }
 ```
 
+- **To change values of an existing series,** run the script with `--update`, dry run first. The input is `{ "id": "mvr-budget-eur", "rows": [...] }` and lists only the values that change. A row with `sources` is checked like any other and replaces that value. `"keepSources": true` keeps the old citations after the new ones, which is how an adopted figure stays as the second location. A row with only `year` and `comment` or `note` leaves the figure alone. Every other value stays as it is, and the next year's change is recalculated.
 - `page` is the page printed in the gazette, `filePage` the page of the PDF. They differ.
 - A location may add `annex`, or its own `amount` and `unit`.
-- An amendment that changes the figure is the row's `amount` and its first location, which carries the ЗИД as its own `act`. The adopted figure stays as the second location, citing the law with its own `amount`. Say so in the row's `note`.
+- An amendment that changes the figure is the row's `amount` and its first location, which carries the ЗИД as its own `act`. The adopted figure stays as the second location, citing the law with its own `amount`. The row's `comment` gives the details: both amounts, the provision that changed the figure and its gazette issue and page, and what moved.
 - A law outside the catalogue needs `act` on the row and `source` on the input, in the catalogue's shape.
 - A figure that changes mid-year sets `"dated": true` and a `date` per row, the day it took effect, with `acts` on the input keyed by that date.
 - A list with no paragraphs uses `point`, and `letter` where it has them, in place of `paragraph`.
@@ -81,7 +83,7 @@ Before 2014 an institution usually has only a row in the roster (`чл. 4–6, �
 - **An institution is absent:** it gets no value, never `0`.
 - **Two rows the law keeps apart:** two lines. A sum is your calculation, not a published figure.
 - **An amount per person:** `meta: { "axis": "monthly", "style": { "step": "end" } }`, not the money axis.
-- **A jump in the line:** check it in the law, then look for a change in what the row covers. Report causes you couldn't confirm as unexplained.
+- **A jump in the line:** check it in the law, then look for a change in what the row covers. Put the law's own facts in the value's `comment`, such as how much of the rise is staff costs. Add a cause only when a law or the draft's мотиви states it, with the source. Otherwise write that the cause is unconfirmed. A politician's or union's statement shows what was said, not why the money moved.
 
 ## Draft figures
 
@@ -111,6 +113,22 @@ A draft has no gazette, so `budget-series.mjs` refuses its figures, as it should
 
 `at` names the row and column as printed. `url` is the link where you found the draft, and a draft without one stays off the chart. A line takes one plan, and the script refuses a second. `value` is in the line's unit: whole euros for money, so хил. евро × 1000. A percentage is as printed. Dates follow the line: the year's last day for a yearly figure, the month's last day for a monthly rate, and the day it takes effect for an amount set from a date.
 
+## Open items, one at a time
+
+When the work leaves things for the user to decide, such as a gap in the checks, two lines treated differently or a figure nobody can explain, don't send them as one list of questions. Walk through them with the user in order:
+
+1. **Name them all once,** in order. Then number each one as it comes up: „Отворена точка 1 от 4“.
+2. **Check before you describe.** Run the read-only comparison that could change the options. If it shows something you said earlier was wrong, correct it in the same message.
+3. **Write one item per message, in Bulgarian:**
+   - **Какъв е проблемът:** one or two plain sentences.
+   - **Какво намерих:** the facts, in a table when they compare, each with its law, issue and page.
+   - **Варианти:** А, Б, В. Say what each one does, then *Плюс* and *Минус*, and what it costs. Include leaving things as they are, when that is a real choice. Mark one „(препоръчвам)“.
+   - End by asking which one.
+4. **Wait for the choice,** then carry it out in full: the data, the texts, the skill rules, the tests and the build.
+5. **Report in a few lines,** saying what is confirmed and what is not, then give the next item in the same message.
+6. **A choice put off for later** goes in the backlog with what to do, how, and why it waits. Don't start it.
+7. **Close with a table** of every item and how it ended.
+
 ## Red flags
 
 - An article number taken from the nearest heading. Quote the sentence that introduces the table.
@@ -119,5 +137,6 @@ A draft has no gazette, so `budget-series.mjs` refuses its figures, as it should
 - „No amendment changes it“ from a search rather than a reading.
 - Something unverified described as done. Report which checks ran and which didn't.
 - A draft's figure added to the line itself, or given a gazette check so a script accepts it. It belongs in a plan.
+- A value of an existing series changed by hand or by a one-off script. Use `--update`.
 
 Lookup help: `.claude/skills/budget-chart/references/gazette.md`.

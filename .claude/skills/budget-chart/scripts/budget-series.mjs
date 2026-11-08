@@ -4,6 +4,7 @@
  * public/data/charts.json. It refuses a value a reader couldn't find and check.
  *
  *   node budget-series.mjs <input.json> [--into public/data/charts.json] [--after <id>] [--write]
+ *   node budget-series.mjs <input.json> --update [--into public/data/charts.json] [--write]
  *
  * Without --write nothing changes. The input's shape is in the skill's SKILL.md.
  */
@@ -100,6 +101,7 @@ export function buildSeries(input, acts) {
       change_percent: previous ? symmetricPercent(previous.value, value) : 0,
       sources: row.sources.map((where) => citation(where, row, act)),
       ...(row.note ? { note: row.note } : {}),
+      ...(row.comment ? { comment: row.comment } : {}),
     });
     previous = data.at(-1);
   }
@@ -131,9 +133,66 @@ export function mergeSeries(charts, series, after) {
   return [...charts.slice(0, at + 1), series, ...charts.slice(at + 1)];
 }
 
+/** One value of a series with `row` applied: a row with sources replaces the figure, any other only annotates it. */
+function updatedPoint(point, row, input, acts) {
+  const { comment, note } = row;
+  if (!row.sources) {
+    if (!comment && !note) throw new Error(`${point.date}: a row needs sources, a comment or a note`);
+    return { ...point, ...(note ? { note } : {}), ...(comment ? { comment } : {}) };
+  }
+  const [built] = buildSeries({ id: input.id, name: input.id, acts: input.acts, rows: [row] }, acts).data;
+  return {
+    ...point,
+    value: built.value,
+    sources: [...built.sources, ...(row.keepSources ? point.sources ?? [] : [])],
+    ...(note ? { note } : {}),
+    ...(comment ? { comment } : {}),
+  };
+}
+
+/** `charts` with the values `input.rows` lists changed in one series. Only they and the change of the year after them differ. */
+export function updateSeries(charts, input, acts) {
+  const { id, rows } = input;
+  if (!rows?.length) throw new Error('input needs rows');
+  const at = charts.findIndex((chart) => chart.id === id);
+  if (at < 0) throw new Error(`no series ${id}`);
+  const data = [...charts[at].data];
+  const moved = new Set();
+
+  for (const raw of rows) {
+    const date = raw.date ?? `${raw.year}-12-31`;
+    const index = data.findIndex((point) => point.date === date);
+    if (index < 0) throw new Error(`${id} has no value for ${date}`);
+    const point = updatedPoint(data[index], { ...raw, date }, input, acts);
+    if (point.value !== data[index].value) moved.add(index).add(index + 1);
+    data[index] = point;
+  }
+
+  for (const index of [...moved].filter((index) => index < data.length).sort((a, b) => a - b)) {
+    const previous = data[index - 1];
+    const { value } = data[index];
+    data[index] = { ...data[index], change: previous ? round2(value - previous.value) : 0, change_percent: previous ? symmetricPercent(previous.value, value) : 0 };
+  }
+  return charts.map((chart, index) => (index === at ? { ...chart, data } : chart));
+}
+
+function runUpdate(input, acts, into, write) {
+  const charts = JSON.parse(readFileSync(into, 'utf8'));
+  const updated = updateSeries(charts, input, acts);
+  const before = charts.find(({ id }) => id === input.id).data;
+  updated.find(({ id }) => id === input.id).data.forEach((point, index) => {
+    const old = before[index];
+    if (JSON.stringify(point) !== JSON.stringify(old)) console.log(point.date, old.value.toFixed(2).padStart(16), '→', point.value.toFixed(2).padStart(16), '€', `${point.change_percent}%`.padStart(8), point.comment ? 'comment' : '');
+  });
+  if (!write) return console.log(`dry run: ${input.id}, nothing written`);
+  writeFileSync(into, `${JSON.stringify(updated, null, 2)}\n`);
+  console.log(`updated ${input.id} in ${into}; run prettier on it`);
+}
+
 function main([file, ...args]) {
   const option = (name) => (args.includes(name) ? args[args.indexOf(name) + 1] : undefined);
   const into = option('--into') ?? 'public/data/charts.json';
+  if (args.includes('--update')) return runUpdate(JSON.parse(readFileSync(file, 'utf8')), JSON.parse(readFileSync(ACTS, 'utf8')), into, args.includes('--write'));
   const series = buildSeries(JSON.parse(readFileSync(file, 'utf8')), JSON.parse(readFileSync(ACTS, 'utf8')));
 
   for (const { date, value, change_percent, sources } of series.data) {

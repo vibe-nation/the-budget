@@ -47,7 +47,8 @@ Old issues are set in two columns. Use `pdftotext` without `-layout` to find a p
 
 - **Amendment history.** An act's page starts with „Обн. ДВ. бр. …“, followed by every „изм.“, „доп.“ and „попр. ДВ. бр. …“. This includes amendments made by other laws. Use it to list what step 5 has to read, then read each one in the gazette.
 - **The text is consolidated.** The page shows the act as it stands now, with amendments folded in, so its figures may not be the adopted ones. Read the figure from the gazette.
-- **Fetching.** The pages are cp1251. Act pages are at `https://lex.bg/laws/ldoc/<id>` and open with `curl -A research-client`. The site search needs a browser session: a plain POST returns „Няма резултати“, which says nothing about whether the act exists.
+- **Fetching.** The pages are cp1251. Act pages are at `https://lex.bg/laws/ldoc/<id>` and open with `curl -A research-client`. The site search needs a browser session: a plain POST returns „Няма резултати“, which says nothing about whether the act exists. In a browser, fill `#search2_txt` on the home page and press Enter. The result links hold the `ldoc` id. The search doesn't find state budget acts before 2010, or the 2018, 2024–2026 ones, and an empty result proves nothing.
+- **State budget acts on lex.bg (`ldoc` ids).** 2010 2135654585, 2011 2135708982, 2012 2135764986, 2013 2135829969, 2014 2136003154, 2015 2136410750, 2016 2136700906, 2017 2136949161, 2018 2137178752, 2019 2137189074, 2020 2137198498, 2021 2137207657, 2022 2137220490, 2023 2137235202, 2024 2137238807. To check for amendments, compare the row with the figure on the act's page. The first line lists the amending issues.
 
 ## Polite use
 

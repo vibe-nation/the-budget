@@ -171,6 +171,8 @@ export interface ChartPoint {
   readonly change_percent?: number;
   /** The reading's own citations, for a series whose figures don't share one table. */
   readonly sources?: readonly LawCitation[];
+  /** The details behind this value: how an amendment changed it, or what is known about a jump. Kept in the data, not displayed. */
+  readonly comment?: string;
 }
 
 /** A level drawn across the line grid, in the series' own unit. */

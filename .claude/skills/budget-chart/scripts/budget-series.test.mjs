@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 
-import { buildSeries, mergeSeries } from './budget-series.mjs';
+import { buildSeries, mergeSeries, updateSeries } from './budget-series.mjs';
 
 const acts = JSON.parse(readFileSync(new URL('../references/state-budget-acts.json', import.meta.url)));
 const charts = JSON.parse(readFileSync(new URL('../../../../public/data/charts.json', import.meta.url)));
@@ -67,6 +67,13 @@ for (const missing of ['article', 'label', 'column', 'page', 'filePage', 'checks
   });
 }
 
+test('keeps a comment on the value it explains', () => {
+  const { data } = buildSeries(input([row({ comment: 'изменена сума' }), row({ year: 2015 })]), acts);
+
+  assert.equal(data[0].comment, 'изменена сума');
+  assert.equal('comment' in data[1], false);
+});
+
 test('takes „Член единствен“ as the article, and refuses any other word', () => {
   const [{ sources }] = buildSeries(input([row({ sources: [{ ...where, article: 'единствен' }] })]), acts).data;
 
@@ -116,4 +123,51 @@ test('takes a new id only, after the named series', () => {
   assert.deepEqual(mergeSeries(list, { id: 'n' }, 'a').map(({ id }) => id), ['a', 'n', 'b']);
   assert.deepEqual(mergeSeries(list, { id: 'n' }).map(({ id }) => id), ['a', 'b', 'n']);
   assert.throws(() => mergeSeries(list, { id: 'a' }), /already there/);
+});
+
+const published = (rows) => [buildSeries(input(rows), acts)];
+const threeYears = () => published([row({ year: 2014, amount: 100 }), row({ year: 2015, amount: 200 }), row({ year: 2016, amount: 300 })]);
+const update = (rows) => ({ id: 'x-budget-eur', rows });
+
+test('updates one value, recounts it and the next year, and leaves the rest alone', () => {
+  const charts = threeYears();
+  const [{ data }] = updateSeries(charts, update([row({ year: 2015, amount: 400, comment: 'изменена' })]), acts);
+  const expected = buildSeries(input([row({ year: 2014, amount: 100 }), row({ year: 2015, amount: 400 }), row({ year: 2016, amount: 300 })]), acts).data;
+
+  assert.equal(data[1].value, expected[1].value);
+  assert.equal(data[1].change, expected[1].change);
+  assert.equal(data[2].change_percent, expected[2].change_percent);
+  assert.equal(data[2].value, charts[0].data[2].value);
+  assert.equal(data[0], charts[0].data[0]);
+  assert.equal(data[1].comment, 'изменена');
+});
+
+test('keeps the old citations after the new ones when asked', () => {
+  const charts = threeYears();
+  const kept = updateSeries(charts, update([row({ year: 2015, amount: 400, keepSources: true })]), acts)[0].data[1];
+  const replaced = updateSeries(charts, update([row({ year: 2015, amount: 400 })]), acts)[0].data[1];
+
+  assert.equal(kept.sources.length, 2);
+  assert.equal(kept.sources[0].amount, 400);
+  assert.equal(kept.sources[1].amount, 200);
+  assert.equal(replaced.sources.length, 1);
+});
+
+test('adds a comment without touching the figure', () => {
+  const charts = threeYears();
+  const [{ data }] = updateSeries(charts, update([{ year: 2015, comment: 'скок' }]), acts);
+
+  assert.deepEqual({ ...data[1], comment: undefined }, { ...charts[0].data[1], comment: undefined });
+  assert.equal(data[1].comment, 'скок');
+  assert.equal(data[2], charts[0].data[2]);
+});
+
+test('refuses an update it could not trace', () => {
+  const charts = threeYears();
+  const unchecked = { ...where, checks: { file: true, gazetteAct: false, gazetteIssue: false } };
+
+  assert.throws(() => updateSeries(charts, { id: 'nope', rows: [{ year: 2015, comment: 'x' }] }, acts), /no series nope/);
+  assert.throws(() => updateSeries(charts, update([{ year: 1999, comment: 'x' }]), acts), /no value for 1999/);
+  assert.throws(() => updateSeries(charts, update([{ year: 2015 }]), acts), /sources, a comment or a note/);
+  assert.throws(() => updateSeries(charts, update([row({ year: 2015, sources: [unchecked] })]), acts), /not confirmed in the gazette/);
 });

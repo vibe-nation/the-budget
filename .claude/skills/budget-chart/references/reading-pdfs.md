@@ -108,7 +108,7 @@ Two pages is normal: the article or roster table, plus the annex that repeats th
 
 ## Fetching a law that isn't in `public/budget`
 
-`minfin.bg` sits behind Cloudflare, so plain `curl` gets a challenge page, not a PDF. Load a minfin page in Playwright, wait for the challenge to clear, read `cf_clearance` and the browser's exact User-Agent from the context, then pass both to `curl`.
+`minfin.bg` sits behind Cloudflare, so plain `curl` gets a challenge page, not a PDF. Don't copy its cookie into `curl`. Open the file's URL in the Playwright browser and ask the user to solve the check in that window. Then get the file with `page.request.get(url)` and save it through a browser download: pass the bytes to the page as base64, click a blob link with a `download` attribute, and call `download.saveAs(path)`, because Playwright's run-code sandbox has no `fs`. Save it in a new directory of its own.
 
 `dv.parliament.bg` needs no cookie and is the fallback whenever a minfin PDF is scanned or corrupt. See `gazette.md`. `showMaterialDV.jsp?idMat=…` returns a single act as HTML.
 

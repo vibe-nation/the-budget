@@ -46,6 +46,8 @@ export const LINE_COLORS = [
   '#ad1457',
   '#558b2f',
   '#00acc1',
+  '#a1887f',
+  '#cddc39',
 ];
 
 /** The colour of the series at `index` of the chart list, on the chart and in the legend alike. */
