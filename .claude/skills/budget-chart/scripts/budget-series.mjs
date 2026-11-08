@@ -30,7 +30,7 @@ const STATE_BUDGET_SOURCE = {
 const round2 = (value) => Math.round(value * 100) / 100;
 
 /* The same measure as the Eurostat series: a plain percentage means nothing across a sign change. */
-const symmetricPercent = (previous, value) => {
+export const symmetricPercent = (previous, value) => {
   const mean = (Math.abs(previous) + Math.abs(value)) / 2;
   return mean === 0 ? 0 : Number((((value - previous) / mean) * 100).toFixed(2));
 };

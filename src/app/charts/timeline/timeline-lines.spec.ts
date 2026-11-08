@@ -45,7 +45,7 @@ describe('the lines on offer', () => {
   it('draw every plan with the series it names', () => {
     const plans = (charts as unknown as ChartSeries[]).filter(({ meta }) => meta?.planOf);
     expect(plans.length).toBeGreaterThan(0);
-    for (const plan of plans) expect(all.find(({ id }) => id === plan.meta!.planOf)?.plan).toBe(plan);
+    for (const plan of plans) expect(all.find(({ id }) => id === plan.meta!.planOf)?.plan?.id).toBe(plan.id);
   });
 
   it('never share a colour', () => {
@@ -774,8 +774,17 @@ describe('plans', () => {
   it('hang on the series they name and leave the list', () => {
     const [only, ...rest] = attachPlans([actual, plan, series('other', 'percent')]);
 
-    expect(only).toMatchObject({ id: 'actual', plan });
+    expect(only).toMatchObject({ id: 'actual', plan: { id: 'plan' } });
     expect(rest.map(({ id }) => id)).toEqual(['other']);
+  });
+
+  it('take the axis and the whole-year drawing of their series, whatever they carry', () => {
+    const monthly: ChartSeries = { ...series('monthly', 'EUR'), meta: { axis: 'monthly', wholeYear: true } };
+    const own: ChartSeries = { ...series('own', 'EUR'), meta: { planOf: 'monthly', axis: 'inflation', style: { step: 'end' } } };
+    const [{ plan: drawn }] = attachPlans([monthly, own]);
+
+    expect(drawn?.meta).toEqual({ planOf: 'monthly', axis: 'monthly', wholeYear: true, style: { step: 'end' } });
+    expect(attachPlans([actual, { ...plan, meta: { planOf: 'actual', wholeYear: true } }])[0].plan?.meta).toEqual({ planOf: 'actual' });
   });
 
   it('stay series of their own when what they name is missing', () => {
@@ -790,7 +799,7 @@ describe('plans', () => {
   it('are found by their line id when clicked', () => {
     const charts = attachPlans([actual, plan]);
 
-    expect(chartOfLine(charts, 'actual', 'plan')).toBe(plan);
+    expect(chartOfLine(charts, 'actual', 'plan')).toBe(charts[0].plan);
     expect(chartOfLine(charts, 'actual', 'actual')?.id).toBe('actual');
     expect(chartOfLine(charts, 'missing', 'missing')).toBeUndefined();
   });
@@ -798,7 +807,7 @@ describe('plans', () => {
   it('take their series colour', () => {
     const charts = attachPlans([series('first', 'percent'), actual, plan]);
 
-    expect(chartColor(charts, plan)).toBe(LINE_COLORS[1]);
+    expect(chartColor(charts, charts[1].plan!)).toBe(LINE_COLORS[1]);
   });
 
   it('are drawn after their series, in its colour', () => {

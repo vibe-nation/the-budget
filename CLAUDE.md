@@ -18,6 +18,7 @@ npx prettier --write public/data/charts.json                                    
 
 # Skill scripts have their own node:test suites
 node --test .claude/skills/budget-chart/scripts/budget-series.test.mjs
+node --test .claude/skills/budget-chart/scripts/plan-series.test.mjs
 node --test .claude/skills/eurostat-extract/scripts/jsonstat.test.mjs
 python3 .claude/skills/budget-chart/scripts/pdftext.py public/budget/ZDBRB-2019.pdf --find "Прокуратура"   # PDF text, see budget-chart/references/reading-pdfs.md
 ```
@@ -40,9 +41,9 @@ The "HTMLCanvasElement's getContext() not implemented" lines in test output are 
 
 All types for these files live in `timeline.model.ts`. Read it before touching any data file.
 
-**Chart construction is split into pure modules** that the component calls and the specs test directly, without rendering. `timeline-chart-option.ts` assembles the option. The Gantt is an ECharts `custom` series (`timeline-series.ts`, `timeline-lanes.ts`, `timeline-selection.ts`). Lines, legend and colours are in `timeline-lines.ts`, where `LINE_COLORS` needs a new entry per line. Value axes are in `timeline-value-axes.ts`.
+**Chart construction is split into pure modules** that the component calls and the specs test directly, without rendering. `timeline-chart-option.ts` assembles the option. The Gantt is an ECharts `custom` series (`timeline-series.ts`, `timeline-lanes.ts`, `timeline-selection.ts`). Lines, legend and colours are in `timeline-lines.ts`, where `LINE_COLORS` needs a new entry per line (a `planOf` series takes its line's). Value axes are in `timeline-value-axes.ts`.
 
-Several value axes coexist: percent, money, coefficient, inflation and monthly. A series picks its axis from `unit` and `meta.axis` (`valueAxisOf`). Money is stored in the series' unit and converted for display by `timeline-money.ts`, using the reader's currency (EUR/BGN, fixed rate 1.95583) and magnitude. Series `meta` flags matter: `startsOff` hides a part-of-total line at first, and `wholeYear` holds a yearly figure flat across its year.
+Several value axes coexist: percent, money, coefficient, inflation and monthly. A series picks its axis from `unit` and `meta.axis` (`valueAxisOf`). Money is stored in the series' unit and converted for display by `timeline-money.ts`, using the reader's currency (EUR/BGN, fixed rate 1.95583) and magnitude. Series `meta` flags matter: `startsOff` hides a part-of-total line at first, `wholeYear` holds a yearly figure flat across its year, and `planOf` makes a series the planned figures of another line (a draft budget's), which `attachPlans` hangs on it: dashed in its colour, on its axis, under its legend entry.
 
 **Chart instance handling:** the `[options]` binding only creates the chart. After that the component updates the ECharts instance directly, because re-binding options would reset the reader's zoom. Selection repaints the cached `bars` without a rebuild. Reader preferences such as row order, hidden events, money view and labels persist in `localStorage` under `the-budget.*` keys.
 
@@ -53,7 +54,7 @@ Several value axes coexist: percent, money, coefficient, inflation and monthly. 
 - **Keep URLs relative** (`data/charts.json`, not `/data/...`). The production `baseHref` is `/the-budget/`.
 - **Add and refresh data through the project skills** in `.claude/skills/`, not by hand-editing `charts.json`:
   - `eurostat-extract`: Eurostat JSON-stat export → series, always all years. Raw whole-dataset exports that series use live in `public/data/eurostat/` and are listed in its `README.md`.
-  - `budget-chart`: figures from the budget-law PDFs in `public/budget/` (catalogued in `references/state-budget-acts.json`). Every value carries a `LawCitation`: title, ДВ issue, page, член, алинея, row and column. The build script refuses a value without one.
+  - `budget-chart`: figures from the budget-law PDFs in `public/budget/` (catalogued in `references/state-budget-acts.json`). Every value carries a `LawCitation`: title, ДВ issue, page, член, алинея, row and column. The build script refuses a value without one. Figures from a draft (законопроект, Проект на бюджетен план) go in through its `plan-series.mjs` as a `planOf` series instead.
   - `describe-metric`: writes `public/data/metrics/<name>.md`.
   - `verify-mandates`: adds and checks office-holders in `public/data/roles.json`. It holds `scripts/dv_gazette.py`, the Държавен вестник reader that `budget-chart` uses too, and notes on the parliament.bg API.
 - **The project is self-contained.** Everything a skill needs (scripts, references, rules) lives in this repo. Don't refer to skills, files or data outside it; copy what is needed into the skill instead. External tools are `node`, `python3` (standard library) and poppler-utils (`pdftotext`, `pdfinfo`).

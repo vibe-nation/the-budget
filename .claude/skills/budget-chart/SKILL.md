@@ -1,6 +1,6 @@
 ---
 name: budget-chart
-description: Use when adding or refreshing a line on the timeline from a Bulgarian budget law: an institution's budget over the years (бюджет на МВР, съдебна власт, прокуратура, НСО, министерство, агенция), a body inside one, or a figure a budget law sets, such as НЗОК's budget or the максимален осигурителен доход. Also use when the user asks where a chart figure stands in the law or says a budget line is wrong. For Eurostat data use eurostat-extract.
+description: Use when adding or refreshing a line on the timeline from a Bulgarian budget law: an institution's budget over the years (бюджет на МВР, съдебна власт, прокуратура, НСО, министерство, агенция), a body inside one, or a figure a budget law sets, such as НЗОК's budget or the максимален осигурителен доход. Also use when the user asks where a chart figure stands in the law or says a budget line is wrong, or wants a planned or forecast figure on the chart from a document that is not law yet: a законопроект, проектобюджет, проект на бюджетен план, средносрочна бюджетна прогноза, for any chart line including Eurostat's. For Eurostat data use eurostat-extract.
 ---
 
 # Budget chart
@@ -17,6 +17,7 @@ Turn figures from Bulgarian budget laws into series of `public/data/charts.json`
 |---|---|---|
 | Institution's budget | ЗДБРБ, the state budget act | `public/budget/`, catalogued in `references/state-budget-acts.json` |
 | НЗОК's budget | Закон за бюджета на НЗОК | Държавен вестник. The state budget shows only a transfer to it, which is not its budget |
+| A planned or forecast figure | A draft: законопроект before Държавен вестник, Проект на бюджетен план, средносрочна бюджетна прогноза | `public/budget/`, listed in its `README.md` as „Проект“. See **Draft figures** below |
 | Осигурителен доход | Закон за бюджета на ДОО, from 2002. For 2000–2001, КСО чл. 9, ал. 2: 10 × минимална работна заплата | Държавен вестник; [kik-info](https://kik-info.com/spravochnik/maksimalen-osiguritelen-dohod.php) lists every period with its ДВ issue, for a cross-check |
 
 Existing extractions of the same figures, in this repo or elsewhere, are leads to check, never a source. A reference table is a cross-check for dates and amounts. An amount no law prints may come from it, with a `note` on the value saying so.
@@ -31,7 +32,7 @@ Before 2014 an institution usually has only a row in the roster (`чл. 4–6, �
 4. **Confirm in the gazette.** Check the figure in the act's text (`gazette.actUrl`) or the full issue (`gazette.issueUrl`). Act pages can omit tables, and acts before 2004 have no page, so use the issue PDF. Older issues decode as cp1251. A failed text search on a scan is not evidence: read the page image.
 5. **Read every amendment of those years** with your own eyes. The ЗИД files in `public/budget` are only some of them. The heading of a year's latest ЗИД lists the earlier ones („изм., бр. 66 и 68 от 2013 г.“). Amendments also sit in other laws, above all the ЗИД of the НЗОК and ДОО budget acts: the one in ДВ, бр. 67 от 2014 г. rewrites `чл. 55` of the state budget act and withholds 10% under `чл. 4–46`. Record what changes the figure. Money added or withheld without changing it goes in the row's `note`. Report what you searched and what you read, and say so if a title search is all you did.
 6. **Build with the script, dry run first.** `node .claude/skills/budget-chart/scripts/budget-series.mjs <input.json>`. It refuses a value lacking a location, a gazette link or a gazette check. Add `--write --after <id>`, then run prettier on `charts.json`.
-7. **Finish the line.** Name it plainly, like „Бюджет на МВР“, with no suffix such as „(по закон)“. The „Обяснение“ text says the figures are adopted amounts. Add a colour to `LINE_COLORS` so no two lines share one. A part of a total gets `meta: { startsOff: true }`. A line of yearly amounts gets `meta: { wholeYear: true }`, which holds it flat across each year, and the input's `meta` has to carry both or a rebuild drops them. Load `describe-metric` for its text. Run the tests, the build and open the app. A global ignore rule hides `.claude`, so a new file in this skill needs `git add -f` when committing.
+7. **Finish the line.** For a draft's figure, follow **Draft figures** instead. Name it plainly, like „Бюджет на МВР“, with no suffix such as „(по закон)“. The „Обяснение“ text says the figures are adopted amounts. Add a colour to `LINE_COLORS` so no two lines share one. A part of a total gets `meta: { startsOff: true }`. A line of yearly amounts gets `meta: { wholeYear: true }`, which holds it flat across each year, and the input's `meta` has to carry both or a rebuild drops them. Load `describe-metric` for its text. Run the tests, the build and open the app. A global ignore rule hides `.claude`, so a new file in this skill needs `git add -f` when committing.
 
 ## Input
 
@@ -80,6 +81,34 @@ Before 2014 an institution usually has only a row in the roster (`чл. 4–6, �
 - **An amount per person:** `meta: { "axis": "monthly", "style": { "step": "end" } }`, not the money axis.
 - **A jump in the line:** check it in the law, then look for a change in what the row covers. Report causes you couldn't confirm as unexplained.
 
+## Draft figures
+
+A draft has no gazette, so `budget-series.mjs` refuses its figures, as it should. They go on the chart as a **plan**: a series whose `meta.planOf` names the line it continues. The app hangs it on that line. It is drawn dashed in the line's colour, on its axis, and is switched by the line's legend entry. It has no entry or colour of its own.
+
+1. **Read the figure in the draft** as in steps 1–3, and note the PDF page of each value.
+2. **Match the line's measure.** A plan of a Eurostat line takes the draft's figure on the same definition, not a national figure with the same name. For example, the ESA general government deficit, not the cash-basis КФП. Another example is December's annual HICP rate, not the yearly average. Where the draft prints the last reported year, check that its figure equals the line's.
+3. **Take only what the draft prints.** Where it prints an estimate for the current year, take that too, since the planned year starts from it. A draft law prints only the coming year, so its plan holds that one value. A value you computed, such as a % of GDP times GDP, does not belong.
+4. **Build with `plan-series.mjs`, dry run first.** Run `node .claude/skills/budget-chart/scripts/plan-series.mjs <input.json>`, then add `--write` and run prettier on `charts.json`. The script takes the unit from the line and dashes it. It refuses a value without its page, and a law citation on a value.
+5. **Finish the plan.** Name it after the line and the document: „Дълг по проектобюджета“ for the Проект на бюджетен план, „Бюджет на МВР по законопроекта“ for a draft law. Its text in `public/data/metrics/` says the figures are planned, not adopted or reported, and may change (load `describe-metric`). Add the PDF to `public/budget/README.md` and leave `state-budget-acts.json` alone.
+6. **When the law is in Държавен вестник:** add the year to the line with `budget-series.mjs` and drop that year from the plan. Delete the plan once it holds no future year.
+
+```json
+{
+  "id": "budget-plan-mvr-eur",
+  "name": "Бюджет на МВР по законопроекта",
+  "planOf": "mvr-budget-eur",
+  "document": {
+    "bg": "Законопроект за държавния бюджет на Република България за 2027 г. (Министерство на финансите, 6.11.2026 г.)",
+    "en": "Draft State Budget Act of the Republic of Bulgaria for 2027 (Ministry of Finance, 6 Nov 2026)",
+    "code": "ZDBRB-2027-DRAFT",
+    "url": "https://www.minfin.bg/upload/.../draft.pdf"
+  },
+  "rows": [{ "date": "2027-12-31", "value": 2200000000, "at": { "bg": "чл. 12, ал. 1, ред „II. РАЗХОДИ“, колона „Сума“, стр. 9", "en": "Art. 12(1), row II. Expenditure, column Amount, p. 9", "pages": [9] } }]
+}
+```
+
+`at` names the row and column as printed. `url` is the link where you found the draft, and a draft without one stays off the chart. A line takes one plan, and the script refuses a second. `value` is in the line's unit: whole euros for money, so хил. евро × 1000. A percentage is as printed. Dates follow the line: the year's last day for a yearly figure, the month's last day for a monthly rate, and the day it takes effect for an amount set from a date.
+
 ## Red flags
 
 - An article number taken from the nearest heading. Quote the sentence that introduces the table.
@@ -87,5 +116,6 @@ Before 2014 an institution usually has only a row in the roster (`чл. 4–6, �
 - A figure copied because an existing file already has it.
 - „No amendment changes it“ from a search rather than a reading.
 - Something unverified described as done. Report which checks ran and which didn't.
+- A draft's figure added to the line itself, or given a gazette check so a script accepts it. It belongs in a plan.
 
 Lookup help: `.claude/skills/budget-chart/references/gazette.md`.

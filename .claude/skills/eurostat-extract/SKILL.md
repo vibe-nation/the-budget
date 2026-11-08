@@ -74,7 +74,7 @@ Wait for their answer. If a field is still open afterwards, ask again about that
 
 Keep the unit the data is published in, because the goal is figures people can trust. A coefficient isn't a percent, so never offer `percent` for it, as a recommendation or as a way to avoid changing the app. If `charts.json` and the chart have no fitting unit, propose adding one, with its own value axis.
 
-A percentage whose scale would flatten the other lines keeps `unit: "percent"` and gets `"meta": { "axis": "inflation" }` in `charts.json`, added by hand after the write, which puts it on an axis of its own. Yearly inflation needs this: it reaches 547.6% in December 1997, and the debt lines around 30% would lie flat beside it. A replace keeps `meta`.
+A percentage whose scale would flatten the other lines keeps `unit: "percent"` and gets `"meta": { "axis": "inflation" }` in `charts.json`, added by hand after the write, which puts it on an axis of its own. Yearly inflation needs this: it reaches 547.6% in December 1997, and the debt lines around 30% would lie flat beside it. A replace keeps `meta`. A series whose `meta.planOf` names the one being refreshed holds a draft budget's planned figures; it is separate and survives the replace. Never merge planned values into the Eurostat series (budget-chart covers plans).
 
 For Bulgaria prefer `MIO_NAC`, because the app converts euro to leva at the fixed 1.95583. Eurostat now states Bulgaria's whole `MIO_NAC` history in euro at that same rate, so `MIO_NAC` × 1.95583 gives the leva figures back. `MIO_EUR` differs from it in 1997, 1998, 2001, 2002 and 2004, so those years would come out wrong in leva.
 

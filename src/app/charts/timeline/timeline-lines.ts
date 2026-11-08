@@ -47,12 +47,22 @@ export const LINE_COLORS = [
 export const lineColor = (index: number): string => LINE_COLORS[index % LINE_COLORS.length];
 
 /** Each series with the plan that names it in `meta.planOf`. A plan leaves the list, so it takes no
- *  legend entry and no colour of its own; one whose series is missing stays a series of its own. */
+ *  legend entry and no colour of its own; one whose series is missing stays a series of its own.
+ *  It takes its series' axis and whole-year drawing, so the two always stand on one scale. */
 export function attachPlans(charts: readonly ChartSeries[]): ChartSeries[] {
-  const ids = new Set(charts.map(({ id }) => id));
-  const isPlan = (chart: ChartSeries) => !!chart.meta?.planOf && ids.has(chart.meta.planOf);
+  const byId = new Map(charts.map((chart) => [chart.id, chart]));
+  const isPlan = (chart: ChartSeries) => !!chart.meta?.planOf && byId.has(chart.meta.planOf);
   const plans = new Map(charts.filter(isPlan).map((plan) => [plan.meta!.planOf!, plan]));
-  return charts.filter((chart) => !isPlan(chart)).map((chart) => (plans.has(chart.id) ? { ...chart, plan: plans.get(chart.id) } : chart));
+  const drawnLike = (plan: ChartSeries, { meta }: ChartSeries): ChartSeries => {
+    const { axis, wholeYear, ...own } = plan.meta ?? {};
+    return { ...plan, meta: { ...own, ...(meta?.axis ? { axis: meta.axis } : {}), ...(meta?.wholeYear ? { wholeYear: true } : {}) } };
+  };
+  return charts
+    .filter((chart) => !isPlan(chart))
+    .map((chart) => {
+      const plan = plans.get(chart.id);
+      return plan ? { ...chart, plan: drawnLike(plan, chart) } : chart;
+    });
 }
 
 /** The series and their plans: everything the line grid draws. */
