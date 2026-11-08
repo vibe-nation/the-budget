@@ -67,6 +67,14 @@ describe('restoreSelection', () => {
   it('falls back to everything when every remembered name went stale', () => {
     expect([...restoreSelection(['a', 'b'], ['gone'])]).toEqual(['a', 'b']);
   });
+
+  it('selects only the defaults on a first visit when given', () => {
+    expect([...restoreSelection(['a', 'b', 'c'], null, ['c', 'a', 'gone'])]).toEqual(['c', 'a']);
+  });
+
+  it('falls back to the defaults when every remembered name went stale', () => {
+    expect([...restoreSelection(['a', 'b'], ['gone'], ['b'])]).toEqual(['b']);
+  });
 });
 
 describe('the stored panel state', () => {

@@ -37,15 +37,21 @@ export function ordersEqual(a: RoleOrder, b: RoleOrder): boolean {
   return a.length === b.length && a.every((name, i) => name === b[i]);
 }
 
-/* Everything is selected by default. A remembered selection is intersected with
-   the rows on offer, so a renamed row drops out silently; if that leaves nothing
-   while something *was* remembered, the names all went stale and the default is
-   safer than an empty chart. A remembered empty selection stays empty. */
-export function restoreSelection(names: readonly string[], stored: readonly string[] | null): ReadonlySet<string> {
-  if (stored === null) return new Set(names);
+/* A first visit gets `defaults` (everything, if none are given). A remembered
+   selection is intersected with the rows on offer, so a renamed row drops out
+   silently; if that leaves nothing while something *was* remembered, the names
+   all went stale and the defaults are safer than an empty chart. A remembered
+   empty selection stays empty. */
+export function restoreSelection(
+  names: readonly string[],
+  stored: readonly string[] | null,
+  defaults: readonly string[] = names
+): ReadonlySet<string> {
   const available = new Set(names);
+  const fallback = defaults.filter((name) => available.has(name));
+  if (stored === null) return new Set(fallback);
   const restored = stored.filter((name) => available.has(name));
-  return new Set(!restored.length && stored.length ? names : restored);
+  return new Set(!restored.length && stored.length ? fallback : restored);
 }
 
 /* localStorage throws rather than returning null when it is unavailable

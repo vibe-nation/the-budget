@@ -37,7 +37,8 @@ interface SearchOption {
 }
 
 /* The toolbar's field for narrowing the legend to some of its series: the text
-   narrows the dropdown, and a row picked from it narrows the legend. A pick leaves
+   narrows the dropdown, and a row picked from it narrows the legend and the chart
+   to the picks (the others are drawn off until the picks are cleared). A pick leaves
    the list open with its text, so several can be made in one go, and the same row
    takes one back. While the text is empty the recent picks lead the list.
    `TimelineChart` owns the picks; what is typed and the recent picks are this

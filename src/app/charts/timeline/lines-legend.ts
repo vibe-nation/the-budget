@@ -16,8 +16,8 @@ export interface LegendRow {
    name to a line, from the top of the chart down, scrolling once the series
    outnumber the lines that fit. It holds no state — the chart's legend
    component still owns which series is on, and `TimelineChart` switches it
-   through actions. A pick in the search only narrows this list: a series it leaves
-   out keeps its line on the chart, and every series its own colour. */
+   through actions. A pick in the search narrows this list, and `TimelineChart`
+   draws the series it leaves out off; every series keeps its own colour. */
 @Component({
   selector: 'app-lines-legend',
   changeDetection: ChangeDetectionStrategy.OnPush,

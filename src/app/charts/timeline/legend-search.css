@@ -165,7 +165,8 @@
   border-top: 1px solid var(--border-soft);
 }
 
-/* Hover and the arrow keys share one state: there is never a second cursor. */
+/* Hover and the arrow keys share one state: there is never a second cursor. The
+   names stay at regular weight: a pick shows in its tick and darker ink. */
 .search-option {
   appearance: none;
   display: flex;
@@ -179,7 +180,7 @@
   color: var(--ink-2);
   font: inherit;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.25;
   text-align: left;
   cursor: pointer;
@@ -192,7 +193,6 @@
 
 .search-option.is-picked {
   color: var(--ink);
-  font-weight: 600;
 }
 
 .search-option-check {
