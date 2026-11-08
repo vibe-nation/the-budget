@@ -160,6 +160,55 @@
     ]
   },
   {
+    "id": "anti-corruption-protests-2020",
+    "meta": {
+      "label": false,
+      "style": {
+        "itemStyle": {
+          "color": "rgba(147, 51, 234, 0.12)"
+        }
+      }
+    },
+    "items": [
+      {
+        "name": "Антиправителствени протести",
+        "description": "Ежедневни протести срещу корупцията с искане за оставка на правителството на Бойко Борисов и на главния прокурор Иван Гешев, започнали след акцията на прокуратурата в президентството",
+        "value": [
+          "2020-07-09",
+          "2021-04-16"
+        ],
+        "sources": [
+          {
+            "name": "Продължава протестът след акцията на прокуратурата в президентството - БНТ Новини",
+            "link": [
+              "https://bntnews.bg/news/prodalzhava-protestat-sled-akciyata-na-prokuraturata-v-prezidentstvoto-1064397news.html"
+            ],
+            "date": "2020-07-09"
+          },
+          {
+            "name": "Триото призова за масово присъствие на 100-ия ден от протестите - 16 октомври - БНР Новини",
+            "link": [
+              "https://bnr.bg/post/101354854/protestirashtite-blokiraha-car-osvoboditel-v-sofia"
+            ]
+          },
+          {
+            "name": "Бойко Рашков дойде на митинг по повод една година от протестите - БНТ Новини",
+            "link": [
+              "https://bntnews.bg/news/boiko-rashkov-doide-na-miting-po-povod-edna-godina-ot-protestite-1161879news.html"
+            ],
+            "date": "2021-07-09"
+          },
+          {
+            "name": "2020–2021 Bulgarian protests - Wikipedia",
+            "link": [
+              "https://en.wikipedia.org/wiki/2020%E2%80%932021_Bulgarian_protests"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "war-russia-ukraine",
     "meta": {
       "label": false,
