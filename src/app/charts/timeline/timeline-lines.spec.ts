@@ -304,7 +304,7 @@ describe('chartCard', () => {
     it('never strays from the amount the law prints, whatever the series', () => {
       const lawSeries = (charts as unknown as ChartSeries[]).filter(({ data }) => data.some((point) => point.sources));
 
-      expect(lawSeries).toHaveLength(13);
+      expect(lawSeries).toHaveLength(15);
       const inUnits: Readonly<Record<string, number>> = { 'лв.': 1 / 1.95583, 'хил. лв.': 1_000 / 1.95583, 'млн. лв.': 1_000_000 / 1.95583, евро: 1, 'хил. евро': 1_000 };
       for (const { id, data } of lawSeries) {
         for (const { date, value, sources } of data) {
@@ -312,6 +312,15 @@ describe('chartCard', () => {
           expect(Math.abs(value - amount * inUnits[amountUnit]), `${id} ${date}`).toBeLessThan(0.01);
         }
       }
+    });
+
+    it('cites a decree’s sole article as printed, „Член единствен“', () => {
+      const wage = (charts as unknown as ChartSeries[]).find(({ id }) => id === 'minimum-wage-eur')!;
+      const [decree] = chartCard(wage, wage.data.find(({ date }) => date === '2027-01-01')!).sources!;
+      const [numbered] = chartCard(wage, wage.data.find(({ date }) => date === '2000-02-01')!).sources!;
+
+      expect(decree.quote).toContain('[чл. единствен, ал. 1; ДВ, бр. 100 от 3.11.2026 г., актът започва на стр. 21]');
+      expect(numbered.quote).toContain('[чл. 1, ал. 1;');
     });
 
     it('takes the exact 2002 judiciary figure, not the rounded table', () => {

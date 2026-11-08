@@ -5189,6 +5189,2391 @@
     ]
   },
   {
+    "id": "minimum-wage-eur",
+    "name": "Минимална работна заплата",
+    "sources": [
+      {
+        "name": {
+          "en": "Council of Ministers decrees setting the national minimum monthly wage (State Gazette)",
+          "bg": "Постановления на Министерския съвет за определяне на минималната работна заплата за страната („Държавен вестник“)"
+        },
+        "dataset_id": "PMS_MW",
+        "url": [
+          "https://dv.parliament.bg/DVWeb/broeveList.faces",
+          "https://kik-info.com/spravochnik/mrz.php"
+        ]
+      }
+    ],
+    "dataset": {
+      "id": "PMS_MW",
+      "label": {
+        "en": "Council of Ministers decree on the minimum wage",
+        "bg": "Постановление на Министерския съвет за минималната работна заплата"
+      },
+      "selection": {
+        "indicator": {
+          "code": "MIN_WAGE",
+          "label": {
+            "en": "National minimum monthly wage",
+            "bg": "Минимална месечна работна заплата за страната"
+          }
+        }
+      }
+    },
+    "unit": "EUR",
+    "meta": {
+      "axis": "monthly",
+      "style": {
+        "step": "end"
+      }
+    },
+    "data": [
+      {
+        "date": "1999-07-05",
+        "value": 34.26,
+        "change": 0,
+        "change_percent": 0,
+        "sources": [
+          {
+            "title": "Постановление № 132 от 25 юни 1999 г. за определяне на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=190382&allowCache=true&openDirectly=false",
+            "amount": 67,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 60 от 2.07.1999 г.",
+              "issue": 60,
+              "extraordinary": false,
+              "date": "1999-07-02",
+              "page": 23,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=190382&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": null,
+            "row": "Определя от 1 юли 1999 г. нов размер на минималната месечна работна заплата за страната 67 000 лв.",
+            "column": "текст",
+            "filePage": 23,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Постановлението определя 67 000 лв. (стари левове) от 1 юли 1999 г. От 5 юли 1999 г. левът е деноминиран, 1000 стари лева = 1 нов лев, така че размерът е 67 лв. Според § 2 ведомостите за юли 1999 г. се съставят в нови левове."
+      },
+      {
+        "date": "2000-02-01",
+        "value": 38.35,
+        "change": 4.09,
+        "change_percent": 11.27,
+        "sources": [
+          {
+            "title": "Постановление № 12 от 14 февруари 2000 г. за определяне на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=148505&allowCache=true&openDirectly=false",
+            "amount": 75,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 15 от 22.02.2000 г.",
+              "issue": 15,
+              "extraordinary": false,
+              "date": "2000-02-22",
+              "page": 3,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=148505&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": 1,
+            "row": "Определя от 1 февруари 2000 г. нов размер на минималната месечна работна заплата за страната 75 лв.",
+            "column": "текст",
+            "filePage": 3,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Постановлението е прието на 14 февруари 2000 г. и обнародвано на 22 февруари 2000 г., след датата, от която се прилага."
+      },
+      {
+        "date": "2000-10-01",
+        "value": 40.39,
+        "change": 2.04,
+        "change_percent": 5.18,
+        "sources": [
+          {
+            "title": "Постановление № 213 от 9 октомври 2000 г. за определяне на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=162413&allowCache=true&openDirectly=false",
+            "amount": 79,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 85 от 17.10.2000 г.",
+              "issue": 85,
+              "extraordinary": false,
+              "date": "2000-10-17",
+              "page": 5,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=162413&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 октомври 2000 г. нов размер на минималната месечна работна заплата за страната 79 лв.",
+            "column": "текст",
+            "filePage": 5,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Постановлението е прието на 9 октомври 2000 г. и обнародвано на 17 октомври 2000 г., след датата, от която се прилага."
+      },
+      {
+        "date": "2001-04-01",
+        "value": 43.46,
+        "change": 3.07,
+        "change_percent": 7.32,
+        "sources": [
+          {
+            "title": "Постановление № 64 от 16 март 2001 г. за определяне на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=136092&allowCache=true&openDirectly=false",
+            "amount": 85,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 28 от 23.03.2001 г.",
+              "issue": 28,
+              "extraordinary": false,
+              "date": "2001-03-23",
+              "page": 6,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=136092&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 април 2001 г. нов размер на минималната месечна работна заплата за страната 85 лв.",
+            "column": "текст",
+            "filePage": 6,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2001-10-01",
+        "value": 51.13,
+        "change": 7.67,
+        "change_percent": 16.22,
+        "sources": [
+          {
+            "title": "Постановление № 209 от 21 септември 2001 г. за определяне на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=137715&allowCache=true&openDirectly=false",
+            "amount": 100,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 82 от 25.09.2001 г.",
+              "issue": 82,
+              "extraordinary": false,
+              "date": "2001-09-25",
+              "page": 11,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=137715&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 октомври 2001 г. нов размер на минималната месечна работна заплата за страната 100 лв.",
+            "column": "текст",
+            "filePage": 11,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2003-01-01",
+        "value": 56.24,
+        "change": 5.11,
+        "change_percent": 9.52,
+        "sources": [
+          {
+            "title": "Постановление № 1 от 3 януари 2003 г. за определяне нов размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=123625&allowCache=true&openDirectly=false",
+            "amount": 110,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 4 от 14.01.2003 г.",
+              "issue": 4,
+              "extraordinary": false,
+              "date": "2003-01-14",
+              "page": 1,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=100267",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=123625&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2003 г. нов размер на минималната месечна работна заплата за страната 110 лв.",
+            "column": "текст",
+            "filePage": 1,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Постановлението е прието на 3 януари 2003 г. и обнародвано на 14 януари 2003 г., след датата, от която се прилага."
+      },
+      {
+        "date": "2004-01-01",
+        "value": 61.36,
+        "change": 5.12,
+        "change_percent": 8.71,
+        "sources": [
+          {
+            "title": "Постановление № 7 от 16 януари 2004 г. за определяне на нов размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=89870&allowCache=true&openDirectly=false",
+            "amount": 120,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 6 от 23.01.2004 г.",
+              "issue": 6,
+              "extraordinary": false,
+              "date": "2004-01-23",
+              "page": 10,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=22245",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=89870&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2004 г. нов размер на минималната месечна работна заплата за страната 120 лв.",
+            "column": "текст",
+            "filePage": 10,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Постановлението е прието на 16 януари 2004 г. и обнародвано на 23 януари 2004 г., след датата, от която се прилага."
+      },
+      {
+        "date": "2005-01-01",
+        "value": 76.69,
+        "change": 15.33,
+        "change_percent": 22.21,
+        "sources": [
+          {
+            "title": "Постановление № 12 от 21 януари 2005 г. за определяне нов размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=83035&allowCache=true&openDirectly=false",
+            "amount": 150,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 10 от 28.01.2005 г.",
+              "issue": 10,
+              "extraordinary": false,
+              "date": "2005-01-28",
+              "page": 57,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=14733",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=83035&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2005 г. нов размер на минималната месечна работна заплата за страната 150 лв.",
+            "column": "текст",
+            "filePage": 57,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Постановлението е прието на 21 януари 2005 г. и обнародвано на 28 януари 2005 г., след датата, от която се прилага."
+      },
+      {
+        "date": "2006-01-01",
+        "value": 81.81,
+        "change": 5.12,
+        "change_percent": 6.46,
+        "sources": [
+          {
+            "title": "Постановление № 8 от 20 януари 2006 г. за определяне нов размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=81181&allowCache=true&openDirectly=false",
+            "amount": 160,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 10 от 31.01.2006 г.",
+              "issue": 10,
+              "extraordinary": false,
+              "date": "2006-01-31",
+              "page": 3,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=1361",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=81181&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2006 г. нов размер на минималната месечна работна заплата за страната 160 лв.",
+            "column": "текст",
+            "filePage": 3,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Постановлението е прието на 20 януари 2006 г. и обнародвано на 31 януари 2006 г., след датата, от която се прилага."
+      },
+      {
+        "date": "2007-01-01",
+        "value": 92.03,
+        "change": 10.22,
+        "change_percent": 11.76,
+        "sources": [
+          {
+            "title": "Постановление № 324 от 6 декември 2006 г. за определяне нов размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=77365&allowCache=true&openDirectly=false",
+            "amount": 180,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 101 от 15.12.2006 г.",
+              "issue": 101,
+              "extraordinary": false,
+              "date": "2006-12-15",
+              "page": 8,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=2961",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=77365&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2007 г. нов размер на минималната месечна работна заплата за страната 180 лв.",
+            "column": "текст",
+            "filePage": 8,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2008-01-01",
+        "value": 112.48,
+        "change": 20.45,
+        "change_percent": 20,
+        "sources": [
+          {
+            "title": "Постановление № 1 от 11 януари 2008 г. за определяне нов размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=48830&allowCache=true&openDirectly=false",
+            "amount": 220,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 6 от 18.01.2008 г.",
+              "issue": 6,
+              "extraordinary": false,
+              "date": "2008-01-18",
+              "page": 1,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=4685",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=48830&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2008 г. нов размер на минималната месечна работна заплата за страната 220 лв.",
+            "column": "текст",
+            "filePage": 1,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Постановлението е прието на 11 януари 2008 г. и обнародвано на 18 януари 2008 г., след датата, от която се прилага."
+      },
+      {
+        "date": "2009-01-01",
+        "value": 122.71,
+        "change": 10.23,
+        "change_percent": 8.7,
+        "sources": [
+          {
+            "title": "Постановление № 1 от 10 януари 2009 г. за определяне нов размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=77351&allowCache=true&openDirectly=false",
+            "amount": 240,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 4 от 16.01.2009 г.",
+              "issue": 4,
+              "extraordinary": false,
+              "date": "2009-01-16",
+              "page": 14,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=14309",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=77351&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2009 г. нов размер на минималната месечна работна заплата за страната 240 лв.",
+            "column": "текст",
+            "filePage": 14,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Постановлението е прието на 10 януари 2009 г. и обнародвано на 16 януари 2009 г., след датата, от която се прилага."
+      },
+      {
+        "date": "2010-01-01",
+        "value": 122.71,
+        "change": 0,
+        "change_percent": 0,
+        "sources": [
+          {
+            "title": "Постановление № 326 от 30 декември 2009 г. за определяне размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=85117&allowCache=true&openDirectly=false",
+            "amount": 240,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 2 от 8.01.2010 г.",
+              "issue": 2,
+              "extraordinary": false,
+              "date": "2010-01-08",
+              "page": 3,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=28443",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=85117&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2010 г. размер на минималната месечна работна заплата за страната 240 лв.",
+            "column": "текст",
+            "filePage": 3,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Размерът не се променя: постановлението определя отново 240 лв. за 2010 г. и остава в сила до 31 август 2011 г. Постановлението е прието на 30 декември 2009 г. и обнародвано на 8 януари 2010 г., след датата, от която се прилага."
+      },
+      {
+        "date": "2011-09-01",
+        "value": 138.05,
+        "change": 15.34,
+        "change_percent": 11.77,
+        "sources": [
+          {
+            "title": "Постановление № 180 от 30 юни 2011 г. за определяне нов размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=107908&allowCache=true&openDirectly=false",
+            "amount": 270,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 51 от 5.07.2011 г.",
+              "issue": 51,
+              "extraordinary": false,
+              "date": "2011-07-05",
+              "page": 33,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=53815",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=107908&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 септември 2011 г. нов размер на минималната месечна работна заплата за страната от 270 лв.",
+            "column": "текст",
+            "filePage": 33,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2012-05-01",
+        "value": 148.27,
+        "change": 10.22,
+        "change_percent": 7.14,
+        "sources": [
+          {
+            "title": "Постановление № 300 от 10 ноември 2011 г. за определяне нов размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=112119&allowCache=true&openDirectly=false",
+            "amount": 290,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 91 от 18.11.2011 г.",
+              "issue": 91,
+              "extraordinary": false,
+              "date": "2011-11-18",
+              "page": 5,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=58571",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=112119&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 май 2012 г. нов размер на минималната месечна работна заплата за страната 290 лв.",
+            "column": "текст",
+            "filePage": 5,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2013-01-01",
+        "value": 158.5,
+        "change": 10.23,
+        "change_percent": 6.67,
+        "sources": [
+          {
+            "title": "Постановление № 250 от 11 октомври 2012 г. за определяне нов размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=122162&allowCache=true&openDirectly=false",
+            "amount": 310,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 80 от 19.10.2012 г.",
+              "issue": 80,
+              "extraordinary": false,
+              "date": "2012-10-19",
+              "page": 10,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=69452",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=122162&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2013 г. нов размер на минималната месечна работна заплата за страната 310 лв.",
+            "column": "текст",
+            "filePage": 10,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2014-01-01",
+        "value": 173.84,
+        "change": 15.34,
+        "change_percent": 9.23,
+        "sources": [
+          {
+            "title": "Постановление № 249 от 31 октомври 2013 г. за определяне нов размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=138909&allowCache=true&openDirectly=false",
+            "amount": 340,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 97 от 8.11.2013 г.",
+              "issue": 97,
+              "extraordinary": false,
+              "date": "2013-11-08",
+              "page": 7,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=80131",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=138909&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2014 г. нов размер на минималната месечна работна заплата за страната 340 лв.",
+            "column": "текст",
+            "filePage": 7,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2015-01-01",
+        "value": 184.07,
+        "change": 10.23,
+        "change_percent": 5.72,
+        "sources": [
+          {
+            "title": "Постановление № 419 от 17 декември 2014 г. за определяне на нови размери на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=165186&allowCache=true&openDirectly=false",
+            "amount": 360,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 105 от 19.12.2014 г.",
+              "issue": 105,
+              "extraordinary": false,
+              "date": "2014-12-19",
+              "page": 37,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=90802",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=165186&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2015 г. нов размер на минималната месечна работна заплата за страната 360 лв.",
+            "column": "текст",
+            "filePage": 37,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Постановление № 419 от 2014 г. е отменено с § 4 от Постановление № 139 от 4 юни 2015 г. (ДВ, бр. 42 от 2015 г.), което определя отново същите 360 лв. от 1 януари 2015 г. и 380 лв. от 1 юли 2015 г. По съобщения в печата преди това Върховният административен съд е отменил Постановление № 419 с първоинстанционно решение от 19 май 2015 г."
+      },
+      {
+        "date": "2015-07-01",
+        "value": 194.29,
+        "change": 10.22,
+        "change_percent": 5.4,
+        "sources": [
+          {
+            "title": "Постановление № 139 от 4 юни 2015 г. за определяне нови размери на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=181873&allowCache=true&openDirectly=false",
+            "amount": 380,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 42 от 9.06.2015 г.",
+              "issue": 42,
+              "extraordinary": false,
+              "date": "2015-06-09",
+              "page": 9,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=95061",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=181873&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 2,
+            "row": "Определя от 1 юли 2015 г. нов размер на минималната месечна работна заплата за страната 380 лв.",
+            "column": "текст",
+            "filePage": 9,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Същите 380 лв. от 1 юли 2015 г. определя първо Постановление № 419 от 17 декември 2014 г. (ДВ, бр. 105 от 2014 г.), чл. единствен, ал. 2, отменено с § 4 от това постановление."
+      },
+      {
+        "date": "2016-01-01",
+        "value": 214.74,
+        "change": 20.45,
+        "change_percent": 10,
+        "sources": [
+          {
+            "title": "Постановление № 375 от 28 декември 2015 г. за определяне на нов размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=206025&allowCache=true&openDirectly=false",
+            "amount": 420,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 1 от 5.01.2016 г.",
+              "issue": 1,
+              "extraordinary": false,
+              "date": "2016-01-05",
+              "page": 5,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=99798",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=206025&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2016 г. нов размер на минималната месечна работна заплата за страната 420 лв.",
+            "column": "текст",
+            "filePage": 5,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Постановлението е прието на 28 декември 2015 г. и обнародвано на 5 януари 2016 г., след датата, от която се прилага."
+      },
+      {
+        "date": "2017-01-01",
+        "value": 235.19,
+        "change": 20.45,
+        "change_percent": 9.09,
+        "sources": [
+          {
+            "title": "Постановление № 372 от 22 декември 2016 г. за определяне на нов размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=248733&allowCache=true&openDirectly=false",
+            "amount": 460,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 103 от 27.12.2016 г.",
+              "issue": 103,
+              "extraordinary": false,
+              "date": "2016-12-27",
+              "page": 69,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=110640",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=248733&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2017 г. нов размер на минималната месечна работна заплата за страната 460 лв.",
+            "column": "текст",
+            "filePage": 69,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Постановление № 372 от 2016 г. е отменено с Постановление № 22 от 26 януари 2017 г. (ДВ, бр. 11 от 2017 г., стр. 23), а то с Постановление № 141 от 13 юли 2017 г. (ДВ, бр. 58 от 2017 г., стр. 11). И трите определят 460 лв. от 1 януари 2017 г.; последните две, обнародвани след тази дата, имат обратно действие. Различава се само часовата заплата: 2,77 лв. в № 372 и 2,78 лв. в № 22 и № 141. По съобщения в печата № 141 е прието, след като Върховният административен съд отменя № 22 с първоинстанционно решение от май 2017 г."
+      },
+      {
+        "date": "2018-01-01",
+        "value": 260.76,
+        "change": 25.57,
+        "change_percent": 10.31,
+        "sources": [
+          {
+            "title": "Постановление № 316 от 20 декември 2017 г. за определяне нов размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=285646&allowCache=true&openDirectly=false",
+            "amount": 510,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 102 от 22.12.2017 г.",
+              "issue": 102,
+              "extraordinary": false,
+              "date": "2017-12-22",
+              "page": 36,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=121152",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=285646&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2018 г. нов размер на минималната месечна работна заплата за страната от 510 лв.",
+            "column": "текст",
+            "filePage": 36,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-01-01",
+        "value": 286.32,
+        "change": 25.56,
+        "change_percent": 9.34,
+        "sources": [
+          {
+            "title": "Постановление № 320 от 20 декември 2018 г. за определяне нов размер на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=328440&allowCache=true&openDirectly=false",
+            "amount": 560,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 107 от 28.12.2018 г.",
+              "issue": 107,
+              "extraordinary": false,
+              "date": "2018-12-28",
+              "page": 13,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=133287",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=328440&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2019 г. нов размер на минималната месечна работна заплата за страната от 560 лв.",
+            "column": "текст",
+            "filePage": 13,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2020-01-01",
+        "value": 311.89,
+        "change": 25.57,
+        "change_percent": 8.55,
+        "sources": [
+          {
+            "title": "Постановление № 350 от 19 декември 2019 г. за определяне размера на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=368894&allowCache=true&openDirectly=false",
+            "amount": 610,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 101 от 27.12.2019 г.",
+              "issue": 101,
+              "extraordinary": false,
+              "date": "2019-12-27",
+              "page": 21,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=144144",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=368894&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2020 г. размер на минималната месечна работна заплата за страната 610 лв.",
+            "column": "текст",
+            "filePage": 21,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2021-01-01",
+        "value": 332.34,
+        "change": 20.45,
+        "change_percent": 6.35,
+        "sources": [
+          {
+            "title": "Постановление № 331 от 26 ноември 2020 г. за определяне размера на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=414278&allowCache=true&openDirectly=false",
+            "amount": 650,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 103 от 4.12.2020 г.",
+              "issue": 103,
+              "extraordinary": false,
+              "date": "2020-12-04",
+              "page": 52,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=154162",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=414278&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2021 г. размер на минималната месечна работна заплата за страната 650 лв.",
+            "column": "текст",
+            "filePage": 52,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2022-04-01",
+        "value": 363.02,
+        "change": 30.68,
+        "change_percent": 8.82,
+        "sources": [
+          {
+            "title": "Постановление № 37 от 24 март 2022 г. за определяне размера на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=483896&allowCache=true&openDirectly=false",
+            "amount": 710,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 25 от 29.03.2022 г.",
+              "issue": 25,
+              "extraordinary": false,
+              "date": "2022-03-29",
+              "page": 68,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=171427",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=483896&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 април 2022 г. размер на минималната месечна работна заплата за страната 710 лв.",
+            "column": "текст",
+            "filePage": 68,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "До 31 март 2022 г. остава в сила размерът от 650 лв., определен за 2021 г."
+      },
+      {
+        "date": "2023-01-01",
+        "value": 398.81,
+        "change": 35.79,
+        "change_percent": 9.4,
+        "sources": [
+          {
+            "title": "Постановление № 497 от 29 декември 2022 г. за определяне размера на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=540950&allowCache=true&openDirectly=false",
+            "amount": 780,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 1 от 3.01.2023 г.",
+              "issue": 1,
+              "extraordinary": false,
+              "date": "2023-01-03",
+              "page": 2,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=182723",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=540950&allowCache=true&openDirectly=false"
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2023 г. размер на минималната месечна работна заплата за страната 780 лв.",
+            "column": "текст",
+            "filePage": 2,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Постановлението е прието на 29 декември 2022 г. и обнародвано на 3 януари 2023 г., след датата, от която се прилага."
+      },
+      {
+        "date": "2024-01-01",
+        "value": 477.04,
+        "change": 78.23,
+        "change_percent": 17.86,
+        "sources": [
+          {
+            "title": "Постановление № 193 от 12 октомври 2023 г. за определяне размера на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=200585",
+            "amount": 933,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 87 от 17.10.2023 г.",
+              "issue": 87,
+              "extraordinary": false,
+              "date": "2023-10-17",
+              "page": null,
+              "actPage": 8,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=200585",
+              "issueUrl": null
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2024 г. размер на минималната месечна работна заплата за страната 933 лв.",
+            "column": "текст",
+            "filePage": 1,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false
+            }
+          }
+        ]
+      },
+      {
+        "date": "2025-01-01",
+        "value": 550.66,
+        "change": 73.62,
+        "change_percent": 14.33,
+        "sources": [
+          {
+            "title": "Постановление № 359 от 23 октомври 2024 г. за определяне размера на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=229729",
+            "amount": 1077,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 90 от 25.10.2024 г.",
+              "issue": 90,
+              "extraordinary": false,
+              "date": "2024-10-25",
+              "page": null,
+              "actPage": 9,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=229729",
+              "issueUrl": null
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2025 г. размер на минималната месечна работна заплата за страната 1077 лв.",
+            "column": "текст",
+            "filePage": 1,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false
+            }
+          }
+        ]
+      },
+      {
+        "date": "2026-01-01",
+        "value": 620.2,
+        "change": 69.54,
+        "change_percent": 11.88,
+        "sources": [
+          {
+            "title": "Постановление № 243 от 13 ноември 2025 г. за определяне размера на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=238961",
+            "amount": 620.2,
+            "amountUnit": "евро",
+            "gazette": {
+              "citation": "ДВ, бр. 98 от 18.11.2025 г.",
+              "issue": 98,
+              "extraordinary": false,
+              "date": "2025-11-18",
+              "page": null,
+              "actPage": 3,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=238961",
+              "issueUrl": null
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2026 г. размер на минималната месечна работна заплата за страната 1213 лв. (620,20 евро)",
+            "column": "текст",
+            "filePage": 1,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false
+            }
+          },
+          {
+            "title": "Постановление № 243 от 13 ноември 2025 г. за определяне размера на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=238961",
+            "amount": 1213,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 98 от 18.11.2025 г.",
+              "issue": 98,
+              "extraordinary": false,
+              "date": "2025-11-18",
+              "page": null,
+              "actPage": 3,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=238961",
+              "issueUrl": null
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2026 г. размер на минималната месечна работна заплата за страната 1213 лв. (620,20 евро)",
+            "column": "текст",
+            "filePage": 1,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false
+            }
+          }
+        ],
+        "note": "Постановлението е обнародвано преди въвеждането на еврото и посочва 1213 лв. (620,20 евро). Законът за държавния бюджет за 2026 г. (ДВ, бр. 69 от 2026 г., § 46) не прилага през 2026 г. чл. 244, ал. 2 от Кодекса на труда и запазва минималната работна заплата на нивото, определено за 2026 г., до промяна на уредбата."
+      },
+      {
+        "date": "2027-01-01",
+        "value": 660,
+        "change": 39.8,
+        "change_percent": 6.22,
+        "sources": [
+          {
+            "title": "Постановление № 235 от 29 октомври 2026 г. за определяне размера на минималната работна заплата за страната",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=247238",
+            "amount": 660,
+            "amountUnit": "евро",
+            "gazette": {
+              "citation": "ДВ, бр. 100 от 3.11.2026 г.",
+              "issue": 100,
+              "extraordinary": false,
+              "date": "2026-11-03",
+              "page": null,
+              "actPage": 21,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=247238",
+              "issueUrl": null
+            },
+            "article": "единствен",
+            "paragraph": 1,
+            "row": "Определя от 1 януари 2027 г. размер на минималната месечна работна заплата за страната 660 евро",
+            "column": "текст",
+            "filePage": 1,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false
+            }
+          }
+        ],
+        "note": "Постановлението е обнародвано на 3 ноември 2026 г. и влиза в сила от 1 януари 2027 г. Прието е на основание чл. 244, ал. 1, т. 1 от Кодекса на труда след промяната му в ДВ, бр. 89 от 2026 г. Броят не се изтегля от „Държавен вестник“, затова страницата е тази, от която започва актът."
+      }
+    ]
+  },
+  {
+    "id": "minimum-pension-eur",
+    "name": "Минимална пенсия",
+    "sources": [
+      {
+        "name": {
+          "en": "State Social Insurance Budget Acts, Social Insurance Code and Council of Ministers decrees (State Gazette)",
+          "bg": "Закони за бюджета на държавното обществено осигуряване, Кодекс за социално осигуряване и постановления на Министерския съвет („Държавен вестник“)"
+        },
+        "dataset_id": "ZBDOO_MIN_PENSION",
+        "url": [
+          "https://dv.parliament.bg/DVWeb/broeveList.faces",
+          "https://nssi.bg/fizicheski-lica/pensii-bg/info-danni-syobshteniya/"
+        ]
+      }
+    ],
+    "dataset": {
+      "id": "ZBDOO_MIN_PENSION",
+      "label": {
+        "en": "State Social Insurance Budget Act",
+        "bg": "Закон за бюджета на държавното обществено осигуряване"
+      },
+      "selection": {
+        "indicator": {
+          "code": "MIN_PENSION",
+          "label": {
+            "en": "Minimum monthly pension for length of service and age",
+            "bg": "Минимален размер на пенсията за осигурителен стаж и възраст"
+          }
+        }
+      }
+    },
+    "unit": "EUR",
+    "meta": {
+      "axis": "monthly",
+      "style": {
+        "step": "end"
+      }
+    },
+    "data": [
+      {
+        "date": "2001-06-01",
+        "value": 25.87,
+        "change": 0,
+        "change_percent": 0,
+        "sources": [
+          {
+            "title": "Закон за изменение и допълнение на Кодекса за задължително обществено осигуряване",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=159307&allowCache=true&openDirectly=false",
+            "amount": 50.6,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 64 от 4.08.2000 г.",
+              "issue": 64,
+              "extraordinary": false,
+              "date": "2000-08-04",
+              "page": 15,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=159307&allowCache=true&openDirectly=false"
+            },
+            "article": 70,
+            "paragraph": 7,
+            "row": "Размерът на личната пенсия за осигурителен стаж и възраст по чл. 68, ал. 1 – 3 не може да бъде по-малък от 115 на сто от социалната пенсия за старост",
+            "column": "текст",
+            "filePage": 15,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "ruleOnly": true
+            }
+          }
+        ],
+        "note": "Сумата не е отпечатана в акт. По чл. 70, ал. 7 от Кодекса (в редакцията от ДВ, бр. 64 от 2000 г., § 14) минималната пенсия е 115 на сто от социалната пенсия за старост. От тази дата социалната пенсия е 44 лв. (ПМС № 106 от 27.04.2001 г., член единствен, ДВ, бр. 44 от 8.05.2001 г., стр. 22), така че 1,15 × 44 = 50,60 лв. Изчислението е наше, проверено в „Държавен вестник“ са правилото и социалната пенсия."
+      },
+      {
+        "date": "2002-06-01",
+        "value": 27.43,
+        "change": 1.56,
+        "change_percent": 5.85,
+        "sources": [
+          {
+            "title": "Закон за изменение и допълнение на Кодекса за задължително обществено осигуряване",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=159307&allowCache=true&openDirectly=false",
+            "amount": 53.64,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 64 от 4.08.2000 г.",
+              "issue": 64,
+              "extraordinary": false,
+              "date": "2000-08-04",
+              "page": 15,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=159307&allowCache=true&openDirectly=false"
+            },
+            "article": 70,
+            "paragraph": 7,
+            "row": "Размерът на личната пенсия за осигурителен стаж и възраст по чл. 68, ал. 1 – 3 не може да бъде по-малък от 115 на сто от социалната пенсия за старост",
+            "column": "текст",
+            "filePage": 15,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "ruleOnly": true
+            }
+          }
+        ],
+        "note": "Сумата не е отпечатана в акт. По чл. 70, ал. 7 от Кодекса (в редакцията от ДВ, бр. 64 от 2000 г., § 14) минималната пенсия е 115 на сто от социалната пенсия за старост. От тази дата социалната пенсия е 46,64 лв. (ПМС № 103 от 18.05.2002 г., член единствен, ДВ, бр. 54 от 31.05.2002 г., стр. 17), така че 1,15 × 46,64 = 53,636 лв., закръглено от нас до 53,64 лв. Изчислението е наше, проверено в „Държавен вестник“ са правилото и социалната пенсия."
+      },
+      {
+        "date": "2003-06-01",
+        "value": 29.4,
+        "change": 1.97,
+        "change_percent": 6.93,
+        "sources": [
+          {
+            "title": "Закон за изменение и допълнение на Кодекса за задължително обществено осигуряване",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=159307&allowCache=true&openDirectly=false",
+            "amount": 57.5,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 64 от 4.08.2000 г.",
+              "issue": 64,
+              "extraordinary": false,
+              "date": "2000-08-04",
+              "page": 15,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=159307&allowCache=true&openDirectly=false"
+            },
+            "article": 70,
+            "paragraph": 7,
+            "row": "Размерът на личната пенсия за осигурителен стаж и възраст по чл. 68, ал. 1 – 3 не може да бъде по-малък от 115 на сто от социалната пенсия за старост",
+            "column": "текст",
+            "filePage": 15,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "ruleOnly": true
+            }
+          }
+        ],
+        "note": "Сумата не е отпечатана в акт. По чл. 70, ал. 7 от Кодекса (в редакцията от ДВ, бр. 64 от 2000 г., § 14) минималната пенсия е 115 на сто от социалната пенсия за старост. От тази дата социалната пенсия е 50 лв. (ПМС № 111 от 23.05.2003 г., ДВ, бр. 51 от 3.06.2003 г., стр. 3, https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=106607), така че 1,15 × 50 = 57,50 лв. Изчислението е наше, проверено в „Държавен вестник“ са правилото и социалната пенсия."
+      },
+      {
+        "date": "2004-06-01",
+        "value": 31.16,
+        "change": 1.76,
+        "change_percent": 5.81,
+        "sources": [
+          {
+            "title": "Закон за изменение и допълнение на Кодекса за задължително обществено осигуряване",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=159307&allowCache=true&openDirectly=false",
+            "amount": 60.95,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 64 от 4.08.2000 г.",
+              "issue": 64,
+              "extraordinary": false,
+              "date": "2000-08-04",
+              "page": 15,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=159307&allowCache=true&openDirectly=false"
+            },
+            "article": 70,
+            "paragraph": 7,
+            "row": "Размерът на личната пенсия за осигурителен стаж и възраст по чл. 68, ал. 1 – 3 не може да бъде по-малък от 115 на сто от социалната пенсия за старост",
+            "column": "текст",
+            "filePage": 15,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "ruleOnly": true
+            }
+          }
+        ],
+        "note": "Сумата не е отпечатана в акт. По чл. 70, ал. 7 от Кодекса (в редакцията от ДВ, бр. 64 от 2000 г., § 14) минималната пенсия е 115 на сто от социалната пенсия за старост. От тази дата социалната пенсия е 53 лв. (ПМС № 100 от 17.05.2004 г., ДВ, бр. 44 от 25.05.2004 г., стр. 5, https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=20944), така че 1,15 × 53 = 60,95 лв. Изчислението е наше, проверено в „Държавен вестник“ са правилото и социалната пенсия."
+      },
+      {
+        "date": "2005-06-01",
+        "value": 35.28,
+        "change": 4.12,
+        "change_percent": 12.4,
+        "sources": [
+          {
+            "title": "Закон за изменение и допълнение на Кодекса за задължително обществено осигуряване",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=159307&allowCache=true&openDirectly=false",
+            "amount": 69,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 64 от 4.08.2000 г.",
+              "issue": 64,
+              "extraordinary": false,
+              "date": "2000-08-04",
+              "page": 15,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=159307&allowCache=true&openDirectly=false"
+            },
+            "article": 70,
+            "paragraph": 7,
+            "row": "Размерът на личната пенсия за осигурителен стаж и възраст по чл. 68, ал. 1 – 3 не може да бъде по-малък от 115 на сто от социалната пенсия за старост",
+            "column": "текст",
+            "filePage": 15,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "ruleOnly": true
+            }
+          }
+        ],
+        "note": "Сумата не е отпечатана в акт. По чл. 70, ал. 7 от Кодекса (в редакцията от ДВ, бр. 64 от 2000 г., § 14) минималната пенсия е 115 на сто от социалната пенсия за старост. От тази дата социалната пенсия е 60 лв. (ПМС № 90 от 19.05.2005 г., ДВ, бр. 45 от 31.05.2005 г., стр. 37, https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=374), така че 1,15 × 60 = 69,00 лв. Изчислението е наше, проверено в „Държавен вестник“ са правилото и социалната пенсия."
+      },
+      {
+        "date": "2006-01-01",
+        "value": 37.04,
+        "change": 1.76,
+        "change_percent": 4.87,
+        "sources": [
+          {
+            "title": "Закон за изменение и допълнение на Кодекса за задължително обществено осигуряване",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=159307&allowCache=true&openDirectly=false",
+            "amount": 72.45,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 64 от 4.08.2000 г.",
+              "issue": 64,
+              "extraordinary": false,
+              "date": "2000-08-04",
+              "page": 15,
+              "actUrl": null,
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=159307&allowCache=true&openDirectly=false"
+            },
+            "article": 70,
+            "paragraph": 7,
+            "row": "Размерът на личната пенсия за осигурителен стаж и възраст по чл. 68, ал. 1 – 3 не може да бъде по-малък от 115 на сто от социалната пенсия за старост",
+            "column": "текст",
+            "filePage": 15,
+            "checks": {
+              "file": true,
+              "gazetteAct": false,
+              "gazetteIssue": true,
+              "ruleOnly": true
+            }
+          }
+        ],
+        "note": "Сумата не е отпечатана в акт. По чл. 70, ал. 7 от Кодекса (в редакцията от ДВ, бр. 64 от 2000 г., § 14) минималната пенсия е 115 на сто от социалната пенсия за старост. От тази дата социалната пенсия е 63 лв. (ПМС № 21 от 3.02.2006 г., в сила от 1 януари 2006 г., ДВ, бр. 15 от 17.02.2006 г., стр. 2, https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=1415), така че 1,15 × 63 = 72,45 лв. Изчислението е наше, проверено в „Държавен вестник“ са правилото и социалната пенсия. Бюлетинът на НОИ (бр. 4 от 2007 г.) дава същата сума: „от 72,45 на 85,00 лв.“"
+      },
+      {
+        "date": "2006-07-01",
+        "value": 43.46,
+        "change": 6.42,
+        "change_percent": 15.95,
+        "sources": [
+          {
+            "title": "Постановление № 180 от 20 юли 2006 г. за определяне минимален размер на пенсията за осигурителен стаж и възраст и за еднократно индексиране на пенсии за трудова дейност от 1 юли 2006 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=79442&allowCache=true&openDirectly=false",
+            "amount": 85,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 61 от 28.07.2006 г.",
+              "issue": 61,
+              "extraordinary": false,
+              "date": "2006-07-28",
+              "page": 12,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=2279",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=79442&allowCache=true&openDirectly=false"
+            },
+            "article": 1,
+            "paragraph": null,
+            "row": "Определя от 1 юли 2006 г. минимален размер на пенсията за осигурителен стаж и възраст по чл. 68, ал. 1—3 от Кодекса за социално осигуряване—85 лв.",
+            "column": "текст",
+            "filePage": 12,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Минималната пенсия е отделена от социалната със ЗИД на Кодекса за социално осигуряване (ДВ, бр. 57 от 14.07.2006 г., стр. 2, в сила от 1 юли 2006 г.): чл. 70, ал. 7 вече препраща към закона за бюджета на ДОО, а § 5 възлага размера от 1 юли до 31 декември 2006 г. на Министерския съвет."
+      },
+      {
+        "date": "2007-07-01",
+        "value": 47.81,
+        "change": 4.35,
+        "change_percent": 9.53,
+        "sources": [
+          {
+            "title": "Закон за изменение на Закона за бюджета на държавното обществено осигуряване за 2007 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=58225&allowCache=true&openDirectly=false",
+            "amount": 93.5,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 53 от 30.06.2007 г.",
+              "issue": 53,
+              "extraordinary": false,
+              "date": "2007-06-30",
+              "page": 1,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=3884",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=58225&allowCache=true&openDirectly=false"
+            },
+            "article": 9,
+            "point": 2,
+            "row": "от 1 юли до 31 декември—93,50 лв",
+            "column": "текст",
+            "filePage": 1,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "§ 1 заменя чл. 9, т. 2 от ЗБДОО за 2007 г. (ДВ, бр. 105 от 2006 г.), по който размерът от 85 лв. трябваше да се осъвремени по чл. 100 от Кодекса. До 30 юни 2007 г. той остава 85 лв. (чл. 9, т. 1)."
+      },
+      {
+        "date": "2007-10-01",
+        "value": 52.59,
+        "change": 4.78,
+        "change_percent": 9.52,
+        "sources": [
+          {
+            "title": "Закон за изменение и допълнение на Закона за бюджета на държавното обществено осигуряване за 2007 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=57205&allowCache=true&openDirectly=false",
+            "amount": 102.85,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 77 от 25.09.2007 г.",
+              "issue": 77,
+              "extraordinary": false,
+              "date": "2007-09-25",
+              "page": 2,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=4159",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=57205&allowCache=true&openDirectly=false"
+            },
+            "article": 9,
+            "point": 3,
+            "row": "от 1 октомври до 31 декември—102,85 лв.",
+            "column": "текст",
+            "filePage": 2,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "§ 1 създава т. 3 в чл. 9 и ограничава 93,50 лв. до 30 септември 2007 г. ЗБДОО за 2008 г. (ДВ, бр. 113 от 2007 г., чл. 9, т. 1) запазва 102,85 лв. до 30 юни 2008 г."
+      },
+      {
+        "date": "2008-07-01",
+        "value": 58.03,
+        "change": 5.44,
+        "change_percent": 9.84,
+        "sources": [
+          {
+            "title": "Закон за изменение на Закона за бюджета на държавното обществено осигуряване за 2008 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=38081&allowCache=true&openDirectly=false",
+            "amount": 113.49,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 58 от 27.06.2008 г.",
+              "issue": 58,
+              "extraordinary": false,
+              "date": "2008-06-27",
+              "page": 2,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=5402",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=38081&allowCache=true&openDirectly=false"
+            },
+            "article": 9,
+            "point": 2,
+            "row": "от 1 юли до 31 декември—113,49 лв.",
+            "column": "текст",
+            "filePage": 2,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          },
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2008 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=48881&allowCache=true&openDirectly=false",
+            "amount": 112.62,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 113 от 28.12.2007 г.",
+              "issue": 113,
+              "extraordinary": false,
+              "date": "2007-12-28",
+              "page": 16,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=4612",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=48881&allowCache=true&openDirectly=false"
+            },
+            "article": 9,
+            "point": 2,
+            "row": "от 1 юли до 31 декември—112,62 лв.",
+            "column": "текст",
+            "filePage": 16,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Изменение: § 1 от ЗИД (ДВ, бр. 58 от 27.06.2008 г., в сила от 1 юли 2008 г.) заменя приетите 112,62 лв. в чл. 9, т. 2 със 113,49 лв., преди старата сума да се приложи. Втората позиция е приетият закон."
+      },
+      {
+        "date": "2009-01-01",
+        "value": 63.83,
+        "change": 5.8,
+        "change_percent": 9.52,
+        "sources": [
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2009 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=60382&allowCache=true&openDirectly=false",
+            "amount": 124.84,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 109 от 23.12.2008 г.",
+              "issue": 109,
+              "extraordinary": false,
+              "date": "2008-12-23",
+              "page": 8,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=13516",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=60382&allowCache=true&openDirectly=false"
+            },
+            "article": 9,
+            "point": 1,
+            "row": "от 1 януари до 30 юни – 124,84 лв.",
+            "column": "текст",
+            "filePage": 8,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2009-07-01",
+        "value": 69.58,
+        "change": 5.75,
+        "change_percent": 8.62,
+        "sources": [
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2009 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=60382&allowCache=true&openDirectly=false",
+            "amount": 136.08,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 109 от 23.12.2008 г.",
+              "issue": 109,
+              "extraordinary": false,
+              "date": "2008-12-23",
+              "page": 8,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=13516",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=60382&allowCache=true&openDirectly=false"
+            },
+            "article": 9,
+            "point": 2,
+            "row": "от 1 юли до 31 декември – размерът по т. 1, увеличен с процент, равен на процента, определен по чл. 100 от Кодекса за социално осигуряване, намален с 10 пункта",
+            "column": "текст",
+            "filePage": 8,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true,
+              "ruleOnly": true
+            }
+          },
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2010 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=84713&allowCache=true&openDirectly=false",
+            "amount": 136.08,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 99 от 15.12.2009 г.",
+              "issue": 99,
+              "extraordinary": false,
+              "date": "2009-12-15",
+              "page": 65,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=27580",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=84713&allowCache=true&openDirectly=false"
+            },
+            "article": 9,
+            "paragraph": null,
+            "row": "Определя се за 2010 г. минимален размер на пенсията за осигурителен стаж и възраст – 136,08 лв.",
+            "column": "текст",
+            "filePage": 65,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Сумата не е отпечатана в закона за 2009 г.: чл. 9, т. 2 дава само правилото, а процентът определя надзорният съвет на НОИ (§ 22и от ПЗР на Кодекса, създаден със същия закон). 136,08 лв. е първо отпечатана в ЗБДОО за 2010 г. (втората позиция, чл. 9, размер за цялата 2010 г.); 124,84 × 1,09 = 136,08. Бюлетинът на НОИ (бр. 1 от 2010 г.) дава 136,08 лв. към 1 януари 2010 г. ЗБДОО за 2011 г. (ДВ, бр. 98 от 2010 г., чл. 9) запазва 136,08 лв."
+      },
+      {
+        "date": "2012-06-01",
+        "value": 74.14,
+        "change": 4.56,
+        "change_percent": 6.35,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Държавното обществено осигуряване за 2012 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=113333&allowCache=true&openDirectly=false",
+            "amount": 145,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 100 от 20.12.2011 г.",
+              "issue": 100,
+              "extraordinary": false,
+              "date": "2011-12-20",
+              "page": 5,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=59642",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=113333&allowCache=true&openDirectly=false"
+            },
+            "article": 9,
+            "paragraph": null,
+            "row": "за периода от 1 юни до 31 декември 2012 г. – 145 лв.",
+            "column": "текст",
+            "filePage": 5,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Чл. 9 няма алинеи и точки. До 31 май 2012 г. размерът остава 136,08 лв."
+      },
+      {
+        "date": "2013-04-01",
+        "value": 76.69,
+        "change": 2.55,
+        "change_percent": 3.38,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Държавното обществено осигуряване за 2013 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=124721&allowCache=true&openDirectly=false",
+            "amount": 150,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 99 от 14.12.2012 г.",
+              "issue": 99,
+              "extraordinary": false,
+              "date": "2012-12-14",
+              "page": 12,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=71093",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=124721&allowCache=true&openDirectly=false"
+            },
+            "article": 9,
+            "paragraph": null,
+            "row": "от 1 април 2013 г. – 150 лв.",
+            "column": "текст",
+            "filePage": 12,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Чл. 9 няма алинеи и точки. От 1 януари до 31 март 2013 г. размерът е 145 лв."
+      },
+      {
+        "date": "2014-07-01",
+        "value": 78.99,
+        "change": 2.3,
+        "change_percent": 2.95,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Държавното обществено осигуряване за 2014 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=141369&allowCache=true&openDirectly=false",
+            "amount": 154.5,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 106 от 10.12.2013 г.",
+              "issue": 106,
+              "extraordinary": false,
+              "date": "2013-12-10",
+              "page": 7,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=80849",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=141369&allowCache=true&openDirectly=false"
+            },
+            "article": 9,
+            "point": 2,
+            "row": "от 1 юли до 31 декември – 154,50 лв.",
+            "column": "текст",
+            "filePage": 7,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2015-07-01",
+        "value": 80.5,
+        "change": 1.51,
+        "change_percent": 1.89,
+        "sources": [
+          {
+            "title": "Закон за бюджета на Държавното обществено осигуряване за 2015 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=165335&allowCache=true&openDirectly=false",
+            "amount": 157.44,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 107 от 24.12.2014 г.",
+              "issue": 107,
+              "extraordinary": false,
+              "date": "2014-12-24",
+              "page": 10,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=90899",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=165335&allowCache=true&openDirectly=false"
+            },
+            "article": 9,
+            "point": 2,
+            "row": "от 1 юли до 31 декември – 157,44 лв.",
+            "column": "текст",
+            "filePage": 10,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-07-01",
+        "value": 82.51,
+        "change": 2.01,
+        "change_percent": 2.47,
+        "sources": [
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2016 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=204299&allowCache=true&openDirectly=false",
+            "amount": 161.38,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 98 от 15.12.2015 г.",
+              "issue": 98,
+              "extraordinary": false,
+              "date": "2015-12-15",
+              "page": 13,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=99251",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=204299&allowCache=true&openDirectly=false"
+            },
+            "article": 10,
+            "point": 2,
+            "row": "от 1 юли до 31 декември – 161,38 лв.",
+            "column": "текст",
+            "filePage": 13,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-07-01",
+        "value": 92.03,
+        "change": 9.52,
+        "change_percent": 10.91,
+        "sources": [
+          {
+            "title": "Закон за изменение на Закона за бюджета на държавното обществено осигуряване за 2017 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=265290&allowCache=true&openDirectly=false",
+            "amount": 180,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 54 от 5.07.2017 г.",
+              "issue": 54,
+              "extraordinary": false,
+              "date": "2017-07-05",
+              "page": 3,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=115696",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=265290&allowCache=true&openDirectly=false"
+            },
+            "article": 10,
+            "point": 2,
+            "row": "от 1 юли до 30 септември – 180 лв.",
+            "column": "текст",
+            "filePage": 3,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          },
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2017 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=246702&allowCache=true&openDirectly=false",
+            "amount": 165.25,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 98 от 9.12.2016 г.",
+              "issue": 98,
+              "extraordinary": false,
+              "date": "2016-12-09",
+              "page": 21,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=109995",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=246702&allowCache=true&openDirectly=false"
+            },
+            "article": 10,
+            "point": 2,
+            "row": "от 1 юли до 31 декември – 165,25 лв.",
+            "column": "текст",
+            "filePage": 21,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Изменение: § 1 от ЗИД (ДВ, бр. 54 от 5.07.2017 г., в сила от 1 юли 2017 г.) заменя чл. 10 и приетите 165,25 лв. от 1 юли до 31 декември 2017 г. с 180 лв. до 30 септември и 200 лв. от 1 октомври. Втората позиция е приетият закон."
+      },
+      {
+        "date": "2017-10-01",
+        "value": 102.26,
+        "change": 10.23,
+        "change_percent": 10.53,
+        "sources": [
+          {
+            "title": "Закон за изменение на Закона за бюджета на държавното обществено осигуряване за 2017 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=265290&allowCache=true&openDirectly=false",
+            "amount": 200,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 54 от 5.07.2017 г.",
+              "issue": 54,
+              "extraordinary": false,
+              "date": "2017-07-05",
+              "page": 3,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=115696",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=265290&allowCache=true&openDirectly=false"
+            },
+            "article": 10,
+            "point": 3,
+            "row": "от 1 октомври до 31 декември – 200 лв.",
+            "column": "текст",
+            "filePage": 3,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          },
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2017 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=246702&allowCache=true&openDirectly=false",
+            "amount": 165.25,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 98 от 9.12.2016 г.",
+              "issue": 98,
+              "extraordinary": false,
+              "date": "2016-12-09",
+              "page": 21,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=109995",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=246702&allowCache=true&openDirectly=false"
+            },
+            "article": 10,
+            "point": 2,
+            "row": "от 1 юли до 31 декември – 165,25 лв.",
+            "column": "текст",
+            "filePage": 21,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Изменение: § 1 от ЗИД (ДВ, бр. 54 от 5.07.2017 г., в сила от 1 юли 2017 г.) заменя чл. 10 и приетите 165,25 лв. от 1 юли до 31 декември 2017 г. с 180 лв. до 30 септември и 200 лв. от 1 октомври. Втората позиция е приетият закон. ЗБДОО за 2018 г. (ДВ, бр. 99 от 2017 г., чл. 10, т. 1) запазва 200 лв. до 30 юни 2018 г."
+      },
+      {
+        "date": "2018-07-01",
+        "value": 106.14,
+        "change": 3.88,
+        "change_percent": 3.72,
+        "sources": [
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2018 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=284100&allowCache=true&openDirectly=false",
+            "amount": 207.6,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 99 от 12.12.2017 г.",
+              "issue": 99,
+              "extraordinary": false,
+              "date": "2017-12-12",
+              "page": 5,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=120484",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=284100&allowCache=true&openDirectly=false"
+            },
+            "article": 10,
+            "point": 2,
+            "row": "от 1 юли до 31 декември – 207,60 лв.",
+            "column": "текст",
+            "filePage": 5,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-07-01",
+        "value": 112.19,
+        "change": 6.05,
+        "change_percent": 5.54,
+        "sources": [
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2019 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=326600&allowCache=true&openDirectly=false",
+            "amount": 219.43,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 102 от 11.12.2018 г.",
+              "issue": 102,
+              "extraordinary": false,
+              "date": "2018-12-11",
+              "page": 39,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=132513",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=326600&allowCache=true&openDirectly=false"
+            },
+            "article": 10,
+            "point": 2,
+            "row": "от 1 юли до 31 декември – 219,43 лв.",
+            "column": "текст",
+            "filePage": 39,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ]
+      },
+      {
+        "date": "2020-07-01",
+        "value": 127.82,
+        "change": 15.63,
+        "change_percent": 13.02,
+        "sources": [
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2020 г.",
+            "fileUrl": "https://nssi.bg/wp-content/uploads/zbdoo-2020.pdf",
+            "amount": 250,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 99 от 17.12.2019 г.",
+              "issue": 99,
+              "extraordinary": false,
+              "date": "2019-12-17",
+              "page": null,
+              "actPage": 9,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=143520",
+              "issueUrl": null
+            },
+            "article": 10,
+            "point": 2,
+            "row": "от 1 юли до 31 декември - 250 лв.",
+            "column": "текст",
+            "filePage": 6,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false
+            }
+          }
+        ],
+        "note": "Броят не се изтегля от „Държавен вестник“, затова страницата е тази, от която започва законът. Текстът е проверен на страницата на акта; файлът е препечатката на НОИ."
+      },
+      {
+        "date": "2021-01-01",
+        "value": 153.39,
+        "change": 25.57,
+        "change_percent": 18.19,
+        "sources": [
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2021 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=414278&allowCache=true&openDirectly=false",
+            "amount": 300,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 103 от 4.12.2020 г.",
+              "issue": 103,
+              "extraordinary": false,
+              "date": "2020-12-04",
+              "page": 26,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=154060",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=414278&allowCache=true&openDirectly=false"
+            },
+            "article": 10,
+            "paragraph": null,
+            "row": "Определя се минимален размер на пенсията за осигурителен стаж и възраст по чл. 68, ал. 1 от Кодекса за социално осигуряване за 2021 г. – 300 лв.",
+            "column": "текст",
+            "filePage": 26,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Чл. 10 няма алинеи и точки. ЗИД в ДВ, бр. 77 от 16.09.2021 г. го преработва, като запазва 300 лв. до 24 декември 2021 г."
+      },
+      {
+        "date": "2021-12-25",
+        "value": 189.18,
+        "change": 35.79,
+        "change_percent": 20.89,
+        "sources": [
+          {
+            "title": "Закон за изменение и допълнение на Закона за бюджета на държавното обществено осигуряване за 2021 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=453943&allowCache=true&openDirectly=false",
+            "amount": 370,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 77 от 16.09.2021 г.",
+              "issue": 77,
+              "extraordinary": false,
+              "date": "2021-09-16",
+              "page": 7,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=162001",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=453943&allowCache=true&openDirectly=false"
+            },
+            "article": 10,
+            "point": 2,
+            "row": "от 25 декември – 370 лв.",
+            "column": "текст",
+            "filePage": 7,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          },
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2021 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=414278&allowCache=true&openDirectly=false",
+            "amount": 300,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 103 от 4.12.2020 г.",
+              "issue": 103,
+              "extraordinary": false,
+              "date": "2020-12-04",
+              "page": 26,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=154060",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=414278&allowCache=true&openDirectly=false"
+            },
+            "article": 10,
+            "paragraph": null,
+            "row": "Определя се минимален размер на пенсията за осигурителен стаж и възраст по чл. 68, ал. 1 от Кодекса за социално осигуряване за 2021 г. – 300 лв.",
+            "column": "текст",
+            "filePage": 26,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Изменение: § 9 от ЗИД (ДВ, бр. 77 от 16.09.2021 г.) заменя чл. 10, в който приетият размер е 300 лв. за цялата 2021 г.; по заключителните разпоредби § 9 влиза в сила от 25 декември 2021 г. Втората позиция е приетият закон. ЗБДОО за 2022 г. (ДВ, бр. 18 от 2022 г., чл. 10, т. 1) запазва 370 лв. до 30 юни 2022 г."
+      },
+      {
+        "date": "2022-07-01",
+        "value": 238.77,
+        "change": 49.59,
+        "change_percent": 23.18,
+        "sources": [
+          {
+            "title": "Закон за изменение на Закона за бюджета на държавното обществено осигуряване за 2022 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=506048&allowCache=true&openDirectly=false",
+            "amount": 467,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 51 от 1.07.2022 г.",
+              "issue": 51,
+              "extraordinary": false,
+              "date": "2022-07-01",
+              "page": 29,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=174556",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=506048&allowCache=true&openDirectly=false"
+            },
+            "article": 10,
+            "point": 2,
+            "row": "В чл. 10, т. 2 числото „392,57“ се заменя с „467“",
+            "column": "текст",
+            "filePage": 29,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          },
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2022 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=479139&allowCache=true&openDirectly=false",
+            "amount": 392.57,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 18 от 4.03.2022 г.",
+              "issue": 18,
+              "extraordinary": false,
+              "date": "2022-03-04",
+              "page": 12,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=170130",
+              "issueUrl": "https://dv.parliament.bg/DVWeb/fileUploadShowing.jsp?&idFileAtt=479139&allowCache=true&openDirectly=false"
+            },
+            "article": 10,
+            "point": 2,
+            "row": "от 1 юли до 31 декември – 392,57 лв.",
+            "column": "текст",
+            "filePage": 12,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": true
+            }
+          }
+        ],
+        "note": "Изменение: § 7 от ЗИД (ДВ, бр. 51 от 1.07.2022 г., в сила от 1 юли 2022 г.) заменя приетите 392,57 лв. в чл. 10, т. 2 с 467 лв. Втората позиция е приетият закон. ЗБДОО за 2023 г. (ДВ, бр. 66 от 2023 г., чл. 10, т. 1) запазва 467 лв. до 30 юни 2023 г."
+      },
+      {
+        "date": "2023-07-01",
+        "value": 267.43,
+        "change": 28.66,
+        "change_percent": 11.32,
+        "sources": [
+          {
+            "title": "Закон за изменение и допълнение на Закона за прилагане на разпоредби на Закона за държавния бюджет на Република България за 2022 г., Закона за бюджета на държавното обществено осигуряване за 2022 г. и Закона за бюджета на Националната здравноосигурителна каса за 2022 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=196458",
+            "amount": 523.04,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 53 от 20.06.2023 г.",
+              "issue": 53,
+              "extraordinary": false,
+              "date": "2023-06-20",
+              "page": null,
+              "actPage": 2,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=196458",
+              "issueUrl": null
+            },
+            "article": 2,
+            "paragraph": 2,
+            "point": 1,
+            "row": "минимален размер на пенсията за осигурителен стаж и възраст по чл. 68, ал. 1 от Кодекса за социално осигуряване – 523,04 лв.",
+            "column": "текст",
+            "filePage": 1,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false
+            }
+          },
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2023 г.",
+            "fileUrl": "https://nssi.bg/wp-content/uploads/zbdoo-2023.pdf",
+            "amount": 523.04,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 66 от 1.08.2023 г.",
+              "issue": 66,
+              "extraordinary": false,
+              "date": "2023-08-01",
+              "page": null,
+              "actPage": 41,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=197926",
+              "issueUrl": null
+            },
+            "article": 10,
+            "point": 2,
+            "row": "от 1 юли до 31 декември – 523,04 лв.",
+            "column": "текст",
+            "filePage": 6,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false
+            }
+          }
+        ],
+        "note": "До приемането на ЗБДОО за 2023 г. размерът е определен в удължителния закон: § 2, т. 2 създава чл. 2, ал. 2, в сила от 1 юли 2023 г. ЗБДОО за 2023 г. (втората позиция; обнародван на 1.08.2023 г., в сила от 1 януари 2023 г.) повтаря 523,04 лв. Броевете от 2023 г. не се изтеглят от „Държавен вестник“, затова страницата е тази, от която започва актът; файлът на първата позиция е страницата на акта, на втората – препечатката на НОИ."
+      },
+      {
+        "date": "2024-07-01",
+        "value": 296.84,
+        "change": 29.41,
+        "change_percent": 10.42,
+        "sources": [
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2024 г.",
+            "fileUrl": "https://nssi.bg/wp-content/uploads/zbdoo-2024.pdf",
+            "amount": 580.57,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 106 от 22.12.2023 г.",
+              "issue": 106,
+              "extraordinary": false,
+              "date": "2023-12-22",
+              "page": null,
+              "actPage": 79,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=202043",
+              "issueUrl": null
+            },
+            "article": 10,
+            "point": 2,
+            "row": "от 1 юли до 31 декември – 580,57 лв.",
+            "column": "текст",
+            "filePage": 9,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false
+            }
+          }
+        ],
+        "note": "Броят не се изтегля от „Държавен вестник“, затова страницата е тази, от която започва законът. Текстът е проверен на страницата на акта; файлът е препечатката на НОИ."
+      },
+      {
+        "date": "2025-07-01",
+        "value": 322.37,
+        "change": 25.53,
+        "change_percent": 8.25,
+        "sources": [
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2025 г.",
+            "fileUrl": "https://nssi.bg/wp-content/uploads/zbdoo-2025.pdf",
+            "amount": 630.5,
+            "amountUnit": "лв.",
+            "gazette": {
+              "citation": "ДВ, бр. 25 от 25.03.2025 г.",
+              "issue": 25,
+              "extraordinary": false,
+              "date": "2025-03-25",
+              "page": null,
+              "actPage": 3,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=233617",
+              "issueUrl": null
+            },
+            "article": 10,
+            "point": 2,
+            "row": "от 1 юли до 31 декември – 630,50 лв.",
+            "column": "текст",
+            "filePage": 7,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false
+            }
+          }
+        ],
+        "note": "До приемането на закона се прилага удължителният закон (ДВ, бр. 6 от 21.01.2025 г., чл. 7) с размера към 31 декември 2024 г., 580,57 лв. Броят не се изтегля от „Държавен вестник“, затова страницата е тази, от която започва законът; файлът е препечатката на НОИ."
+      },
+      {
+        "date": "2026-01-01",
+        "value": 322.37,
+        "change": 0,
+        "change_percent": 0,
+        "sources": [
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2026 г.",
+            "fileUrl": "https://nssi.bg/wp-content/uploads/zbdoo-2026.pdf",
+            "amount": 322.37,
+            "amountUnit": "евро",
+            "gazette": {
+              "citation": "ДВ, бр. 68 от 28.07.2026 г.",
+              "issue": 68,
+              "extraordinary": false,
+              "date": "2026-07-28",
+              "page": null,
+              "actPage": 2,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=244982",
+              "issueUrl": null
+            },
+            "article": 10,
+            "point": 1,
+            "row": "от 1 януари до 30 юни – 322,37 евро",
+            "column": "текст",
+            "filePage": 4,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false
+            }
+          }
+        ],
+        "note": "630,50 лв. по фиксирания курс 1,95583: размерът не се променя. До приемането на закона се прилага чл. 7 от удължителния закон (ДВ, бр. 113 от 23.12.2025 г.): размерите към 31 декември 2025 г. с правилата на Закона за въвеждане на еврото. Законът е в сила от 1 януари 2026 г. и отпечатва сумата в евро. Броят не се изтегля от „Държавен вестник“, затова страницата е тази, от която започва законът."
+      },
+      {
+        "date": "2026-07-01",
+        "value": 347.51,
+        "change": 25.14,
+        "change_percent": 7.51,
+        "sources": [
+          {
+            "title": "Закон за изменение и допълнение на Закона за събирането на приходи и извършването на разходи през 2026 г. до приемането на Закона за държавния бюджет на Република България за 2026 г., Закона за бюджета на държавното обществено осигуряване за 2026 г. и Закона за бюджета на Националната здравноосигурителна каса за 2026 г.",
+            "fileUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=243855",
+            "amount": 347.51,
+            "amountUnit": "евро",
+            "gazette": {
+              "citation": "ДВ, бр. 52 от 8.06.2026 г.",
+              "issue": 52,
+              "extraordinary": false,
+              "date": "2026-06-08",
+              "page": null,
+              "actPage": 6,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=243855",
+              "issueUrl": null
+            },
+            "article": 7,
+            "paragraph": 2,
+            "row": "В срока по ал. 1, считано от 1 юли 2026 г., се определя минимален размер на пенсията за осигурителен стаж и възраст по чл. 68, ал. 1 от Кодекса за социално осигуряване – 347,51 евро.",
+            "column": "текст",
+            "filePage": 1,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false
+            }
+          },
+          {
+            "title": "Закон за бюджета на държавното обществено осигуряване за 2026 г.",
+            "fileUrl": "https://nssi.bg/wp-content/uploads/zbdoo-2026.pdf",
+            "amount": 347.51,
+            "amountUnit": "евро",
+            "gazette": {
+              "citation": "ДВ, бр. 68 от 28.07.2026 г.",
+              "issue": 68,
+              "extraordinary": false,
+              "date": "2026-07-28",
+              "page": null,
+              "actPage": 2,
+              "actUrl": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=244982",
+              "issueUrl": null
+            },
+            "article": 10,
+            "point": 2,
+            "row": "от 1 юли до 31 декември – 347,51 евро",
+            "column": "текст",
+            "filePage": 5,
+            "checks": {
+              "file": true,
+              "gazetteAct": true,
+              "gazetteIssue": false
+            }
+          }
+        ],
+        "note": "§ 2 създава чл. 7, ал. 2 в удължителния закон. ЗБДОО за 2026 г. (втората позиция; обнародван на 28.07.2026 г., в сила от 1 януари 2026 г.) повтаря 347,51 евро. Броевете от 2026 г. не се изтеглят от „Държавен вестник“, затова страницата е тази, от която започва актът; файлът на първата позиция е страницата на акта, на втората – препечатката на НОИ."
+      }
+    ]
+  },
+  {
     "id": "mvr-budget-eur",
     "name": "Бюджет на МВР",
     "sources": [

@@ -42,6 +42,10 @@ function citation(where, row, rowAct) {
   for (const [name, value] of Object.entries({ article, label, column, filePage, checks })) {
     if (value === undefined || value === null || value === '') throw new Error(`${at} has no ${name}`);
   }
+  /* „единствен“ is the act's only article, printed „Член единствен“: a decree's usual shape. */
+  if (!(Number.isInteger(article) && article > 0) && article !== 'единствен') {
+    throw new Error(`${at}: article must be its number, or "единствен" for „Член единствен“`);
+  }
   if (paragraph === undefined && point === undefined) throw new Error(`${at} has no paragraph or point`);
   if (page === undefined) throw new Error(`${at} has no page`);
   if (!Number.isInteger(page) && !(page === null && Number.isInteger(actPage))) {

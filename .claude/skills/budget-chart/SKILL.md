@@ -69,6 +69,7 @@ Before 2014 an institution usually has only a row in the roster (`чл. 4–6, �
 - A law outside the catalogue needs `act` on the row and `source` on the input, in the catalogue's shape.
 - A figure that changes mid-year sets `"dated": true` and a `date` per row, the day it took effect, with `acts` on the input keyed by that date.
 - A list with no paragraphs uses `point`, and `letter` where it has them, in place of `paragraph`.
+- An act whose only article is printed „Член единствен“, as in most decrees, has `article: "единствен"`, which the card shows as „чл. единствен“. An article with neither paragraphs nor points has `paragraph: null`.
 - When no copy of the issue shows the printed page, set `page: null` and `actPage`, where the act starts. Don't estimate it. `filePage` is the 1-based page of `fileUrl`.
 - In a full issue the PDF page is the printed page, so that's the cheapest way to get `page`.
 - `checks.arithmetic` is a short formula. `institution.code` is a short uppercase name of your choice.

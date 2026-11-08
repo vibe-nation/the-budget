@@ -32,6 +32,8 @@ export const LINE_COLORS = [
   '#f0822e',
   '#3fbe95',
   '#6a1b9a',
+  '#1a237e',
+  '#64dd17',
   '#8a6d3b',
   '#e040fb',
   '#3d5a80',

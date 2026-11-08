@@ -67,6 +67,14 @@ for (const missing of ['article', 'label', 'column', 'page', 'filePage', 'checks
   });
 }
 
+test('takes „Член единствен“ as the article, and refuses any other word', () => {
+  const [{ sources }] = buildSeries(input([row({ sources: [{ ...where, article: 'единствен' }] })]), acts).data;
+
+  assert.equal(sources[0].article, 'единствен');
+  assert.throws(() => buildSeries(input([row({ sources: [{ ...where, article: 'първи' }] })]), acts), /article must be/);
+  assert.throws(() => buildSeries(input([row({ sources: [{ ...where, article: '12' }] })]), acts), /article must be/);
+});
+
 test('refuses a location with neither a paragraph nor a point, and takes a point alone', () => {
   const { paragraph: _, ...rest } = where;
 

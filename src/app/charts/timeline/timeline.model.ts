@@ -137,7 +137,8 @@ export interface LawCitation {
   /** The figure as the law prints it. */
   readonly amount: number;
   readonly amountUnit: string;
-  readonly article: number;
+  /** „единствен“ where the act prints „Член единствен“, its only article, as most decrees do. */
+  readonly article: number | 'единствен';
   /** A law's list can have no paragraphs, and then `point` and `letter` place the figure. */
   readonly paragraph?: number;
   readonly point?: number;
