@@ -98,6 +98,10 @@ h1 {
   padding-inline-start: 0;
 }
 
+.today-table tfoot td {
+  border-bottom: 0;
+}
+
 .today-name {
   color: var(--ink);
   font-weight: 600;
